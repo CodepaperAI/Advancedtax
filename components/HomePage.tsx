@@ -16,7 +16,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import {
-  accreditations,
   faqs,
   industries,
   offices,
@@ -33,8 +32,6 @@ import {
   FadeIn,
   ImageReveal,
   ScrollProgressBar,
-  Stagger,
-  StaggerItem,
   motion
 } from "./MotionPrimitives";
 import { Accordion } from "./Accordion";
@@ -44,22 +41,6 @@ export function HomePage() {
   return (
     <>
       <HeroFullBleedSection />
-
-      <section className="trust-section" aria-label="Accreditations">
-        <div className="container trust-grid">
-          <FadeIn>
-            <p className="eyebrow">Registered and accredited</p>
-            <h2>Trust signals appear before the visitor has to hunt for them.</h2>
-          </FadeIn>
-          <Stagger className="logo-row">
-            {accreditations.map((item) => (
-              <StaggerItem key={item.name}>
-                <Image src={item.image} alt={item.name} width={120} height={70} />
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
 
       <section className="stats-section">
         <div className="container stats-grid">
@@ -363,16 +344,14 @@ function HeroFullBleedSection() {
           sizes="100vw"
         />
       </motion.div>
-      <div className="hero-scrim" />
-      <div className="hero-grain" />
       <div className="container hero-grid">
         <div className="hero-copy hero-entrance">
           <div>
-            <p className="eyebrow">Sydney / Parramatta / Liverpool</p>
+            <p className="eyebrow">Parramatta / Liverpool</p>
           </div>
           <div>
             <h1>
-              Sydney accountants and tax advisers for business owners.
+              Accountants and tax advisers for business owners.
             </h1>
           </div>
           <div>
@@ -392,11 +371,6 @@ function HeroFullBleedSection() {
               </Link>
             </div>
           </div>
-        </div>
-        <div className="hero-proof-panel" aria-label="AATBS trust summary">
-          <span>Registered tax agent</span>
-          <strong>Founder-led Sydney advisory.</strong>
-          <small>Parramatta and Liverpool offices with registered tax agent support.</small>
         </div>
       </div>
     </section>

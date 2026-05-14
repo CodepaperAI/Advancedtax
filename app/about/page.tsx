@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Award, MapPin, UsersRound } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { FadeIn } from "@/components/MotionPrimitives";
-import { offices, team } from "@/lib/content";
+import { offices } from "@/lib/content";
 
 export const metadata = {
   title: "About",
@@ -42,6 +42,47 @@ export default function AboutPage() {
           </FadeIn>
         </div>
       </section>
+      <section className="section-pad founder-section">
+        <div className="container founder-grid">
+          <FadeIn className="founder-portrait">
+            <Image
+              src="/team/principal.png"
+              alt="Principal adviser portrait"
+              width={520}
+              height={680}
+              priority
+            />
+          </FadeIn>
+          <FadeIn className="founder-copy">
+            <p className="eyebrow">Meet the founder</p>
+            <h2>The person behind the practice.</h2>
+            <p className="founder-role">
+              Founder &amp; Principal Adviser &middot; Registered Tax Agent
+            </p>
+            <p>
+              For more than two decades, our founder has guided Australian
+              business owners through compliance, tax and advisory work that
+              actually moves the dial. Clients stay because the relationship is
+              direct, the advice is plain-spoken, and the numbers come with
+              context.
+            </p>
+            <p>
+              The practice is built on three commitments: be reachable, be
+              accurate, and explain the &quot;why&quot; behind every
+              recommendation. No surprises at year-end, no jargon walls, no
+              passing clients between juniors.
+            </p>
+            <ul className="founder-creds">
+              <li>Registered Tax Agent</li>
+              <li>20+ years in Australian small business advisory</li>
+              <li>Parramatta &amp; Liverpool office access</li>
+            </ul>
+            <Link className="button button-dark" href="/contact">
+              Book a consultation
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
       <section className="section-pad cream-band">
         <div className="container pillar-grid">
           {[
@@ -66,16 +107,6 @@ export default function AboutPage() {
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </FadeIn>
-          ))}
-        </div>
-      </section>
-      <section className="section-pad">
-        <div className="container team-preview">
-          {team.map((member) => (
-            <Link href="/about/team" key={member.name}>
-              <Image src={member.image} alt={member.name} fill sizes="(max-width: 900px) 100vw, 30vw" />
-              <span>{member.role}</span>
-            </Link>
           ))}
         </div>
       </section>

@@ -25,14 +25,6 @@ export function SiteHeader() {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <div className="utility-bar">
-        <div className="container utility-inner">
-          <span>Registered tax agent and Sydney advisory firm</span>
-          <span>Parramatta / Liverpool</span>
-          <a href={site.phoneHref}>{site.phoneDisplay}</a>
-        </div>
-      </div>
-
       <div className="nav-shell">
         <div className="container nav-inner">
           <Link href="/" className="brand" aria-label="AdvancedTax home">
@@ -115,8 +107,9 @@ export function SiteHeader() {
           </nav>
 
           <div className="nav-actions">
-            <a className="icon-phone" href={site.phoneHref} aria-label="Call AdvancedTax">
+            <a className="icon-phone" href={site.phoneHref} aria-label={`Call AdvancedTax on ${site.phoneDisplay}`}>
               <Phone size={18} />
+              <span className="icon-phone-number">{site.phoneDisplay}</span>
             </a>
             <Link className="button button-gold nav-cta" href={site.bookingHref}>
               Book consultation

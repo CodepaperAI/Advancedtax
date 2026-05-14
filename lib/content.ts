@@ -121,28 +121,22 @@ export const partners = [
 
 export const stats = [
   {
-    label: "Years supporting NSW clients",
-    value: 30,
+    label: "Years supporting clients",
+    value: 20,
     suffix: "+",
-    note: "Replace with client-confirmed founding year before launch."
+    note: "Trusted advisory across two decades of practice."
   },
   {
-    label: "Sydney offices",
+    label: "Offices",
     value: 2,
     suffix: "",
     note: "Parramatta and Liverpool."
   },
   {
-    label: "Core service lines",
-    value: 10,
-    suffix: "",
-    note: "Compliance, advisory, finance, SMSF, payroll and audit."
-  },
-  {
-    label: "Launch target Lighthouse",
-    value: 95,
+    label: "Happy clients",
+    value: 500,
     suffix: "+",
-    note: "Desktop performance target for the rebuild."
+    note: "Business owners and individuals supported across the practice."
   }
 ];
 
@@ -156,8 +150,8 @@ export const services: Service[] = [
     intro:
       "Month-end, year-end and management reporting shaped for business owners who need reliable numbers without chasing paperwork.",
     image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1400&q=82",
-    alt: "Financial reports and accounting documents arranged on a desk",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=82",
+    alt: "Modern laptop displaying a clean financial analytics dashboard",
     includes: ["Management accounts", "Entity reporting", "Tax-ready records"],
     proof: "Structured reporting, plain-English explanations and a named adviser.",
     faqs: [
@@ -208,8 +202,8 @@ export const services: Service[] = [
     intro:
       "Quarterly and monthly BAS support for businesses that need their GST, PAYG and reporting obligations handled without rush work.",
     image:
-      "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1400&q=82",
-    alt: "Business activity statement preparation on a laptop",
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=82",
+    alt: "Reviewing and signing business reporting paperwork",
     includes: ["GST review", "PAYG instalments", "ATO lodgement support"],
     proof: "A repeatable lodgement rhythm that keeps owners ahead of due dates.",
     faqs: [
@@ -471,8 +465,7 @@ export const team = [
     name: "Principal adviser",
     role: "Registered tax agent and business adviser",
     credential: "Client-supplied bio required before launch",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/professional-business-team-NNXYFQN-768x864.jpg"
+    image: "/team/principal.png"
   },
   {
     name: "Senior accountant",

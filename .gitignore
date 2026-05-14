@@ -56,3 +56,4 @@ next-dev-*.err.log
 # verification artifacts (browser screenshots, fetched HTML)
 pricing.html
 pricing-after-*.png
+.gstack/
