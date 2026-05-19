@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Privacy",
-  description: "Privacy information for the AdvancedTax redesign prototype."
+  description: "Privacy information for AdvancedTax clients and website visitors."
 };
 
 export default function PrivacyPage() {
@@ -10,10 +10,10 @@ export default function PrivacyPage() {
         <p className="eyebrow">Privacy</p>
         <h1>Privacy policy</h1>
         <p>
-          This page is a launch placeholder for the client-approved privacy
-          policy. Before publication, replace it with the current legal text
-          from AdvancedTax and confirm all analytics, form and CMS processing
-          disclosures are accurate.
+          AdvancedTax handles client and enquiry information for consultation,
+          accounting, taxation and advisory purposes. The full client-approved
+          privacy policy should be inserted here before public launch, including
+          analytics, form and CMS processing disclosures.
         </p>
       </div>
     </section>

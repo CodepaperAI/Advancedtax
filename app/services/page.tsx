@@ -21,17 +21,17 @@ const groupNarrative = {
       "For businesses that need clearer cash flow, sharper planning and CFO-grade guidance without turning every question into a separate project."
   },
   Specialist: {
-    eyebrow: "Technical confidence",
-    title: "Bring specialist obligations into a calm, documented process.",
+    eyebrow: "SMSF support",
+    title: "Keep trustee obligations clear, current and understandable.",
     copy:
-      "Audit, assurance and SMSF support are framed around evidence, trustee clarity and the confidence to make decisions with fewer loose ends."
+      "SMSF work is framed around annual accounts, tax return preparation, trustee records and clear explanations of what needs attention."
   }
 } satisfies Record<(typeof groups)[number], { eyebrow: string; title: string; copy: string }>;
 
 export const metadata = {
   title: "Services",
   description:
-    "Accounting, tax, BAS, bookkeeping, payroll, advisory, Concierge CFO, audit and SMSF services."
+    "Accounting, tax, BAS, bookkeeping, payroll, advisory, Concierge CFO and SMSF services."
 };
 
 export default function ServicesPage() {
@@ -40,9 +40,9 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Accounting, tax and advisory pathways for each stage of the work."
-        copy="Start with the pressure point: compliance rhythm, business decisions or specialist obligations. Each pathway leads to clear inclusions, outcomes and next steps."
-        image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1500&q=82"
-        alt="Accounting documents and advisory notes"
+        copy="Choose the support you need: compliance, business advice or specialist work. Each pathway explains what is included, what outcome to expect and what happens next."
+        image="/photos/advisory-meeting.jpg"
+        alt="Business advisers meeting with a client"
       />
       <section className="service-dossier-section">
         <div className="container service-dossier-intro">
@@ -91,7 +91,13 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <div className="service-dossier-layout">
+                  <div
+                    className={
+                      secondary.length
+                        ? "service-dossier-layout"
+                        : "service-dossier-layout service-dossier-layout-single"
+                    }
+                  >
                     <Link className="service-lead-feature" href={`/services/${lead.slug}`}>
                       <Image
                         src={lead.image}
@@ -109,27 +115,29 @@ export default function ServicesPage() {
                       </span>
                     </Link>
 
-                    <div className="service-brief-grid">
-                      {secondary.map((service, serviceIndex) => (
-                        <Link
-                          className="service-brief"
-                          href={`/services/${service.slug}`}
-                          key={service.slug}
-                        >
-                          <span className="service-brief-number">
-                            {groupIndex + 1}.{serviceIndex + 2}
-                          </span>
-                          <strong>{service.title}</strong>
-                          <p>{service.outcome}</p>
-                          <ul>
-                            {service.includes.slice(0, 2).map((item) => (
-                              <li key={item}>{item}</li>
-                            ))}
-                          </ul>
-                          <ArrowRight size={18} />
-                        </Link>
-                      ))}
-                    </div>
+                    {secondary.length > 0 && (
+                      <div className="service-brief-grid">
+                        {secondary.map((service, serviceIndex) => (
+                          <Link
+                            className="service-brief"
+                            href={`/services/${service.slug}`}
+                            key={service.slug}
+                          >
+                            <span className="service-brief-number">
+                              {groupIndex + 1}.{serviceIndex + 2}
+                            </span>
+                            <strong>{service.title}</strong>
+                            <p>{service.outcome}</p>
+                            <ul>
+                              {service.includes.slice(0, 2).map((item) => (
+                                <li key={item}>{item}</li>
+                              ))}
+                            </ul>
+                            <ArrowRight size={18} />
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </FadeIn>
               );

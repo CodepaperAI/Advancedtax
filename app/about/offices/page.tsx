@@ -16,10 +16,10 @@ export default function OfficesPage() {
     <>
       <PageHero
         eyebrow="Parramatta and Liverpool"
-        title="Two Sydney offices should become a conversion asset."
-        copy="The redesigned site treats local access as a trust signal, pairing maps, hours and real office photography with consultation CTAs."
-        image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=82"
-        alt="Office meeting room prepared for a consultation"
+        title="Two Sydney offices for advice when it is easier to meet in person."
+        copy="Local access is a trust signal for owners who want a direct adviser, clear timing and the option to meet face to face."
+        image="/photos/sydney-cbd.jpg"
+        alt="Sydney business district and harbour skyline"
       />
       <section className="section-pad">
         <div className="container office-grid">

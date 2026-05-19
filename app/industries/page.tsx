@@ -27,14 +27,14 @@ export default function IndustriesPage() {
         eyebrow="Industries"
         title="Industry advice with the real pressure points already in view."
         copy="Different businesses create different accounting questions. Explore the sectors where tax timing, payroll, finance and reporting need practical structure."
-        image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=82"
-        alt="Business district and office workspace"
+        image="/photos/sydney-street.jpg"
+        alt="Sydney street and business district"
       />
       <section className="industry-field-section">
         <div className="container industry-field-heading">
           <FadeIn>
             <p className="eyebrow">Industry field guide</p>
-            <h2>Move from a plain sector list to a visual map of business contexts.</h2>
+            <h2>Accounting support shaped around how each sector operates.</h2>
           </FadeIn>
           <FadeIn className="industry-field-note">
             <span>What changes by industry?</span>

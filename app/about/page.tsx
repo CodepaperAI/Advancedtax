@@ -16,28 +16,27 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About AATBS"
-        title="A Sydney accounting firm with a stronger story than the old site showed."
-        copy="The redesign brings the firm history, office presence, accreditations and senior team into the foreground."
-        image="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1500&q=82"
-        alt="Premium advisory office interior"
+        title="A Sydney accounting firm with local access and senior accountability."
+        copy="Meet the practice, the office presence, the accreditations and the advisory philosophy behind AATBS."
+        image="/photos/sydney-cbd.jpg"
+        alt="Sydney CBD skyline and business district"
       />
       <section className="section-pad">
         <div className="container editorial-grid">
           <FadeIn>
-            <p className="eyebrow">Positioning</p>
+            <p className="eyebrow">Practice approach</p>
             <h2>Boutique attention with the discipline of a serious advisory practice.</h2>
           </FadeIn>
           <FadeIn>
             <p>
-              AATBS already has the credibility signals that prospects need:
-              long practice history, two Sydney offices, specialist service
-              depth and visible accreditations. The rebuild makes those assets
-              impossible to miss.
+              AATBS combines long practice history, two Sydney offices,
+              specialist service depth and visible accreditations for clients
+              who want their accounting relationship to feel steady and direct.
             </p>
             <p>
-              The brand voice should be direct, calm and practical. No inflated
-              claims. No vague "growth partner" filler. Every section should
-              explain what the client gets and why the firm can be trusted.
+              The practice is deliberately practical: clear responsibilities,
+              plain-English tax and accounting advice, and a focus on what the
+              client needs before lodgement pressure builds.
             </p>
           </FadeIn>
         </div>
@@ -89,12 +88,12 @@ export default function AboutPage() {
             {
               icon: Award,
               title: "Accredited",
-              text: "Regulatory and finance accreditations move from footer afterthought to first-screen trust proof."
+              text: "Registered and accredited guidance for accounting, tax and finance-related conversations."
             },
             {
               icon: UsersRound,
               title: "Human",
-              text: "Team, principal and client service content gives prospects someone real to connect with."
+              text: "Clients deal with a real practice team, not a faceless lodgement process."
             },
             {
               icon: MapPin,

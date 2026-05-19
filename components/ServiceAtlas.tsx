@@ -23,12 +23,12 @@ export function ServiceAtlas() {
   return (
     <div className="service-atlas">
       <div className="service-atlas-copy">
-        <p className="eyebrow">Service atlas</p>
-        <h2>Compliance, advisory and specialist support under one roof.</h2>
+        <p className="eyebrow">Services</p>
+        <h2>Accounting, tax and advisory support under one roof.</h2>
         <p>
-          The redesign treats services as an editorial index, not a generic
-          card wall. Visitors can scan by need, see the outcome, and move into
-          the relevant page with a clear path.
+          Start with what is due now: tax, BAS, payroll, bookkeeping, business
+          advice or SMSF support. Each service explains the practical outcome
+          and the next step before you book a consultation.
         </p>
       </div>
       <div className="service-atlas-media">

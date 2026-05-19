@@ -56,4 +56,12 @@ next-dev-*.err.log
 # verification artifacts (browser screenshots, fetched HTML)
 pricing.html
 pricing-after-*.png
+advancedtax-live-*.png
+advancedtax-review-*.png
+advancedtax-services-australian-photo.png
+advancedtax-updated-*.png
+live-home.html
+next-direct-*.log
+next-start-*.log
+tmp-chrome-*/
 .gstack/

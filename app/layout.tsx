@@ -13,14 +13,14 @@ export const metadata: Metadata = {
     template: "%s | AdvancedTax"
   },
   description:
-    "Premium redesign for Advanced Accounting, Taxation & Business Services: Sydney tax, accounting, SMSF, finance and advisory support.",
+    "Sydney accounting, taxation, SMSF, finance and advisory support for business owners, investors and families.",
   openGraph: {
     title: "AdvancedTax | Sydney Accounting, Taxation and Advisory",
     description:
       "Accounting, taxation and advisory support from Parramatta and Liverpool.",
     url: site.domain,
     siteName: "AdvancedTax",
-    images: [site.logoDark],
+    images: [site.logoAbsolute],
     locale: "en_AU",
     type: "website"
   }

@@ -58,8 +58,9 @@ export default async function IndustryPage({
             <p className="eyebrow">Common needs</p>
             <h2>Where accounting becomes operational.</h2>
             <p>
-              Industry pages should connect service language to real business
-              pressure: timing, payroll, cash flow, finance and compliance.
+              {industry.title} clients usually need support with the practical
+              pressure points behind the accounts: timing, payroll, cash flow,
+              finance and compliance.
             </p>
           </FadeIn>
           <div className="inclusion-list">

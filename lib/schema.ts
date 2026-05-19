@@ -6,7 +6,7 @@ export function organizationSchema() {
     "@type": ["Organization", "AccountingService"],
     name: site.name,
     url: site.domain,
-    logo: site.logoDark,
+    logo: site.logoAbsolute,
     telephone: site.mobileDisplay,
     email: site.email,
     sameAs: [site.social.facebook, site.social.instagram],
@@ -25,7 +25,7 @@ export function localBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "AccountingService",
     name: site.name,
-    image: site.logoDark,
+    image: site.logoAbsolute,
     url: site.domain,
     telephone: site.mobileDisplay,
     priceRange: "$$",
@@ -70,8 +70,8 @@ export function articleSchema(post: Post) {
       "@type": "Organization",
       name: site.name,
       logo: {
-        "@type": "ImageObject",
-        url: site.logoDark
+      "@type": "ImageObject",
+        url: site.logoAbsolute
       }
     }
   };

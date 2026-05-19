@@ -560,6 +560,27 @@ p {
   margin-top: 34px;
 }
 
+.hero-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.hero-trust-row span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  background: rgba(15, 31, 46, 0.38);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.78rem;
+  font-weight: 850;
+  backdrop-filter: blur(10px);
+}
+
 .hero-proof-panel {
   position: relative;
   z-index: 2;
@@ -2088,6 +2109,17 @@ p {
   background: rgba(15, 31, 46, 0.14);
 }
 
+.service-dossier-layout-single {
+  max-width: 760px;
+  grid-template-columns: 1fr;
+  background: transparent;
+}
+
+.service-dossier-layout-single .service-lead-feature {
+  min-height: 520px;
+  border-radius: 8px;
+}
+
 .service-lead-feature {
   position: relative;
   min-height: 620px;
@@ -3094,6 +3126,10 @@ p {
   .industry-field-tile-5 {
     grid-column: span 2;
   }
+
+  .pathway:nth-child(2) {
+    transform: none;
+  }
 }
 
 @media (max-width: 760px) {
@@ -3138,7 +3174,7 @@ p {
     right: 0;
     top: 50%;
     z-index: 4;
-    display: flex !important;
+    display: none !important;
     grid-column: auto;
     gap: 8px;
     transform: translateY(-50%);
@@ -3155,9 +3191,9 @@ p {
   .floating-menu-button {
     display: inline-flex !important;
     position: fixed;
-    left: 132px;
+    left: min(calc(100vw - 60px), 330px);
     right: auto;
-    top: 52px;
+    top: 15px;
     z-index: 210;
     width: 44px;
     height: 44px;
@@ -3167,7 +3203,6 @@ p {
     background: var(--navy);
     color: var(--white);
     border: 1px solid var(--navy);
-    border-color: var(--navy);
     transform: none;
   }
 
@@ -3212,6 +3247,17 @@ p {
   .hero-actions,
   .final-actions {
     width: 100%;
+  }
+
+  .hero-trust-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .hero-trust-row span {
+    justify-content: center;
+    border-radius: 4px;
   }
 
   .hero-proof-panel {

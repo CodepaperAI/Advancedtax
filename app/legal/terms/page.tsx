@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Terms",
-  description: "Terms information for the AdvancedTax redesign prototype."
+  description: "Terms of business information for AdvancedTax clients."
 };
 
 export default function TermsPage() {
@@ -10,10 +10,9 @@ export default function TermsPage() {
         <p className="eyebrow">Terms</p>
         <h1>Terms of business</h1>
         <p>
-          This page is a launch placeholder for the client-approved terms of
-          business. Replace it with the firm&apos;s current terms and verify
-          professional standards, engagement and limitation language before
-          launch.
+          Engagement scope, professional standards, payment terms and limitation
+          language should match the current client-approved terms of business.
+          Insert the final legal text here before public launch.
         </p>
       </div>
     </section>

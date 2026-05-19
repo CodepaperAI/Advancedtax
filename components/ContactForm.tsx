@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle2, Send } from "lucide-react";
 import { useState } from "react";
+import { site } from "@/lib/content";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -12,7 +13,20 @@ export function ContactForm() {
       className="contact-form"
       onSubmit={(event) => {
         event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const subject = encodeURIComponent("Consultation request from AdvancedTax website");
+        const body = encodeURIComponent(
+          [
+            `Name: ${form.get("name") ?? ""}`,
+            `Email: ${form.get("email") ?? ""}`,
+            `Phone: ${form.get("phone") ?? ""}`,
+            `Need: ${form.get("need") ?? ""}`,
+            "",
+            `${form.get("message") ?? ""}`
+          ].join("\n")
+        );
         setSent(true);
+        window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
       }}
     >
       <label>
@@ -60,8 +74,8 @@ export function ContactForm() {
             exit={{ opacity: 0, y: 8 }}
           >
             <CheckCircle2 size={18} />
-            Thanks. This prototype captured the request state; connect the form
-            action before launch.
+            Thanks. Your email app should open with the consultation details
+            ready for AATBS.
           </motion.p>
         )}
       </AnimatePresence>

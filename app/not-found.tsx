@@ -7,8 +7,8 @@ export default function NotFound() {
         <p className="eyebrow">404</p>
         <h1>This page is not in the advisory file.</h1>
         <p>
-          The page may have moved during the redesign. Start from the homepage
-          or book a consultation if you need a direct answer.
+          The page may have moved. Start from the homepage or book a
+          consultation if you need a direct answer.
         </p>
         <div className="hero-actions">
           <Link className="button button-gold" href="/">

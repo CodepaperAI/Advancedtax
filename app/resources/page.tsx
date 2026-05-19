@@ -16,10 +16,10 @@ export default function ResourcesPage() {
     <>
       <PageHero
         eyebrow="Resources"
-        title="Insights should feel authored by a serious advisory firm."
-        copy="The resource hub gives existing blog content a premium editorial frame and a stronger SEO structure."
-        image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1500&q=82"
-        alt="Laptop and financial notes"
+        title="Practical insights for tax, payroll, SMSF and year-end decisions."
+        copy="Use these guides to prepare better records, ask sharper questions and make the first consultation more useful."
+        image="/photos/accounting-office.jpg"
+        alt="Accounting team reviewing business records"
       />
       <section className="section-pad">
         <div className="container resource-index">

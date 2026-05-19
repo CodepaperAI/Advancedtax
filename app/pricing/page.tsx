@@ -21,8 +21,8 @@ export default function PricingPage() {
         eyebrow="Packages"
         title="Three pathways for business owners. Three pathways for the books. One price when you bundle them."
         copy="Pricing mirrors the live AdvancedTax packages so you can scope the conversation before the first meeting. All monthly prices, no surprises at year-end."
-        image="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1500&q=82"
-        alt="Financial planning documents and calculator"
+        image="/photos/document-review.jpg"
+        alt="Adviser reviewing business documents and package options"
       />
 
       <section className="section-pad">

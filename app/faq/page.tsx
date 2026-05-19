@@ -16,10 +16,10 @@ export default function FAQPage() {
       <JsonLd data={faqSchema(faqs)} />
       <PageHero
         eyebrow="FAQ"
-        title="The FAQ should answer real buying questions, not hide filler text."
-        copy="These questions are structured for prospects deciding whether to book a consultation."
-        image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1500&q=82"
-        alt="Financial documents prepared for review"
+        title="Practical answers before the first consultation."
+        copy="Common questions about switching accountants, packages, BAS, bookkeeping and what to bring to the first conversation."
+        image="/photos/document-review.jpg"
+        alt="Adviser reviewing client documents"
       />
       <section className="section-pad">
         <div className="container faq-grid">

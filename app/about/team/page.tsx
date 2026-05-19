@@ -6,7 +6,7 @@ import { team } from "@/lib/content";
 export const metadata = {
   title: "Team",
   description:
-    "Principal and senior team presentation for the AdvancedTax redesign."
+    "Principal and senior team presentation for AdvancedTax clients."
 };
 
 export default function TeamPage() {
@@ -14,10 +14,10 @@ export default function TeamPage() {
     <>
       <PageHero
         eyebrow="Team"
-        title="The homepage needs visible accountability, not faceless service claims."
-        copy="This page is structured for real portraits, credentials, Tax Agent numbers, short bios and LinkedIn links once supplied by the client."
-        image="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=1500&q=82"
-        alt="Professional advisory team in meeting"
+        title="Visible accountability behind the advice."
+        copy="Meet the advisory, accounting and client service roles that support tax, BAS, bookkeeping and business advisory work."
+        image="/photos/advisory-meeting.jpg"
+        alt="Professional advisory team in a client meeting"
       />
       <section className="section-pad">
         <div className="container team-grid">

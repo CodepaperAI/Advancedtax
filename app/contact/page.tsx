@@ -16,9 +16,9 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Book consultation"
         title="Start with a clear conversation."
-        copy="Tell AATBS what is due, what is changing, or where you need clarity. The form is designed for consultation routing, not generic enquiries."
-        image="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1500&q=82"
-        alt="Business consultation in a bright office"
+        copy="Tell AATBS what is due, what is changing, or where you need clarity. We will direct your enquiry to the right adviser before the consultation."
+        image="/photos/client-consultation.jpg"
+        alt="Client consultation with an adviser"
       />
       <section className="section-pad contact-section">
         <div className="container contact-grid">

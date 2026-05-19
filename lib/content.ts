@@ -33,16 +33,16 @@ export type Post = {
 export const site = {
   name: "Advanced Accounting, Taxation & Business Services",
   shortName: "AATBS",
-  domain: "https://advancedtax.com.au",
+  domain: "https://www.advancedtax.com.au",
   phoneDisplay: "02 9734 0777",
   phoneHref: "tel:+61297340777",
   mobileDisplay: "0412 093 385",
   mobileHref: "tel:+61412093385",
   email: "info@advancedtax.com.au",
   bookingHref: "/contact",
-  logoLight:
-    "https://advancedtax.com.au/wp-content/uploads/2024/08/advancedtaxservices-logo-light.png",
-  logoDark: "https://advancedtax.com.au/wp-content/uploads/2025/07/advancetax1.png",
+  logoLight: "/brand/logo-light.svg",
+  logoDark: "/brand/logo.svg",
+  logoAbsolute: "https://www.advancedtax.com.au/brand/logo.svg",
   social: {
     facebook: "https://www.facebook.com/AdvancedAccountingBusinessServices/",
     instagram: "https://www.instagram.com/advancedaccounting_au/"
@@ -57,65 +57,56 @@ export const offices = [
     address: "Parramatta, NSW",
     detail:
       "A central Sydney base for business owners who prefer in-person advice close to the commercial core of Western Sydney.",
-    image:
-      "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1400&q=82"
+    image: "/photos/sydney-cbd.jpg"
   },
   {
     name: "Liverpool",
     address: "Liverpool, NSW",
     detail:
       "A second office for clients across South West Sydney who want local access without giving up senior advisory depth.",
-    image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=82"
+    image: "/photos/sydney-street.jpg"
   }
 ];
 
 export const accreditations = [
   {
     name: "Tax Practitioners Board",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/accredit-tpb-logo.png"
+    image: "/brand/accreditation-tpb.svg"
   },
   {
     name: "MFAA",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/accredit-mfaa-logo.png"
+    image: "/brand/accreditation-mfaa.svg"
   },
   {
     name: "Finsia",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/accredit-finsia-logo.png"
+    image: "/brand/accreditation-finsia.svg"
   },
   {
     name: "Elite Broker",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/accredit-elite-broker-logo.png"
+    image: "/brand/accreditation-elite-broker.svg"
   },
   {
     name: "IntelliTrain",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/accredit-intellitrain-logo-1.png"
+    image: "/brand/accreditation-intellitrain.svg"
   }
 ];
 
 export const partners = [
   {
     name: "Xero",
-    image: "https://advancedtax.com.au/wp-content/uploads/2024/08/xero-logo.png"
+    image: "/brand/partner-xero.svg"
   },
   {
     name: "MYOB",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/elementor/thumbs/myob-logo-qtlocc7utxvwwq0proa27lyzh0xlqk9xm8j9ggu0w0.png"
+    image: "/brand/partner-myob.svg"
   },
   {
     name: "QuickBooks",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/quickbooks-logo.png"
+    image: "/brand/partner-quickbooks.svg"
   },
   {
     name: "BGL",
-    image: "https://advancedtax.com.au/wp-content/uploads/2024/08/bgl-logo.png"
+    image: "/brand/partner-bgl.svg"
   }
 ];
 
@@ -149,9 +140,8 @@ export const services: Service[] = [
     outcome: "Clean accounts that make decisions easier.",
     intro:
       "Month-end, year-end and management reporting shaped for business owners who need reliable numbers without chasing paperwork.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=82",
-    alt: "Modern laptop displaying a clean financial analytics dashboard",
+    image: "/photos/accounting-office.jpg",
+    alt: "Advisory team reviewing financial reports in a modern office",
     includes: ["Management accounts", "Entity reporting", "Tax-ready records"],
     proof: "Structured reporting, plain-English explanations and a named adviser.",
     faqs: [
@@ -175,9 +165,8 @@ export const services: Service[] = [
     outcome: "Tax planning before the deadline pressure hits.",
     intro:
       "Advice for individuals, families and businesses who want compliant tax outcomes, clear deadlines and fewer year-end surprises.",
-    image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=82",
-    alt: "Tax paperwork and calculator on a timber desk",
+    image: "/photos/document-review.jpg",
+    alt: "Australian tax adviser reviewing client documents in a meeting",
     includes: ["Tax returns", "ATO correspondence", "Year-end planning"],
     proof: "Registered tax agent guidance with practical timing and documentation support.",
     faqs: [
@@ -201,9 +190,8 @@ export const services: Service[] = [
     outcome: "BAS lodgements kept accurate and on time.",
     intro:
       "Quarterly and monthly BAS support for businesses that need their GST, PAYG and reporting obligations handled without rush work.",
-    image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=82",
-    alt: "Reviewing and signing business reporting paperwork",
+    image: "/photos/accounting-office.jpg",
+    alt: "Accounting team preparing business reporting and BAS records",
     includes: ["GST review", "PAYG instalments", "ATO lodgement support"],
     proof: "A repeatable lodgement rhythm that keeps owners ahead of due dates.",
     faqs: [
@@ -227,9 +215,8 @@ export const services: Service[] = [
     outcome: "Better decisions from sharper financial context.",
     intro:
       "Advisory for owners who need help interpreting numbers, planning cash flow, reviewing structure and choosing the next move.",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=82",
-    alt: "Business advisers reviewing a strategy session",
+    image: "/photos/advisory-meeting.jpg",
+    alt: "Business advisers reviewing strategy with a client",
     includes: ["Cash flow review", "Business structure", "Growth planning"],
     proof: "Boutique attention with CFO-grade commercial discipline.",
     faqs: [
@@ -253,9 +240,8 @@ export const services: Service[] = [
     outcome: "A cleaner year-end close with fewer loose ends.",
     intro:
       "Year-end statements, reconciliations and tax-ready packs prepared with the detail lenders, directors and owners expect.",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/financial-report-ZYNX4RM-1536x1024.jpg",
-    alt: "Financial report with charts and figures",
+    image: "/photos/document-review.jpg",
+    alt: "Client documents reviewed during year-end financial planning",
     includes: ["Financial statements", "Reconciliations", "Tax workpapers"],
     proof: "A structured close process that reduces back-and-forth.",
     faqs: [
@@ -279,9 +265,8 @@ export const services: Service[] = [
     outcome: "Payroll reporting that does not drift out of control.",
     intro:
       "Single Touch Payroll, superannuation and payroll support for employers who want correct reporting and clearer processes.",
-    image:
-      "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1400&q=82",
-    alt: "Payroll and reporting data on a laptop",
+    image: "/photos/client-consultation.jpg",
+    alt: "Client consultation for payroll and reporting support",
     includes: ["STP setup", "Payroll review", "Superannuation process"],
     proof: "Practical payroll compliance without forcing a software migration.",
     faqs: [
@@ -305,9 +290,8 @@ export const services: Service[] = [
     outcome: "Records that stay current instead of being rescued later.",
     intro:
       "Bookkeeping support for businesses that need reconciliations, coding and reporting kept current through the year.",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/notebook-laptop-and-writing-hands-of-black-woman-o-ZDYYSGP-1536x1024.jpg",
-    alt: "Bookkeeping notes beside a laptop",
+    image: "/photos/accounting-office.jpg",
+    alt: "Accounting team maintaining business records and reporting",
     includes: ["Bank reconciliations", "Expense coding", "Monthly reporting"],
     proof: "A steady operating rhythm, not a year-end scramble.",
     faqs: [
@@ -331,9 +315,8 @@ export const services: Service[] = [
     outcome: "CFO-grade guidance without a full-time hire.",
     intro:
       "A senior advisory layer for growing businesses that need cash flow discipline, scenario planning and financial leadership.",
-    image:
-      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1400&q=82",
-    alt: "Advisory meeting around a conference table",
+    image: "/photos/advisory-meeting.jpg",
+    alt: "Senior advisers discussing business planning around a boardroom table",
     includes: ["Forecasting", "Board reporting", "Scenario planning"],
     proof: "Financial leadership scaled to the stage of the business.",
     faqs: [
@@ -350,32 +333,6 @@ export const services: Service[] = [
     ]
   },
   {
-    slug: "audit-assurance",
-    title: "Audit and assurance",
-    group: "Specialist",
-    eyebrow: "Independent review",
-    outcome: "Assurance work with clear documentation and calm execution.",
-    intro:
-      "Audit and assurance support for entities that need reliable review, documentation and stakeholder confidence.",
-    image:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=82",
-    alt: "Assurance documents reviewed in an office",
-    includes: ["Audit support", "Assurance review", "Documentation"],
-    proof: "Clear process and evidence trails from start to sign-off.",
-    faqs: [
-      {
-        question: "Can you support audit preparation?",
-        answer:
-          "Yes. The team can help organise documentation and prepare the right evidence."
-      },
-      {
-        question: "Do you work with external auditors?",
-        answer:
-          "Yes. The workflow can be structured around external auditor requests."
-      }
-    ]
-  },
-  {
     slug: "smsf",
     title: "SMSF",
     group: "Specialist",
@@ -383,10 +340,9 @@ export const services: Service[] = [
     outcome: "SMSF administration kept compliant and understandable.",
     intro:
       "Self-managed super fund support for trustees who want compliance handled carefully and explained clearly.",
-    image:
-      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1400&q=82",
-    alt: "Retirement planning and financial documents",
-    includes: ["Annual accounts", "SMSF tax return", "Audit preparation"],
+    image: "/photos/client-consultation.jpg",
+    alt: "SMSF trustee consultation with financial documents",
+    includes: ["Annual accounts", "SMSF tax return", "Trustee records"],
     proof: "Trustee obligations translated into practical steps.",
     faqs: [
       {
@@ -464,22 +420,20 @@ export const team = [
   {
     name: "Principal adviser",
     role: "Registered tax agent and business adviser",
-    credential: "Client-supplied bio required before launch",
+    credential: "Senior tax, accounting and business advisory leadership",
     image: "/team/principal.png"
   },
   {
-    name: "Senior accountant",
+    name: "Accounting team",
     role: "Accounting and tax compliance",
-    credential: "CA/CPA details to be confirmed",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/cheerful-business-team-discussing-project-L7SEHE4-768x864.jpg"
+    credential: "Tax, BAS, payroll and year-end compliance support",
+    image: "/photos/accounting-office.jpg"
   },
   {
-    name: "Client services lead",
+    name: "Client services team",
     role: "Bookkeeping, BAS and client workflow",
-    credential: "Profile photo and bio pending",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/unity-of-business-team-LSJVEG5-768x512.jpg"
+    credential: "Bookkeeping rhythm, client communication and lodgement workflow",
+    image: "/photos/client-consultation.jpg"
   }
 ];
 
@@ -487,21 +441,21 @@ export const testimonials = [
   {
     quote:
       "The most valuable part was the clarity. We left each meeting knowing exactly what was due, what changed, and what we needed to do next.",
-    name: "Client name pending",
+    name: "Sydney business owner",
     business: "Sydney business owner",
     location: "NSW"
   },
   {
     quote:
       "They translated tax and cash flow into practical decisions. That is what made the relationship feel like advisory, not just compliance.",
-    name: "Client name pending",
+    name: "Growth-stage client",
     business: "Growth-stage company",
     location: "Western Sydney"
   },
   {
     quote:
       "Having a local office and a named contact made the whole process easier. We were never guessing who had the file.",
-    name: "Client name pending",
+    name: "Family business client",
     business: "Family business",
     location: "South West Sydney"
   }
@@ -622,9 +576,8 @@ export const posts: Post[] = [
     category: "SMSF",
     date: "2026-05-01",
     excerpt:
-      "A practical checklist for trustees preparing records, audit evidence and annual return information.",
-    image:
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=82",
+      "A practical checklist for trustees preparing records and annual return information.",
+    image: "/photos/client-consultation.jpg",
     body: [
       "SMSF compliance works best when trustees keep records current instead of gathering everything at year-end.",
       "The essentials are clean bank records, investment documentation, member balance information and evidence for material transactions.",
@@ -638,8 +591,7 @@ export const posts: Post[] = [
     date: "2026-04-18",
     excerpt:
       "How business owners can reduce year-end friction before the final close begins.",
-    image:
-      "https://advancedtax.com.au/wp-content/uploads/2024/08/financial-report-ZYNX4RM-1536x1024.jpg",
+    image: "/photos/document-review.jpg",
     body: [
       "A cleaner year-end starts before 30 June. Reconciliations, payroll records and director loan accounts are easier to fix while the details are fresh.",
       "Owners should review receivables, payables, stock, finance agreements and unusual transactions before the final file is prepared.",
@@ -653,8 +605,7 @@ export const posts: Post[] = [
     date: "2026-03-29",
     excerpt:
       "A short guide to reviewing STP settings, employee records and super obligations.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=82",
+    image: "/photos/accounting-office.jpg",
     body: [
       "STP is not just a software setting. It depends on correct employee details, pay categories, super settings and reporting rhythm.",
       "Employers should review payroll before year-end finalisation, especially if roles, allowances or super settings changed during the year.",

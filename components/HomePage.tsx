@@ -9,8 +9,7 @@ import {
   FileText,
   MapPin,
   Quote,
-  ShieldCheck,
-  Sparkles
+  ShieldCheck
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -67,22 +66,22 @@ export function HomePage() {
           <ImageReveal className="story-image">
             <Image
               src={team[0].image}
-              alt="Editorial placeholder for AATBS principal portrait"
+              alt="AATBS principal adviser portrait"
               fill
               sizes="(max-width: 900px) 100vw, 42vw"
             />
           </ImageReveal>
           <FadeIn className="story-copy">
-            <p className="eyebrow">Founder presence</p>
-            <h2>A real firm should feel like real people are accountable.</h2>
+            <p className="eyebrow">Principal-led advice</p>
+            <h2>Work with advisers who stay accountable after lodgement.</h2>
             <p>
-              The new site gives the principal and senior team a serious
-              editorial presence: portrait, credentials, registration details,
-              office access and a short philosophy statement.
+              AATBS gives clients a clear point of contact for tax, accounting
+              and business advice, with Parramatta and Liverpool access when an
+              in-person meeting is the better way to resolve the details.
             </p>
             <blockquote>
-              "We do not disappear after lodgement. The relationship is built
-              around clarity, timing and practical advice."
+              Reachable advisers, clear timing and practical explanation after
+              the lodgement is complete.
             </blockquote>
             <Link href="/about/team" className="text-link">
               Meet the team <ArrowRight size={16} />
@@ -95,11 +94,11 @@ export function HomePage() {
         <div className="container why-editorial">
           <FadeIn className="why-copy">
             <p className="eyebrow">Why AATBS</p>
-            <h2>Trust should read like a ledger, not a row of generic claims.</h2>
+            <h2>Choose a firm that keeps the accounting rhythm clear.</h2>
             <p>
-              The redesign makes the reasons to enquire feel specific: local
-              access, named advisers and software flexibility before the visitor
-              reaches the form.
+              Clients come to AATBS for practical reasons: local access, senior
+              accountability, tax-agent guidance and software flexibility before
+              a deadline becomes a rush.
             </p>
           </FadeIn>
           <div className="why-ledger" aria-label="Reasons to choose AATBS">
@@ -161,7 +160,7 @@ export function HomePage() {
           <FadeIn className="section-heading split-heading">
             <div>
               <p className="eyebrow">Industries served</p>
-              <h2>Industry pages move from buried SEO asset to visible proof.</h2>
+              <h2>Support for industries with real accounting pressure.</h2>
             </div>
             <Link href="/industries" className="text-link">
               View industries <ArrowRight size={16} />
@@ -208,10 +207,10 @@ export function HomePage() {
         <div className="container pricing-stage">
           <FadeIn className="pricing-lead">
             <p className="eyebrow">Packages</p>
-            <h2>Pricing should feel like a guided decision, not a menu dump.</h2>
+            <h2>Clear monthly pathways without year-end surprises.</h2>
             <p>
-              The live site already has package intent. The redesign turns it
-              into a calm decision path instead of hiding it away.
+              Business, bookkeeping and bundled packages help owners understand
+              the likely rhythm before the first consultation.
             </p>
             <Link href="/pricing" className="button button-dark">
               See pricing pathways
@@ -245,7 +244,7 @@ export function HomePage() {
           <FadeIn className="section-heading split-heading">
             <div>
               <p className="eyebrow">Insights</p>
-              <h2>Real resource content becomes part of the conversion story.</h2>
+              <h2>Practical insights for tax, payroll and SMSF decisions.</h2>
             </div>
             <Link href="/resources" className="text-link">
               View resources <ArrowRight size={16} />
@@ -277,7 +276,7 @@ export function HomePage() {
         <div className="container faq-stage">
           <FadeIn className="faq-aside">
             <p className="eyebrow">FAQ</p>
-            <h2>Replace filler answers with useful pre-consultation clarity.</h2>
+            <h2>Useful pre-consultation clarity before you call.</h2>
             <div className="faq-brief">
               <span>
                 <FileText size={18} /> What to bring
@@ -316,7 +315,7 @@ export function HomePage() {
               <CheckCircle2 size={18} /> Registered and accredited
             </span>
             <span>
-              <Sparkles size={18} /> Image-led experience
+              <MapPin size={18} /> Parramatta and Liverpool
             </span>
           </div>
         </div>
@@ -337,13 +336,15 @@ function HeroFullBleedSection() {
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
       >
         <Image
-          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=84"
-          alt="Advisory meeting in a premium office"
+          src="/photos/advisory-meeting.jpg"
+          alt="Advisory meeting with Australian business clients"
           fill
           priority
           sizes="100vw"
         />
       </motion.div>
+      <div className="hero-scrim" />
+      <div className="hero-grain" />
       <div className="container hero-grid">
         <div className="hero-copy hero-entrance">
           <div>
@@ -370,7 +371,20 @@ function HeroFullBleedSection() {
                 Explore services
               </Link>
             </div>
+            <div className="hero-trust-row" aria-label="Practice trust signals">
+              <span>Registered tax agent</span>
+              <span>20+ years</span>
+              <span>Two Sydney offices</span>
+            </div>
           </div>
+        </div>
+        <div className="hero-proof-panel" aria-label="Practice profile">
+          <span>Practice profile</span>
+          <strong>Tax, accounting and advisory connected under one Sydney firm.</strong>
+          <small>
+            Parramatta and Liverpool access, online consultation, and year-round
+            support for businesses that need fewer surprises.
+          </small>
         </div>
       </div>
     </section>
@@ -412,14 +426,14 @@ function TestimonialParallaxSection() {
           <motion.div
             className="testimonial-lead"
           >
-            <p className="eyebrow">Client proof</p>
+            <p className="eyebrow">Client experience</p>
             <h2 id="testimonial-heading">
-              Proof should feel specific, human and hard to fake.
+              Clear advice should make the next step obvious.
             </h2>
             <p>
-              The redesign turns testimonials into consent-led case notes with
-              client type, service context and a visible reason to trust the
-              quote.
+              Clients value plain-English explanations, steady timing and a
+              named adviser who understands the business context behind the
+              numbers.
             </p>
           </motion.div>
 
