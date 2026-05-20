@@ -5,7 +5,7 @@ export default function NotFound() {
     <section className="not-found">
       <div className="container">
         <p className="eyebrow">404</p>
-        <h1>This page is not in the advisory file.</h1>
+        <h1>We could not find that page.</h1>
         <p>
           The page may have moved. Start from the homepage or book a
           consultation if you need a direct answer.

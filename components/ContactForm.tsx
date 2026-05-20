@@ -58,7 +58,7 @@ export function ContactForm() {
           required
           name="message"
           rows={5}
-          placeholder="Tell us what is changing in the business, what is due, or where you need clarity."
+          placeholder="Tell us what you need help with."
         />
       </label>
       <button className="button button-gold form-wide" type="submit">

@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
 import { industries, posts, services, site } from "@/lib/content";
+import { getAllBlogs, getBlogDate } from "@/lib/uplift";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const { blogs } = await getAllBlogs({ status: "PUBLISH" });
   const staticRoutes = [
     "",
     "/about",
@@ -10,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/industries",
     "/pricing",
+    "/blog",
     "/resources",
     "/faq",
     "/contact",
@@ -33,6 +36,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...posts.map((post) => ({
       url: `${site.domain}/resources/insights/${post.slug}`,
       lastModified: new Date(post.date)
+    })),
+    ...blogs.map((blog) => ({
+      url: `${site.domain}/blog/${blog.slug}`,
+      lastModified: new Date(getBlogDate(blog) ?? Date.now())
     }))
   ];
 }

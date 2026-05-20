@@ -72,16 +72,15 @@ export function HomePage() {
             />
           </ImageReveal>
           <FadeIn className="story-copy">
-            <p className="eyebrow">Principal-led advice</p>
-            <h2>Work with advisers who stay accountable after lodgement.</h2>
+            <p className="eyebrow">Real people</p>
+            <h2>Speak with advisers who know your file.</h2>
             <p>
-              AATBS gives clients a clear point of contact for tax, accounting
-              and business advice, with Parramatta and Liverpool access when an
-              in-person meeting is the better way to resolve the details.
+              AATBS gives clients a clear contact for tax, accounting and
+              business advice. You can meet in Parramatta, Liverpool or online.
             </p>
             <blockquote>
-              Reachable advisers, clear timing and practical explanation after
-              the lodgement is complete.
+              We explain what is due, what has changed and what needs to happen
+              next.
             </blockquote>
             <Link href="/about/team" className="text-link">
               Meet the team <ArrowRight size={16} />
@@ -94,11 +93,10 @@ export function HomePage() {
         <div className="container why-editorial">
           <FadeIn className="why-copy">
             <p className="eyebrow">Why AATBS</p>
-            <h2>Choose a firm that keeps the accounting rhythm clear.</h2>
+            <h2>Keep your accounts, tax and records under control.</h2>
             <p>
-              Clients come to AATBS for practical reasons: local access, senior
-              accountability, tax-agent guidance and software flexibility before
-              a deadline becomes a rush.
+              Clients come to AATBS for clear advice, local access and support
+              before tax or reporting deadlines become stressful.
             </p>
           </FadeIn>
           <div className="why-ledger" aria-label="Reasons to choose AATBS">
@@ -110,13 +108,13 @@ export function HomePage() {
               },
               {
                 icon: Building2,
-                title: "Boutique relationship",
-                text: "Named advisers, clear responsibility and senior context without the distance of a large corporate firm."
+                title: "Clear contact",
+                text: "You know who is helping you and what they are handling."
               },
               {
                 icon: ShieldCheck,
-                title: "Software-agnostic",
-                text: "Xero, MYOB, QuickBooks and BGL workflows supported without forcing unnecessary migrations."
+                title: "Software support",
+                text: "We work with Xero, MYOB, QuickBooks and BGL."
               }
             ].map((pillar, index) => (
               <FadeIn className="why-ledger-row" delay={index * 0.08} key={pillar.title}>
@@ -137,13 +135,13 @@ export function HomePage() {
         <div className="container process-grid">
           <FadeIn>
             <p className="eyebrow">How it starts</p>
-            <h2>A quieter, clearer path into the relationship.</h2>
+            <h2>A simple way to get started.</h2>
           </FadeIn>
           <div className="process-steps">
             {[
               ["01", "Free consultation", "We listen, review the situation and confirm whether AATBS is the right fit."],
-              ["02", "Tailored package", "Scope, timing and pricing are agreed before the work starts."],
-              ["03", "Ongoing partnership", "You have a named contact, planned reviews and fewer deadline surprises."]
+              ["02", "Clear quote", "We confirm the work, timing and price before anything starts."],
+              ["03", "Ongoing support", "You have a clear contact and regular help through the year."]
             ].map(([number, title, text]) => (
               <FadeIn className="process-step" key={number}>
                 <span>{number}</span>
@@ -160,7 +158,7 @@ export function HomePage() {
           <FadeIn className="section-heading split-heading">
             <div>
               <p className="eyebrow">Industries served</p>
-              <h2>Support for industries with real accounting pressure.</h2>
+              <h2>Accounting support for different kinds of businesses.</h2>
             </div>
             <Link href="/industries" className="text-link">
               View industries <ArrowRight size={16} />
@@ -207,13 +205,13 @@ export function HomePage() {
         <div className="container pricing-stage">
           <FadeIn className="pricing-lead">
             <p className="eyebrow">Packages</p>
-            <h2>Clear monthly pathways without year-end surprises.</h2>
+            <h2>Monthly packages with clear inclusions.</h2>
             <p>
-              Business, bookkeeping and bundled packages help owners understand
-              the likely rhythm before the first consultation.
+              Choose from business, bookkeeping and bundle options. We confirm
+              the right package after the first conversation.
             </p>
             <Link href="/pricing" className="button button-dark">
-              See pricing pathways
+              See packages
             </Link>
           </FadeIn>
           <div className="pricing-pathways" aria-label="Pricing pathways">
@@ -232,9 +230,9 @@ export function HomePage() {
             ))}
           </div>
           <div className="pricing-proof-strip" aria-label="Pricing principles">
-            <span>Scoped after consultation</span>
-            <span>Year-round rhythm</span>
-            <span>No hidden template promise</span>
+            <span>Quoted after consultation</span>
+            <span>Support through the year</span>
+            <span>Clear monthly options</span>
           </div>
         </div>
       </section>
@@ -276,13 +274,13 @@ export function HomePage() {
         <div className="container faq-stage">
           <FadeIn className="faq-aside">
             <p className="eyebrow">FAQ</p>
-            <h2>Useful pre-consultation clarity before you call.</h2>
+            <h2>Questions clients often ask before they call.</h2>
             <div className="faq-brief">
               <span>
                 <FileText size={18} /> What to bring
               </span>
               <span>
-                <ShieldCheck size={18} /> What is scoped
+                <ShieldCheck size={18} /> What is included
               </span>
               <span>
                 <CalendarCheck size={18} /> What happens next
@@ -357,8 +355,8 @@ function HeroFullBleedSection() {
           </div>
           <div>
             <p className="hero-lede">
-              Accounting, tax, BAS, SMSF and business advisory support from
-              Parramatta and Liverpool.
+              Accounting, tax, BAS, SMSF and business advice from Parramatta
+              and Liverpool.
             </p>
           </div>
           <div>
@@ -380,10 +378,10 @@ function HeroFullBleedSection() {
         </div>
         <div className="hero-proof-panel" aria-label="Practice profile">
           <span>Practice profile</span>
-          <strong>Tax, accounting and advisory connected under one Sydney firm.</strong>
+          <strong>Tax, accounting and business advice in one place.</strong>
           <small>
-            Parramatta and Liverpool access, online consultation, and year-round
-            support for businesses that need fewer surprises.
+            Meet in Parramatta, Liverpool or online. Get help before deadlines
+            become stressful.
           </small>
         </div>
       </div>
@@ -428,12 +426,11 @@ function TestimonialParallaxSection() {
           >
             <p className="eyebrow">Client experience</p>
             <h2 id="testimonial-heading">
-              Clear advice should make the next step obvious.
+              Clear advice makes the next step easier.
             </h2>
             <p>
-              Clients value plain-English explanations, steady timing and a
-              named adviser who understands the business context behind the
-              numbers.
+              Clients value simple explanations, clear timing and a team that
+              understands their business.
             </p>
           </motion.div>
 

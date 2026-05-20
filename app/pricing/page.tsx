@@ -19,8 +19,8 @@ export default function PricingPage() {
     <>
       <PageHero
         eyebrow="Packages"
-        title="Three pathways for business owners. Three pathways for the books. One price when you bundle them."
-        copy="Pricing mirrors the live AdvancedTax packages so you can scope the conversation before the first meeting. All monthly prices, no surprises at year-end."
+        title="Simple monthly packages for business and bookkeeping."
+        copy="Review the package options before you call. We confirm the right fit and monthly price after the first consultation."
         image="/photos/document-review.jpg"
         alt="Adviser reviewing business documents and package options"
       />
@@ -29,10 +29,10 @@ export default function PricingPage() {
         <div className="container">
           <FadeIn className="section-heading">
             <p className="eyebrow">Business packages</p>
-            <h2>Pick the right level of accountability.</h2>
+            <h2>Choose the level of business support you need.</h2>
             <p>
-              Thinker keeps compliance clean. Mover adds a reporting rhythm.
-              Shaker brings CFO-grade oversight every month.
+              Thinker covers the basics. Mover adds regular reports. Shaker
+              adds more planning and monthly support.
             </p>
           </FadeIn>
           <div className="pricing-page-grid">
@@ -56,7 +56,7 @@ export default function PricingPage() {
                   ))}
                 </ul>
                 <Link className="button button-dark" href="/contact">
-                  Scope this pathway
+                  Ask about this package
                 </Link>
               </FadeIn>
             ))}
@@ -95,7 +95,7 @@ export default function PricingPage() {
                   ))}
                 </ul>
                 <Link className="button button-dark" href="/contact">
-                  Scope this rhythm
+                  Ask about bookkeeping
                 </Link>
               </FadeIn>
             ))}

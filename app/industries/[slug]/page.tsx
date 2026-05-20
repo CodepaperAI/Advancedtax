@@ -39,7 +39,7 @@ export default async function IndustryPage({
       <section className="service-detail-hero">
         <div className="container service-detail-grid">
           <FadeIn>
-            <p className="eyebrow">Industry pathway</p>
+            <p className="eyebrow">Industry support</p>
             <h1>{industry.title}</h1>
             <p className="lede">{industry.summary}</p>
             <Link className="button button-gold" href="/contact">
@@ -56,11 +56,10 @@ export default async function IndustryPage({
         <div className="container service-body-grid">
           <FadeIn>
             <p className="eyebrow">Common needs</p>
-            <h2>Where accounting becomes operational.</h2>
+            <h2>Common accounting needs for this industry.</h2>
             <p>
-              {industry.title} clients usually need support with the practical
-              pressure points behind the accounts: timing, payroll, cash flow,
-              finance and compliance.
+              {industry.title} clients often need help with timing, payroll,
+              cash flow, finance and tax compliance.
             </p>
           </FadeIn>
           <div className="inclusion-list">
@@ -77,7 +76,7 @@ export default async function IndustryPage({
         <div className="container related-services">
           <FadeIn>
             <p className="eyebrow">Relevant services</p>
-            <h2>Start with the service that fits the pressure point.</h2>
+            <h2>Services that may help.</h2>
           </FadeIn>
           <div>
             {services.slice(0, 4).map((service) => (

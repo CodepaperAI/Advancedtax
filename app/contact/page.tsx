@@ -16,7 +16,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Book consultation"
         title="Start with a clear conversation."
-        copy="Tell AATBS what is due, what is changing, or where you need clarity. We will direct your enquiry to the right adviser before the consultation."
+        copy="Tell AATBS what you need help with. We will point you to the right adviser before the consultation."
         image="/photos/client-consultation.jpg"
         alt="Client consultation with an adviser"
       />
@@ -24,7 +24,7 @@ export default function ContactPage() {
         <div className="container contact-grid">
           <FadeIn>
             <p className="eyebrow">Contact details</p>
-            <h2>Parramatta and Liverpool access, plus remote meetings when easier.</h2>
+            <h2>Meet in Parramatta, Liverpool or online.</h2>
             <div className="contact-details">
               <a href={site.phoneHref}>{site.phoneDisplay}</a>
               <a href={site.mobileHref}>{site.mobileDisplay}</a>

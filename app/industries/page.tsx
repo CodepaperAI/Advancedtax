@@ -17,7 +17,7 @@ const industryAngles = [
 export const metadata = {
   title: "Industries",
   description:
-    "Industry pathways for construction, healthcare, hospitality, property, professional services and retail clients."
+    "Accounting and tax support for construction, healthcare, hospitality, property, professional services and retail clients."
 };
 
 export default function IndustriesPage() {
@@ -25,8 +25,8 @@ export default function IndustriesPage() {
     <>
       <PageHero
         eyebrow="Industries"
-        title="Industry advice with the real pressure points already in view."
-        copy="Different businesses create different accounting questions. Explore the sectors where tax timing, payroll, finance and reporting need practical structure."
+        title="Accounting support for different industries."
+        copy="Every business has different tax, payroll and reporting needs. See how AATBS can support your industry."
         image="/photos/sydney-street.jpg"
         alt="Sydney street and business district"
       />
@@ -39,8 +39,8 @@ export default function IndustriesPage() {
           <FadeIn className="industry-field-note">
             <span>What changes by industry?</span>
             <p>
-              The work is still accounting, tax and advisory. The risks shift:
-              staff rhythm, project timing, inventory, finance and cash flow.
+              The service stays practical. The details change by industry:
+              staff, timing, stock, finance and cash flow.
             </p>
           </FadeIn>
         </div>

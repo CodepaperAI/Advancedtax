@@ -6,7 +6,7 @@ import { team } from "@/lib/content";
 export const metadata = {
   title: "Team",
   description:
-    "Principal and senior team presentation for AdvancedTax clients."
+    "Meet the AdvancedTax team."
 };
 
 export default function TeamPage() {
@@ -14,10 +14,10 @@ export default function TeamPage() {
     <>
       <PageHero
         eyebrow="Team"
-        title="Visible accountability behind the advice."
-        copy="Meet the advisory, accounting and client service roles that support tax, BAS, bookkeeping and business advisory work."
+        title="Meet the people behind the advice."
+        copy="Our team supports clients with tax, BAS, bookkeeping, SMSF and business advice."
         image="/photos/advisory-meeting.jpg"
-        alt="Professional advisory team in a client meeting"
+        alt="Professional team in a client meeting"
       />
       <section className="section-pad">
         <div className="container team-grid">

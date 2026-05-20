@@ -9,22 +9,22 @@ const groups = ["Compliance", "Advisory", "Specialist"] as const;
 
 const groupNarrative = {
   Compliance: {
-    eyebrow: "Recurring obligations",
-    title: "Keep the accounting rhythm clean before deadlines become pressure.",
+    eyebrow: "Regular work",
+    title: "Stay on top of tax, BAS, payroll and records.",
     copy:
-      "Tax, BAS, payroll, bookkeeping and year-end work sit together here so owners can see the operating cadence, not a disconnected menu."
+      "These services help keep your accounts current, your BAS lodged and your tax records ready."
   },
   Advisory: {
-    eyebrow: "Owner decisions",
-    title: "Add senior finance context when the numbers need interpretation.",
+    eyebrow: "Business decisions",
+    title: "Use your numbers to make better decisions.",
     copy:
-      "For businesses that need clearer cash flow, sharper planning and CFO-grade guidance without turning every question into a separate project."
+      "We help with cash flow, planning, business structure and the questions that come up as your business changes."
   },
   Specialist: {
     eyebrow: "SMSF support",
-    title: "Keep trustee obligations clear, current and understandable.",
+    title: "Keep SMSF work clear and up to date.",
     copy:
-      "SMSF work is framed around annual accounts, tax return preparation, trustee records and clear explanations of what needs attention."
+      "We help trustees with annual accounts, SMSF tax returns, records and clear explanations of what needs attention."
   }
 } satisfies Record<(typeof groups)[number], { eyebrow: string; title: string; copy: string }>;
 
@@ -39,28 +39,28 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="Accounting, tax and advisory pathways for each stage of the work."
-        copy="Choose the support you need: compliance, business advice or specialist work. Each pathway explains what is included, what outcome to expect and what happens next."
+        title="Accounting, tax and business services made clear."
+        copy="Choose the support you need. Each service explains what is included, what it helps with and what happens next."
         image="/photos/advisory-meeting.jpg"
         alt="Business advisers meeting with a client"
       />
       <section className="service-dossier-section">
         <div className="container service-dossier-intro">
           <FadeIn>
-            <p className="eyebrow">Service pathways</p>
-            <h2>Choose the part of the financial relationship that needs structure.</h2>
+            <p className="eyebrow">Services</p>
+            <h2>Find the right support for your accounts, tax or business.</h2>
           </FadeIn>
           <FadeIn className="service-dossier-note">
             <span>Registered tax agent</span>
             <p>
-              Services are organised by how clients usually experience the work:
-              ongoing obligations, decision support and specialist review.
+              We help with regular accounting work, business advice and SMSF
+              support.
             </p>
           </FadeIn>
         </div>
 
         <div className="container service-dossier">
-          <nav className="service-dossier-nav" aria-label="Service pathway sections">
+          <nav className="service-dossier-nav" aria-label="Service sections">
             {groups.map((group, index) => (
               <a href={`#${group.toLowerCase()}-services`} key={group}>
                 <span>0{index + 1}</span>
@@ -110,7 +110,7 @@ export default function ServicesPage() {
                         <strong>{lead.title}</strong>
                         <em>{lead.outcome}</em>
                         <b>
-                          Open pathway <ArrowRight size={17} />
+                          View service <ArrowRight size={17} />
                         </b>
                       </span>
                     </Link>

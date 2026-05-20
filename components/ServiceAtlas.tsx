@@ -24,7 +24,7 @@ export function ServiceAtlas() {
     <div className="service-atlas">
       <div className="service-atlas-copy">
         <p className="eyebrow">Services</p>
-        <h2>Accounting, tax and advisory support under one roof.</h2>
+        <h2>Accounting, tax and business support in one place.</h2>
         <p>
           Start with what is due now: tax, BAS, payroll, bookkeeping, business
           advice or SMSF support. Each service explains the practical outcome

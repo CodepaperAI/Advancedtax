@@ -1,4 +1,5 @@
 import { offices, site, type Post, type Service } from "./content";
+import type { UpliftBlog } from "./uplift";
 
 export function organizationSchema() {
   return {
@@ -74,6 +75,37 @@ export function articleSchema(post: Post) {
         url: site.logoAbsolute
       }
     }
+  };
+}
+
+export function blogArticleSchema(blog: UpliftBlog) {
+  const datePublished =
+    blog.publishDate ?? blog.freshness?.lastUpdatedAt ?? blog.createdAt ?? blog.updatedAt;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: blog.title,
+    description: blog.meta?.seoDescription ?? blog.excerpt,
+    image: blog.featuredImage,
+    datePublished,
+    dateModified: blog.freshness?.lastUpdatedAt ?? blog.updatedAt ?? datePublished,
+    author: {
+      "@type": blog.authorUrl ? "Person" : "Organization",
+      name: blog.authorName ?? blog.meta?.articleAuthor ?? site.name,
+      url: blog.authorUrl
+    },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      logo: {
+        "@type": "ImageObject",
+        url: site.logoAbsolute
+      }
+    },
+    mainEntityOfPage: `${site.domain}/blog/${blog.slug}`,
+    articleSection: blog.meta?.articleSection ?? blog.categories?.[0],
+    keywords: blog.meta?.keywords ?? blog.tags
   };
 }
 

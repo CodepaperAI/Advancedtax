@@ -36,11 +36,6 @@ const nextConfig = {
         source: "/terms-of-business",
         destination: "/legal/terms",
         permanent: true
-      },
-      {
-        source: "/blog",
-        destination: "/resources",
-        permanent: true
       }
     ];
   }

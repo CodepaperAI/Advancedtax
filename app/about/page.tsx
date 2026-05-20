@@ -8,7 +8,7 @@ import { offices } from "@/lib/content";
 export const metadata = {
   title: "About",
   description:
-    "The story, offices and advisory philosophy behind Advanced Accounting, Taxation & Business Services."
+    "About Advanced Accounting, Taxation & Business Services."
 };
 
 export default function AboutPage() {
@@ -16,8 +16,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About AATBS"
-        title="A Sydney accounting firm with local access and senior accountability."
-        copy="Meet the practice, the office presence, the accreditations and the advisory philosophy behind AATBS."
+        title="A Sydney accounting firm with two local offices."
+        copy="Meet the team behind AATBS and learn how we support clients with accounting, tax and business advice."
         image="/photos/sydney-cbd.jpg"
         alt="Sydney CBD skyline and business district"
       />
@@ -25,18 +25,17 @@ export default function AboutPage() {
         <div className="container editorial-grid">
           <FadeIn>
             <p className="eyebrow">Practice approach</p>
-            <h2>Boutique attention with the discipline of a serious advisory practice.</h2>
+            <h2>Practical advice from a local accounting team.</h2>
           </FadeIn>
           <FadeIn>
             <p>
-              AATBS combines long practice history, two Sydney offices,
-              specialist service depth and visible accreditations for clients
-              who want their accounting relationship to feel steady and direct.
+              AATBS has supported Australian clients for more than 20 years.
+              The practice helps with accounting, tax, BAS, bookkeeping, SMSF
+              and business advice.
             </p>
             <p>
-              The practice is deliberately practical: clear responsibilities,
-              plain-English tax and accounting advice, and a focus on what the
-              client needs before lodgement pressure builds.
+              The goal is simple: explain what needs to be done, keep records
+              organised and help clients make better decisions.
             </p>
           </FadeIn>
         </div>
@@ -60,16 +59,12 @@ export default function AboutPage() {
             </p>
             <p>
               For more than two decades, our founder has guided Australian
-              business owners through compliance, tax and advisory work that
-              actually moves the dial. Clients stay because the relationship is
-              direct, the advice is plain-spoken, and the numbers come with
-              context.
+              business owners through tax, accounting and business questions.
+              Clients stay because the advice is direct and easy to understand.
             </p>
             <p>
               The practice is built on three commitments: be reachable, be
-              accurate, and explain the &quot;why&quot; behind every
-              recommendation. No surprises at year-end, no jargon walls, no
-              passing clients between juniors.
+              accurate and explain the reason behind each recommendation.
             </p>
             <ul className="founder-creds">
               <li>Registered Tax Agent</li>
@@ -88,12 +83,12 @@ export default function AboutPage() {
             {
               icon: Award,
               title: "Accredited",
-              text: "Registered and accredited guidance for accounting, tax and finance-related conversations."
+              text: "Registered and accredited support for accounting, tax and finance questions."
             },
             {
               icon: UsersRound,
               title: "Human",
-              text: "Clients deal with a real practice team, not a faceless lodgement process."
+              text: "Clients deal with a real team who can explain the work clearly."
             },
             {
               icon: MapPin,

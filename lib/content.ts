@@ -56,14 +56,14 @@ export const offices = [
     name: "Parramatta",
     address: "Parramatta, NSW",
     detail:
-      "A central Sydney base for business owners who prefer in-person advice close to the commercial core of Western Sydney.",
+      "A local office for clients who prefer to meet in person in Western Sydney.",
     image: "/photos/sydney-cbd.jpg"
   },
   {
     name: "Liverpool",
     address: "Liverpool, NSW",
     detail:
-      "A second office for clients across South West Sydney who want local access without giving up senior advisory depth.",
+      "A second office for clients across South West Sydney.",
     image: "/photos/sydney-street.jpg"
   }
 ];
@@ -115,7 +115,7 @@ export const stats = [
     label: "Years supporting clients",
     value: 20,
     suffix: "+",
-    note: "Trusted advisory across two decades of practice."
+    note: "Helping clients with accounting, tax and business advice."
   },
   {
     label: "Offices",
@@ -136,24 +136,24 @@ export const services: Service[] = [
     slug: "accounting",
     title: "Accounting",
     group: "Compliance",
-    eyebrow: "Financial clarity",
-    outcome: "Clean accounts that make decisions easier.",
+    eyebrow: "Accounts and reports",
+    outcome: "Clear accounts you can rely on.",
     intro:
-      "Month-end, year-end and management reporting shaped for business owners who need reliable numbers without chasing paperwork.",
+      "Accounting support for business owners who need reliable reports and organised records.",
     image: "/photos/accounting-office.jpg",
     alt: "Advisory team reviewing financial reports in a modern office",
     includes: ["Management accounts", "Entity reporting", "Tax-ready records"],
-    proof: "Structured reporting, plain-English explanations and a named adviser.",
+    proof: "You get clear reports, simple explanations and a team who knows your file.",
     faqs: [
       {
         question: "Can you work with our current accounting software?",
         answer:
-          "Yes. The practice works across Xero, MYOB, QuickBooks and BGL workflows."
+          "Yes. The practice works with Xero, MYOB, QuickBooks and BGL."
       },
       {
         question: "Do we need monthly reporting?",
         answer:
-          "Most growing businesses benefit from monthly numbers; smaller entities may only need quarterly review."
+          "Some businesses need monthly reports. Others only need a quarterly review. We can confirm what suits you."
       }
     ]
   },
@@ -161,19 +161,19 @@ export const services: Service[] = [
     slug: "tax-saving",
     title: "Tax saving",
     group: "Compliance",
-    eyebrow: "Tax strategy",
-    outcome: "Tax planning before the deadline pressure hits.",
+    eyebrow: "Tax planning",
+    outcome: "Plan ahead before tax deadlines.",
     intro:
-      "Advice for individuals, families and businesses who want compliant tax outcomes, clear deadlines and fewer year-end surprises.",
+      "Tax support for individuals, families and businesses who want clear deadlines and practical advice.",
     image: "/photos/document-review.jpg",
     alt: "Australian tax adviser reviewing client documents in a meeting",
     includes: ["Tax returns", "ATO correspondence", "Year-end planning"],
-    proof: "Registered tax agent guidance with practical timing and documentation support.",
+    proof: "A registered tax agent can explain your options and what records are needed.",
     faqs: [
       {
         question: "Will using a registered tax agent change my lodgement deadline?",
         answer:
-          "In many cases registered agent lodgement programs provide different timing, but eligibility depends on your history and ATO status."
+          "Sometimes, yes. It depends on your ATO status and lodgement history."
       },
       {
         question: "Do you help with ATO letters?",
@@ -189,21 +189,21 @@ export const services: Service[] = [
     eyebrow: "GST and BAS",
     outcome: "BAS lodgements kept accurate and on time.",
     intro:
-      "Quarterly and monthly BAS support for businesses that need their GST, PAYG and reporting obligations handled without rush work.",
+      "Monthly or quarterly BAS support for businesses that need GST, PAYG and ATO reporting handled properly.",
     image: "/photos/accounting-office.jpg",
     alt: "Accounting team preparing business reporting and BAS records",
     includes: ["GST review", "PAYG instalments", "ATO lodgement support"],
-    proof: "A repeatable lodgement rhythm that keeps owners ahead of due dates.",
+    proof: "We help you prepare and lodge BAS before due dates become stressful.",
     faqs: [
       {
         question: "Can you review BAS before lodgement?",
         answer:
-          "Yes. A review step can be built into the workflow before anything is lodged."
+          "Yes. We can review your BAS before it is lodged."
       },
       {
         question: "Can you handle monthly BAS?",
         answer:
-          "Yes. Monthly, quarterly and annual BAS rhythms can be supported depending on your registration."
+          "Yes. We can support monthly, quarterly or annual BAS depending on your registration."
       }
     ]
   },
@@ -212,23 +212,23 @@ export const services: Service[] = [
     title: "Business advisory",
     group: "Advisory",
     eyebrow: "Owner decisions",
-    outcome: "Better decisions from sharper financial context.",
+    outcome: "Better decisions with clearer numbers.",
     intro:
-      "Advisory for owners who need help interpreting numbers, planning cash flow, reviewing structure and choosing the next move.",
+      "Business advice for owners who need help with cash flow, structure, planning and next steps.",
     image: "/photos/advisory-meeting.jpg",
     alt: "Business advisers reviewing strategy with a client",
     includes: ["Cash flow review", "Business structure", "Growth planning"],
-    proof: "Boutique attention with CFO-grade commercial discipline.",
+    proof: "We explain the numbers and help you decide what to do next.",
     faqs: [
       {
         question: "Is advisory separate from tax work?",
         answer:
-          "It can be. Some clients use advisory as part of a broader package; others use it for a focused planning session."
+          "Yes. Some clients include it in a package. Others book a focused planning session."
       },
       {
         question: "Can you help before a major business decision?",
         answer:
-          "Yes. That is often the best time to speak, before the accounting effect becomes locked in."
+          "Yes. It is best to speak before a major decision is final."
       }
     ]
   },
@@ -237,23 +237,23 @@ export const services: Service[] = [
     title: "Year-end financials",
     group: "Compliance",
     eyebrow: "Close with confidence",
-    outcome: "A cleaner year-end close with fewer loose ends.",
+    outcome: "A cleaner year-end with fewer issues.",
     intro:
-      "Year-end statements, reconciliations and tax-ready packs prepared with the detail lenders, directors and owners expect.",
+      "Year-end statements, reconciliations and tax records prepared for owners, lenders and directors.",
     image: "/photos/document-review.jpg",
     alt: "Client documents reviewed during year-end financial planning",
     includes: ["Financial statements", "Reconciliations", "Tax workpapers"],
-    proof: "A structured close process that reduces back-and-forth.",
+    proof: "We help organise the records so year-end work is easier to complete.",
     faqs: [
       {
         question: "Can you prepare statements for lenders?",
         answer:
-          "Yes. The team can prepare financial information suitable for finance and review discussions."
+          "Yes. We can prepare financial information for lender or finance discussions."
       },
       {
         question: "Can you clean up prior-year issues?",
         answer:
-          "Yes, but the scope depends on the quality of available records and prior lodgements."
+          "Yes. We first review the records so we can explain what needs to be fixed."
       }
     ]
   },
@@ -261,24 +261,24 @@ export const services: Service[] = [
     slug: "payroll-stp",
     title: "Payroll and STP",
     group: "Compliance",
-    eyebrow: "Payroll obligations",
-    outcome: "Payroll reporting that does not drift out of control.",
+    eyebrow: "Payroll reporting",
+    outcome: "Payroll and STP kept on track.",
     intro:
-      "Single Touch Payroll, superannuation and payroll support for employers who want correct reporting and clearer processes.",
+      "Single Touch Payroll, superannuation and payroll support for employers.",
     image: "/photos/client-consultation.jpg",
     alt: "Client consultation for payroll and reporting support",
     includes: ["STP setup", "Payroll review", "Superannuation process"],
-    proof: "Practical payroll compliance without forcing a software migration.",
+    proof: "We help check payroll settings, reporting and super timing.",
     faqs: [
       {
         question: "Can you set up STP?",
         answer:
-          "Yes. Setup, review and ongoing payroll reporting can be included in the package."
+          "Yes. STP setup, review and ongoing reporting can be included."
       },
       {
         question: "Do you review super obligations?",
         answer:
-          "Yes. Super payment timing and reporting can be reviewed as part of payroll support."
+          "Yes. Super payment timing and reporting can be reviewed."
       }
     ]
   },
@@ -286,24 +286,24 @@ export const services: Service[] = [
     slug: "bookkeeping",
     title: "Bookkeeping",
     group: "Compliance",
-    eyebrow: "Monthly rhythm",
-    outcome: "Records that stay current instead of being rescued later.",
+    eyebrow: "Monthly records",
+    outcome: "Records kept current through the year.",
     intro:
-      "Bookkeeping support for businesses that need reconciliations, coding and reporting kept current through the year.",
+      "Bookkeeping support for businesses that need bank reconciliations, coding and regular reports.",
     image: "/photos/accounting-office.jpg",
     alt: "Accounting team maintaining business records and reporting",
     includes: ["Bank reconciliations", "Expense coding", "Monthly reporting"],
-    proof: "A steady operating rhythm, not a year-end scramble.",
+    proof: "Keeping records up to date makes BAS, tax and reports easier.",
     faqs: [
       {
         question: "Can bookkeeping be part of a package?",
         answer:
-          "Yes. It can sit inside a compliance or advisory package depending on business size."
+          "Yes. Bookkeeping can be included in a monthly package."
       },
       {
         question: "Do you handle catch-up bookkeeping?",
         answer:
-          "Yes, after a records review to confirm the clean-up scope."
+          "Yes. We review the records first so we can explain the clean-up work."
       }
     ]
   },
@@ -311,24 +311,24 @@ export const services: Service[] = [
     slug: "concierge-cfo",
     title: "Concierge CFO",
     group: "Advisory",
-    eyebrow: "Senior finance support",
-    outcome: "CFO-grade guidance without a full-time hire.",
+    eyebrow: "Business planning",
+    outcome: "Regular finance support without a full-time hire.",
     intro:
-      "A senior advisory layer for growing businesses that need cash flow discipline, scenario planning and financial leadership.",
+      "Extra support for growing businesses that need cash flow planning, reports and regular financial guidance.",
     image: "/photos/advisory-meeting.jpg",
     alt: "Senior advisers discussing business planning around a boardroom table",
-    includes: ["Forecasting", "Board reporting", "Scenario planning"],
-    proof: "Financial leadership scaled to the stage of the business.",
+    includes: ["Forecasting", "Management reporting", "Planning meetings"],
+    proof: "You get regular help to understand the numbers and plan ahead.",
     faqs: [
       {
         question: "Is Concierge CFO only for larger businesses?",
         answer:
-          "No. It is useful when decisions have outgrown basic compliance reporting."
+          "No. It is useful whenever the business needs more help than basic reports."
       },
       {
         question: "Can this include quarterly reviews?",
         answer:
-          "Yes. Quarterly check-ins are a natural fit for this service."
+          "Yes. Quarterly check-ins can be included."
       }
     ]
   },
@@ -336,19 +336,19 @@ export const services: Service[] = [
     slug: "smsf",
     title: "SMSF",
     group: "Specialist",
-    eyebrow: "Specialist compliance",
+    eyebrow: "SMSF support",
     outcome: "SMSF administration kept compliant and understandable.",
     intro:
-      "Self-managed super fund support for trustees who want compliance handled carefully and explained clearly.",
+      "Self-managed super fund support for trustees who want records, accounts and tax returns handled carefully.",
     image: "/photos/client-consultation.jpg",
     alt: "SMSF trustee consultation with financial documents",
     includes: ["Annual accounts", "SMSF tax return", "Trustee records"],
-    proof: "Trustee obligations translated into practical steps.",
+    proof: "We explain what trustees need to provide and what needs to happen next.",
     faqs: [
       {
         question: "Do trustees stay involved?",
         answer:
-          "Yes. Trustees remain responsible, and the adviser helps make obligations clear and manageable."
+          "Yes. Trustees remain responsible, and we help explain what needs to be done."
       },
       {
         question: "Can SMSF work connect with tax planning?",
@@ -385,7 +385,7 @@ export const industries: Industry[] = [
       "Payroll, GST, margins and weekly reporting for cafes, restaurants and venue operators.",
     image:
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=82",
-    needs: ["Payroll rhythm", "GST and BAS", "Margin review"]
+    needs: ["Payroll", "GST and BAS", "Margin review"]
   },
   {
     slug: "property",
@@ -400,16 +400,16 @@ export const industries: Industry[] = [
     slug: "professional-services",
     title: "Professional services",
     summary:
-      "Advisory and compliance support for consultants, agencies and client-service firms.",
+      "Accounting, tax and business support for consultants, agencies and client-service firms.",
     image:
       "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=1400&q=82",
-    needs: ["Revenue tracking", "Advisory", "Pricing clarity"]
+    needs: ["Revenue tracking", "Business advice", "Pricing review"]
   },
   {
     slug: "retail",
     title: "Retail",
     summary:
-      "Inventory, payroll, finance and reporting discipline for retail operators.",
+      "Inventory, payroll, finance and reporting support for retail operators.",
     image:
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1400&q=82",
     needs: ["Inventory reporting", "BAS", "Cash flow"]
@@ -420,7 +420,7 @@ export const team = [
   {
     name: "Principal adviser",
     role: "Registered tax agent and business adviser",
-    credential: "Senior tax, accounting and business advisory leadership",
+    credential: "Tax, accounting and business advice",
     image: "/team/principal.png"
   },
   {
@@ -431,8 +431,8 @@ export const team = [
   },
   {
     name: "Client services team",
-    role: "Bookkeeping, BAS and client workflow",
-    credential: "Bookkeeping rhythm, client communication and lodgement workflow",
+    role: "Bookkeeping, BAS and client support",
+    credential: "Bookkeeping, client communication and lodgement support",
     image: "/photos/client-consultation.jpg"
   }
 ];
@@ -440,14 +440,14 @@ export const team = [
 export const testimonials = [
   {
     quote:
-      "The most valuable part was the clarity. We left each meeting knowing exactly what was due, what changed, and what we needed to do next.",
+      "The most valuable part was how clearly everything was explained. We knew what was due and what to do next.",
     name: "Sydney business owner",
     business: "Sydney business owner",
     location: "NSW"
   },
   {
     quote:
-      "They translated tax and cash flow into practical decisions. That is what made the relationship feel like advisory, not just compliance.",
+      "They explained tax and cash flow in a way we could use for real business decisions.",
     name: "Growth-stage client",
     business: "Growth-stage company",
     location: "Western Sydney"
@@ -464,9 +464,9 @@ export const testimonials = [
 export const pricingBusiness = [
   {
     name: "Thinker",
-    audience: "Compliance-led owners and small operators",
+    audience: "Small businesses that need tax and annual accounts",
     price: "$220 / month",
-    summary: "Compliance with tax advice and support.",
+    summary: "Tax, annual accounts and support through the year.",
     features: [
       "Annual planning meeting",
       "Cloud accounting subscription",
@@ -477,26 +477,26 @@ export const pricingBusiness = [
   },
   {
     name: "Mover",
-    audience: "Active businesses building reporting rhythm",
+    audience: "Businesses that need BAS and regular reports",
     price: "$550 / month",
-    summary: "Compliance and reporting for growth decisions.",
+    summary: "Tax, BAS and regular reports for better decisions.",
     features: [
       "Everything in Thinker",
       "Quarterly BAS lodgement",
       "Quarterly management reports",
       "Quarterly review meetings",
       "ASIC compliance",
-      "Bookkeeping scoped separately"
+      "Bookkeeping quoted separately"
     ]
   },
   {
     name: "Shaker",
-    audience: "Owners ready for CFO-grade oversight",
+    audience: "Businesses that need more regular planning",
     price: "$1,100 / month",
-    summary: "Compliance, reporting and accountability in one package.",
+    summary: "Tax, reports and monthly planning support in one package.",
     features: [
       "Everything in Mover",
-      "Monthly accountability meeting (1 hour)",
+      "Monthly planning meeting (1 hour)",
       "Annual business benchmarking",
       "Annual business valuation"
     ]
@@ -508,7 +508,7 @@ export const pricingBookkeeping = [
     name: "Small",
     audience: "Annual revenue up to $500k",
     price: "$300 / month",
-    summary: "A clean Xero rhythm for early-stage operators.",
+    summary: "Basic bookkeeping for smaller businesses.",
     features: [
       "Xero file subscription",
       "Bank reconciliations up to 50 transactions",
@@ -549,19 +549,19 @@ export const pricingBookkeeping = [
 export const pricingBundles = [
   {
     name: "Thinker + Small",
-    audience: "Compliance plus a clean Xero rhythm",
+    audience: "Tax support plus basic bookkeeping",
     price: "$440 / month +GST",
     includes: ["Thinker business package", "Small bookkeeping package"]
   },
   {
     name: "Mover + Medium",
-    audience: "Reporting rhythm with payroll built in",
+    audience: "Business reporting with payroll included",
     price: "$880 / month +GST",
     includes: ["Mover business package", "Medium bookkeeping package"]
   },
   {
     name: "Shaker + Heavy",
-    audience: "CFO-grade oversight with full bookkeeping",
+    audience: "Monthly planning with full bookkeeping",
     price: "$1,650 / month +GST",
     includes: ["Shaker business package", "Heavy bookkeeping package"]
   }
@@ -580,8 +580,8 @@ export const posts: Post[] = [
     image: "/photos/client-consultation.jpg",
     body: [
       "SMSF compliance works best when trustees keep records current instead of gathering everything at year-end.",
-      "The essentials are clean bank records, investment documentation, member balance information and evidence for material transactions.",
-      "Before lodgement, trustees should confirm contributions, pensions, valuations and any related-party arrangements have been documented."
+      "The essentials are clean bank records, investment documents and member balance information.",
+      "Before lodgement, trustees should check contributions, pensions, valuations and related-party transactions."
     ]
   },
   {
@@ -590,12 +590,12 @@ export const posts: Post[] = [
     category: "Year-end",
     date: "2026-04-18",
     excerpt:
-      "How business owners can reduce year-end friction before the final close begins.",
+      "How business owners can reduce year-end stress before final accounts are prepared.",
     image: "/photos/document-review.jpg",
     body: [
       "A cleaner year-end starts before 30 June. Reconciliations, payroll records and director loan accounts are easier to fix while the details are fresh.",
       "Owners should review receivables, payables, stock, finance agreements and unusual transactions before the final file is prepared.",
-      "A structured close gives advisers better evidence and gives owners more confidence in the numbers."
+      "Organised records give advisers better information and give owners more confidence in the numbers."
     ]
   },
   {
@@ -604,10 +604,10 @@ export const posts: Post[] = [
     category: "Payroll",
     date: "2026-03-29",
     excerpt:
-      "A short guide to reviewing STP settings, employee records and super obligations.",
+      "A short guide to reviewing STP settings, employee records and super payments.",
     image: "/photos/accounting-office.jpg",
     body: [
-      "STP is not just a software setting. It depends on correct employee details, pay categories, super settings and reporting rhythm.",
+      "STP depends on correct employee details, pay categories, super settings and regular reporting.",
       "Employers should review payroll before year-end finalisation, especially if roles, allowances or super settings changed during the year.",
       "A payroll review can reduce correction work and help keep employees, the ATO and owners aligned."
     ]
@@ -618,12 +618,12 @@ export const faqs = [
   {
     question: "Can we switch from another accountant?",
     answer:
-      "Yes. AATBS can review your current status, request the right handover information and set up a cleaner ongoing workflow."
+      "Yes. AATBS can review your current status, request handover information and set up the work."
   },
   {
     question: "Do you offer fixed-fee packages?",
     answer:
-      "Packages are scoped after consultation so the fee matches the actual work, reporting rhythm and advisory needs."
+      "Yes. We confirm the fee after we understand the work, reports and support you need."
   },
   {
     question: "Can we meet in person?",
@@ -633,7 +633,7 @@ export const faqs = [
   {
     question: "Do you handle both tax and bookkeeping?",
     answer:
-      "Yes. Compliance, bookkeeping, BAS and advisory can be packaged together where it makes sense."
+      "Yes. Tax, bookkeeping, BAS and business advice can be packaged together where it makes sense."
   },
   {
     question: "What information should we bring to a first consultation?",
@@ -647,7 +647,7 @@ export const nav = [
   { label: "Industries", href: "/industries" },
   { label: "About", href: "/about" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Resources", href: "/resources" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" }
 ];
 
