@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { FadeIn } from "@/components/MotionPrimitives";
 import { industries } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
 const industryAngles = [
   "Timing",
@@ -14,19 +15,27 @@ const industryAngles = [
   "Reporting"
 ];
 
-export const metadata = {
-  title: "Industries",
+export const metadata = pageMetadata({
+  title: "Industry Accountants for Sydney Businesses",
   description:
-    "Accounting and tax support for construction, healthcare, hospitality, property, professional services and retail clients."
-};
+    "Accounting and tax support for construction, healthcare, hospitality, property, professional services and retail clients across Sydney, Parramatta and Liverpool.",
+  path: "/industries",
+  keywords: [
+    "industry accountants Sydney",
+    "construction accountant Sydney",
+    "healthcare accountant Parramatta",
+    "hospitality accountant Liverpool",
+    "property tax accountant Sydney"
+  ]
+});
 
 export default function IndustriesPage() {
   return (
     <>
       <PageHero
         eyebrow="Industries"
-        title="Accounting support for different industries."
-        copy="Every business has different tax, payroll and reporting needs. See how AATBS can support your industry."
+        title="Accounting support for Sydney businesses by industry."
+        copy="Every business has different tax, payroll and reporting needs. See how AATBS supports industries across Sydney, Parramatta, Liverpool and wider NSW."
         image="/photos/sydney-street.jpg"
         alt="Sydney street and business district"
       />

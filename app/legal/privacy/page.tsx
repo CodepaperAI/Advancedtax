@@ -1,7 +1,11 @@
-export const metadata = {
-  title: "Privacy",
-  description: "Privacy information for AdvancedTax clients and website visitors."
-};
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Privacy Policy",
+  description: "Privacy information for AdvancedTax clients and website visitors.",
+  path: "/legal/privacy",
+  keywords: ["AdvancedTax privacy", "accounting firm privacy Sydney"]
+});
 
 export default function PrivacyPage() {
   return (

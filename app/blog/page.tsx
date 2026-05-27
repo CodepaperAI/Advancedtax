@@ -7,14 +7,22 @@ import {
   getAllBlogs,
   type UpliftBlog
 } from "@/lib/uplift";
+import { pageMetadata } from "@/lib/seo";
 
 export const revalidate = 600;
 
-export const metadata = {
-  title: "Blog",
+export const metadata = pageMetadata({
+  title: "Sydney Accounting, Tax & Business Advisory Blog",
   description:
-    "Accounting, taxation, payroll, SMSF and business advisory articles from AdvancedTax."
-};
+    "Accounting, taxation, payroll, SMSF and business advisory articles for Sydney, Parramatta, Liverpool and NSW clients from AdvancedTax.",
+  path: "/blog",
+  keywords: [
+    "accounting blog Sydney",
+    "tax advice blog Parramatta",
+    "business advisory blog Liverpool",
+    "SMSF articles Sydney"
+  ]
+});
 
 function BlogCardData({ blog }: { blog: UpliftBlog }) {
   return (
@@ -34,7 +42,7 @@ export default async function BlogPage() {
       <PageHero
         eyebrow="Blog"
         title="Current notes for cleaner accounting and sharper tax decisions."
-        copy="Read practical articles from the AdvancedTax team, with guidance for business owners, trustees, employers and families."
+        copy="Read practical articles from the AdvancedTax team, with guidance for Sydney business owners, trustees, employers and families."
         image="/photos/document-review.jpg"
         alt="Tax adviser reviewing documents before a client meeting"
       />

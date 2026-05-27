@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { FadeIn } from "@/components/MotionPrimitives";
 import { services } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
 const groups = ["Compliance", "Advisory", "Specialist"] as const;
 
@@ -28,19 +29,27 @@ const groupNarrative = {
   }
 } satisfies Record<(typeof groups)[number], { eyebrow: string; title: string; copy: string }>;
 
-export const metadata = {
-  title: "Services",
+export const metadata = pageMetadata({
+  title: "Accounting, Tax, BAS & Bookkeeping Services in Sydney",
   description:
-    "Accounting, tax, BAS, bookkeeping, payroll, advisory, Concierge CFO and SMSF services."
-};
+    "Accounting, tax, BAS, bookkeeping, payroll, advisory, Concierge CFO and SMSF services for Sydney, Parramatta and Liverpool clients.",
+  path: "/services",
+  keywords: [
+    "accounting services Sydney",
+    "tax services Parramatta",
+    "bookkeeping services Liverpool",
+    "BAS returns Western Sydney",
+    "SMSF accounting Sydney"
+  ]
+});
 
 export default function ServicesPage() {
   return (
     <>
       <PageHero
         eyebrow="Services"
-        title="Accounting, tax and business services made clear."
-        copy="Choose the support you need. Each service explains what is included, what it helps with and what happens next."
+        title="Accounting, tax and business services in Sydney."
+        copy="Choose the support you need from Parramatta, Liverpool or online. Each service explains what is included, what it helps with and what happens next."
         image="/photos/advisory-meeting.jpg"
         alt="Business advisers meeting with a client"
       />
@@ -53,8 +62,8 @@ export default function ServicesPage() {
           <FadeIn className="service-dossier-note">
             <span>Registered tax agent</span>
             <p>
-              We help with regular accounting work, business advice and SMSF
-              support.
+              We help Sydney, Parramatta and Liverpool clients with regular
+              accounting work, business advice and SMSF support.
             </p>
           </FadeIn>
         </div>

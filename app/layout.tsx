@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { organizationSchema } from "@/lib/schema";
 import { site } from "@/lib/content";
+import { withLocalKeywords } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
@@ -13,11 +14,16 @@ export const metadata: Metadata = {
     template: "%s | AdvancedTax"
   },
   description:
-    "Sydney accounting, taxation, SMSF, finance and advisory support for business owners, investors and families.",
+    "Accounting, tax, BAS, bookkeeping, SMSF and business advisory support for Sydney, Parramatta, Liverpool, Western Sydney and South West Sydney clients.",
+  keywords: withLocalKeywords(),
+  applicationName: "AdvancedTax",
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
     title: "AdvancedTax | Sydney Accounting, Taxation and Advisory",
     description:
-      "Accounting, taxation and advisory support from Parramatta and Liverpool.",
+      "Accounting, tax, BAS, SMSF and advisory support from Parramatta and Liverpool for clients across Sydney and NSW.",
     url: site.domain,
     siteName: "AdvancedTax",
     images: [site.logoAbsolute],
@@ -29,7 +35,26 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-AU">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WJ2LLTVM');`
+          }}
+        />
+      </head>
       <body>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WJ2LLTVM"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <JsonLd data={organizationSchema()} />
         <SiteHeader />
         <main id="main">{children}</main>

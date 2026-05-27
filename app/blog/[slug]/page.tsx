@@ -17,6 +17,7 @@ import {
   getReadingTime
 } from "@/lib/uplift";
 import { blogArticleSchema } from "@/lib/schema";
+import { absoluteUrl, withLocalKeywords } from "@/lib/seo";
 
 export const revalidate = 600;
 export const dynamicParams = true;
@@ -45,9 +46,21 @@ export async function generateMetadata({
   return {
     title,
     description,
+    keywords: withLocalKeywords([
+      ...(blog.tags ?? []),
+      ...(blog.meta?.keywords ?? []),
+      getBlogCategory(blog),
+      "Sydney accounting article",
+      "Parramatta tax advice",
+      "Liverpool accountant article"
+    ]),
+    alternates: {
+      canonical: `/blog/${blog.slug}`
+    },
     openGraph: {
       title: blog.meta?.ogTitle || title,
       description: blog.meta?.ogDescription || description,
+      url: absoluteUrl(`/blog/${blog.slug}`),
       type: "article",
       images: [getBlogImage(blog)]
     }

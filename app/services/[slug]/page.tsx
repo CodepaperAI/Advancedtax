@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { FadeIn, ImageReveal } from "@/components/MotionPrimitives";
 import { getService, services } from "@/lib/content";
 import { faqSchema, serviceSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -22,10 +23,18 @@ export async function generateMetadata({
   const service = getService(slug);
   if (!service) return {};
 
-  return {
-    title: service.title,
-    description: service.intro
-  };
+  return pageMetadata({
+    title: `${service.title} in Sydney, Parramatta & Liverpool`,
+    description: `${service.intro} Local support for Sydney, Parramatta, Liverpool, Western Sydney and South West Sydney clients.`,
+    path: `/services/${service.slug}`,
+    image: service.image,
+    keywords: [
+      `${service.title} Sydney`,
+      `${service.title} Parramatta`,
+      `${service.title} Liverpool`,
+      ...service.includes
+    ]
+  });
 }
 
 export default async function ServicePage({
@@ -45,7 +54,7 @@ export default async function ServicePage({
         <div className="container service-detail-grid">
           <FadeIn>
             <p className="eyebrow">{service.group} / {service.eyebrow}</p>
-            <h1>{service.title}</h1>
+            <h1>{service.title} for Sydney clients</h1>
             <p className="lede">{service.intro}</p>
             <div className="hero-actions">
               <Link className="button button-gold" href="/contact">
@@ -67,7 +76,11 @@ export default async function ServicePage({
           <FadeIn>
             <p className="eyebrow">Outcome</p>
             <h2>{service.outcome}</h2>
-            <p>{service.proof}</p>
+            <p>
+              {service.proof} Support is available from Parramatta, Liverpool
+              and online for clients across Sydney, Western Sydney and South
+              West Sydney.
+            </p>
           </FadeIn>
           <div className="inclusion-list">
             {service.includes.map((item) => (

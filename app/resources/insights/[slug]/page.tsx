@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { FadeIn, ImageReveal } from "@/components/MotionPrimitives";
 import { getPost, posts } from "@/lib/content";
 import { articleSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
@@ -20,10 +21,19 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
 
-  return {
+  return pageMetadata({
     title: post.title,
-    description: post.excerpt
-  };
+    description: post.excerpt,
+    path: `/resources/insights/${post.slug}`,
+    image: post.image,
+    type: "article",
+    keywords: [
+      `${post.category} Sydney`,
+      `${post.category} Parramatta`,
+      `${post.category} Liverpool`,
+      post.title
+    ]
+  });
 }
 
 export default async function PostPage({

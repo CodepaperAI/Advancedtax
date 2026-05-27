@@ -3,20 +3,28 @@ import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/PageHero";
 import { FadeIn } from "@/components/MotionPrimitives";
 import { offices, site } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Contact",
+export const metadata = pageMetadata({
+  title: "Contact a Sydney Tax Accountant",
   description:
-    "Book a consultation with AdvancedTax in Parramatta, Liverpool or online."
-};
+    "Book a consultation with AdvancedTax in Parramatta, Liverpool or online for accounting, tax, BAS, bookkeeping, SMSF and business advisory support.",
+  path: "/contact",
+  keywords: [
+    "book tax accountant Sydney",
+    "contact accountant Parramatta",
+    "contact accountant Liverpool",
+    "accounting consultation Sydney"
+  ]
+});
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
         eyebrow="Book consultation"
-        title="Start with a clear conversation."
-        copy="Tell AATBS what you need help with. We will point you to the right adviser before the consultation."
+        title="Start with a clear accounting and tax conversation."
+        copy="Tell AATBS what you need help with in Sydney, Parramatta, Liverpool or online. We will point you to the right adviser before the consultation."
         image="/photos/client-consultation.jpg"
         alt="Client consultation with an adviser"
       />

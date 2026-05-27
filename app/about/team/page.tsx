@@ -2,12 +2,20 @@ import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { FadeIn } from "@/components/MotionPrimitives";
 import { team } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Team",
+export const metadata = pageMetadata({
+  title: "Sydney Tax Accountants & Advisory Team",
   description:
-    "Meet the AdvancedTax team."
-};
+    "Meet the AdvancedTax team supporting Sydney, Parramatta and Liverpool clients with tax, BAS, bookkeeping, SMSF and business advice.",
+  path: "/about/team",
+  keywords: [
+    "Sydney tax accountant team",
+    "Parramatta accountant team",
+    "Liverpool accounting team",
+    "registered tax agent Sydney"
+  ]
+});
 
 export default function TeamPage() {
   return (
@@ -15,7 +23,7 @@ export default function TeamPage() {
       <PageHero
         eyebrow="Team"
         title="Meet the people behind the advice."
-        copy="Our team supports clients with tax, BAS, bookkeeping, SMSF and business advice."
+        copy="Our team supports Sydney, Parramatta and Liverpool clients with tax, BAS, bookkeeping, SMSF and business advice."
         image="/photos/advisory-meeting.jpg"
         alt="Professional team in a client meeting"
       />

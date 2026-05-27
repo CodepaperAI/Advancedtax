@@ -7,20 +7,28 @@ import {
   pricingBookkeeping,
   pricingBundles
 } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Pricing",
+export const metadata = pageMetadata({
+  title: "Accounting & Bookkeeping Packages in Sydney",
   description:
-    "Business, bookkeeping and bundle packages for AdvancedTax clients — Thinker, Mover, Shaker, plus Small, Medium and Heavy bookkeeping."
-};
+    "Business, bookkeeping and bundle packages for Sydney, Parramatta and Liverpool clients, including Thinker, Mover, Shaker, Small, Medium and Heavy options.",
+  path: "/pricing",
+  keywords: [
+    "accounting packages Sydney",
+    "bookkeeping packages Sydney",
+    "tax accountant pricing Parramatta",
+    "bookkeeping pricing Liverpool"
+  ]
+});
 
 export default function PricingPage() {
   return (
     <>
       <PageHero
         eyebrow="Packages"
-        title="Simple monthly packages for business and bookkeeping."
-        copy="Review the package options before you call. We confirm the right fit and monthly price after the first consultation."
+        title="Simple monthly accounting and bookkeeping packages."
+        copy="Review package options for Sydney, Parramatta and Liverpool clients before you call. We confirm the right fit and monthly price after the first consultation."
         image="/photos/document-review.jpg"
         alt="Adviser reviewing business documents and package options"
       />

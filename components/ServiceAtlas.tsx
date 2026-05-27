@@ -27,8 +27,9 @@ export function ServiceAtlas() {
         <h2>Accounting, tax and business support in one place.</h2>
         <p>
           Start with what is due now: tax, BAS, payroll, bookkeeping, business
-          advice or SMSF support. Each service explains the practical outcome
-          and the next step before you book a consultation.
+          advice or SMSF support in Sydney, Parramatta, Liverpool or online.
+          Each service explains the practical outcome and the next step before
+          you book a consultation.
         </p>
       </div>
       <div className="service-atlas-media">

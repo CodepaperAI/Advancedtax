@@ -14,8 +14,9 @@ export function SiteFooter() {
             height={152}
           />
           <p>
-            Accounting, taxation, SMSF, finance and advisory support for
-            Sydney businesses that want a steadier financial partner.
+            Accounting, taxation, BAS, bookkeeping, SMSF and advisory support
+            for Sydney, Parramatta, Liverpool, Western Sydney and South West
+            Sydney clients.
           </p>
           <div className="footer-social">
             <a href={site.social.facebook}>Facebook</a>

@@ -68,6 +68,24 @@ export const offices = [
   }
 ];
 
+export const serviceAreas = [
+  {
+    name: "Parramatta",
+    detail:
+      "Accounting, tax returns, BAS, bookkeeping and advisory support for Western Sydney business owners and families."
+  },
+  {
+    name: "Liverpool",
+    detail:
+      "Tax agent, payroll, bookkeeping and business accounting support for South West Sydney clients."
+  },
+  {
+    name: "Sydney",
+    detail:
+      "Online and in-person accounting, taxation, SMSF and business advisory services for clients across Sydney and NSW."
+  }
+];
+
 export const accreditations = [
   {
     name: "Tax Practitioners Board",
@@ -615,6 +633,11 @@ export const posts: Post[] = [
 ];
 
 export const faqs = [
+  {
+    question: "Which areas do you serve?",
+    answer:
+      "AATBS supports clients in Sydney, Parramatta, Liverpool, Western Sydney, South West Sydney and wider NSW, with in-person and online meetings available."
+  },
   {
     question: "Can we switch from another accountant?",
     answer:

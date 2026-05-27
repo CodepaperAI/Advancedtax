@@ -1,5 +1,19 @@
-import { offices, site, type Post, type Service } from "./content";
+import { offices, serviceAreas, services, site, type Post, type Service } from "./content";
 import type { UpliftBlog } from "./uplift";
+
+const areaServed = [
+  "Sydney",
+  "Parramatta",
+  "Liverpool",
+  "Western Sydney",
+  "South West Sydney",
+  "New South Wales"
+];
+
+const areaServedSchema = areaServed.map((area) => ({
+  "@type": "Place",
+  name: area
+}));
 
 export function organizationSchema() {
   return {
@@ -11,13 +25,35 @@ export function organizationSchema() {
     telephone: site.mobileDisplay,
     email: site.email,
     sameAs: [site.social.facebook, site.social.instagram],
-    areaServed: ["Sydney", "Parramatta", "Liverpool", "New South Wales"],
+    areaServed: areaServedSchema,
     address: offices.map((office) => ({
       "@type": "PostalAddress",
       addressLocality: office.name,
       addressRegion: "NSW",
       addressCountry: "AU"
-    }))
+    })),
+    knowsAbout: [
+      "Accounting",
+      "Tax returns",
+      "BAS returns",
+      "Bookkeeping",
+      "Payroll",
+      "Single Touch Payroll",
+      "SMSF accounting",
+      "Business advisory"
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Accounting, tax and business services",
+      itemListElement: services.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.intro
+        }
+      }))
+    }
   };
 }
 
@@ -30,13 +66,19 @@ export function localBusinessSchema() {
     url: site.domain,
     telephone: site.mobileDisplay,
     priceRange: "$$",
-    areaServed: "Sydney",
-    address: {
+    areaServed: areaServedSchema,
+    address: offices.map((office) => ({
       "@type": "PostalAddress",
-      addressLocality: "Parramatta",
+      addressLocality: office.name,
       addressRegion: "NSW",
       addressCountry: "AU"
-    }
+    })),
+    department: serviceAreas.map((area) => ({
+      "@type": "AccountingService",
+      name: `${site.shortName} ${area.name}`,
+      areaServed: area.name,
+      description: area.detail
+    }))
   };
 }
 
@@ -46,12 +88,14 @@ export function serviceSchema(service: Service) {
     "@type": "Service",
     name: service.title,
     description: service.intro,
+    serviceType: service.title,
     provider: {
       "@type": "AccountingService",
       name: site.name,
-      url: site.domain
+      url: site.domain,
+      areaServed: areaServedSchema
     },
-    areaServed: "Sydney"
+    areaServed: areaServedSchema
   };
 }
 

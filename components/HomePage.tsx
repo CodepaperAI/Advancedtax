@@ -21,6 +21,7 @@ import {
   partners,
   posts,
   pricing,
+  serviceAreas,
   site,
   stats,
   team,
@@ -123,6 +124,31 @@ export function HomePage() {
                 <div>
                   <h3>{pillar.title}</h3>
                   <p>{pillar.text}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad local-seo-section">
+        <div className="container local-seo-grid">
+          <FadeIn>
+            <p className="eyebrow">Areas served</p>
+            <h2>Accounting and tax support across Sydney, Parramatta and Liverpool.</h2>
+            <p>
+              AATBS supports individuals, families and businesses across Western
+              Sydney, South West Sydney and wider NSW with tax returns, BAS,
+              bookkeeping, payroll, SMSF and business advisory services.
+            </p>
+          </FadeIn>
+          <div className="local-seo-list" aria-label="Service areas">
+            {serviceAreas.map((area) => (
+              <FadeIn key={area.name}>
+                <MapPin size={22} />
+                <div>
+                  <h3>{area.name}</h3>
+                  <p>{area.detail}</p>
                 </div>
               </FadeIn>
             ))}

@@ -3,12 +3,20 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { faqs } from "@/lib/content";
 import { faqSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "FAQ",
+export const metadata = pageMetadata({
+  title: "Accounting & Tax FAQ for Sydney Clients",
   description:
-    "Frequently asked questions about switching accountants, packages, BAS, tax and consultation preparation."
-};
+    "Answers about switching accountants, packages, BAS, tax, bookkeeping and consultation preparation for Sydney, Parramatta and Liverpool clients.",
+  path: "/faq",
+  keywords: [
+    "accounting FAQ Sydney",
+    "tax accountant questions Parramatta",
+    "switch accountants Sydney",
+    "BAS questions Liverpool"
+  ]
+});
 
 export default function FAQPage() {
   return (
@@ -17,7 +25,7 @@ export default function FAQPage() {
       <PageHero
         eyebrow="FAQ"
         title="Practical answers before the first consultation."
-        copy="Common questions about switching accountants, packages, BAS, bookkeeping and what to bring to the first conversation."
+        copy="Common questions for Sydney, Parramatta and Liverpool clients about switching accountants, packages, BAS, bookkeeping and what to bring to the first conversation."
         image="/photos/document-review.jpg"
         alt="Adviser reviewing client documents"
       />

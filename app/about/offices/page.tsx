@@ -4,12 +4,21 @@ import { MapPin } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { FadeIn } from "@/components/MotionPrimitives";
 import { offices } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Offices",
+export const metadata = pageMetadata({
+  title: "Parramatta & Liverpool Accounting Offices",
   description:
-    "Parramatta and Liverpool office presentation for AdvancedTax clients."
-};
+    "Meet AATBS in Parramatta, Liverpool or online for accounting, tax, BAS, bookkeeping, SMSF and business advisory support across Sydney.",
+  path: "/about/offices",
+  keywords: [
+    "accountant Parramatta",
+    "tax accountant Parramatta",
+    "accountant Liverpool",
+    "tax accountant Liverpool",
+    "Sydney accounting office"
+  ]
+});
 
 export default function OfficesPage() {
   return (
@@ -17,7 +26,7 @@ export default function OfficesPage() {
       <PageHero
         eyebrow="Parramatta and Liverpool"
         title="Two Sydney offices for advice when it is easier to meet in person."
-        copy="Local access is a trust signal for owners who want a direct adviser, clear timing and the option to meet face to face."
+        copy="Local access for owners who want a direct adviser, clear timing and the option to meet face to face in Parramatta, Liverpool or online."
         image="/photos/sydney-cbd.jpg"
         alt="Sydney business district and harbour skyline"
       />

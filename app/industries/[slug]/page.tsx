@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { FadeIn, ImageReveal } from "@/components/MotionPrimitives";
 import { getIndustry, industries, services } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return industries.map((industry) => ({ slug: industry.slug }));
@@ -19,10 +20,18 @@ export async function generateMetadata({
   const industry = getIndustry(slug);
   if (!industry) return {};
 
-  return {
-    title: industry.title,
-    description: industry.summary
-  };
+  return pageMetadata({
+    title: `${industry.title} Accountants in Sydney`,
+    description: `${industry.summary} Local accounting and tax support for ${industry.title.toLowerCase()} clients in Sydney, Parramatta and Liverpool.`,
+    path: `/industries/${industry.slug}`,
+    image: industry.image,
+    keywords: [
+      `${industry.title} accountant Sydney`,
+      `${industry.title} tax accountant Parramatta`,
+      `${industry.title} accountant Liverpool`,
+      ...industry.needs
+    ]
+  });
 }
 
 export default async function IndustryPage({
@@ -40,7 +49,7 @@ export default async function IndustryPage({
         <div className="container service-detail-grid">
           <FadeIn>
             <p className="eyebrow">Industry support</p>
-            <h1>{industry.title}</h1>
+            <h1>{industry.title} accountants in Sydney</h1>
             <p className="lede">{industry.summary}</p>
             <Link className="button button-gold" href="/contact">
               Discuss your industry
@@ -59,7 +68,8 @@ export default async function IndustryPage({
             <h2>Common accounting needs for this industry.</h2>
             <p>
               {industry.title} clients often need help with timing, payroll,
-              cash flow, finance and tax compliance.
+              cash flow, finance and tax compliance across Sydney, Parramatta,
+              Liverpool and NSW.
             </p>
           </FadeIn>
           <div className="inclusion-list">

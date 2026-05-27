@@ -4,12 +4,20 @@ import { ArrowRight, Award, MapPin, UsersRound } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { FadeIn } from "@/components/MotionPrimitives";
 import { offices } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "About",
+export const metadata = pageMetadata({
+  title: "About Our Sydney Accounting Firm",
   description:
-    "About Advanced Accounting, Taxation & Business Services."
-};
+    "Learn about AATBS, a Sydney accounting and tax advisory firm with Parramatta and Liverpool access for clients across Western and South West Sydney.",
+  path: "/about",
+  keywords: [
+    "Sydney accounting firm",
+    "Parramatta accounting firm",
+    "Liverpool tax accountant",
+    "AATBS accountant"
+  ]
+});
 
 export default function AboutPage() {
   return (
@@ -17,7 +25,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About AATBS"
         title="A Sydney accounting firm with two local offices."
-        copy="Meet the team behind AATBS and learn how we support clients with accounting, tax and business advice."
+        copy="Meet the team behind AATBS and learn how we support Sydney, Parramatta and Liverpool clients with accounting, tax and business advice."
         image="/photos/sydney-cbd.jpg"
         alt="Sydney CBD skyline and business district"
       />
@@ -31,7 +39,8 @@ export default function AboutPage() {
             <p>
               AATBS has supported Australian clients for more than 20 years.
               The practice helps with accounting, tax, BAS, bookkeeping, SMSF
-              and business advice.
+              and business advice across Sydney, Western Sydney and South West
+              Sydney.
             </p>
             <p>
               The goal is simple: explain what needs to be done, keep records

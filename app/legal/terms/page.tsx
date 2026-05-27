@@ -1,7 +1,11 @@
-export const metadata = {
-  title: "Terms",
-  description: "Terms of business information for AdvancedTax clients."
-};
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Terms of Business",
+  description: "Terms of business information for AdvancedTax clients.",
+  path: "/legal/terms",
+  keywords: ["AdvancedTax terms", "accounting terms Sydney"]
+});
 
 export default function TermsPage() {
   return (

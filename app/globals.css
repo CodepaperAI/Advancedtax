@@ -801,6 +801,7 @@ p {
 @supports (content-visibility: auto) {
   .process-section,
   .industries-section,
+  .local-seo-section,
   .partners-section,
   .pricing-section,
   .resources-section,
@@ -1065,6 +1066,55 @@ p {
 
 .why-ledger-row p {
   max-width: 620px;
+  color: var(--muted);
+}
+
+.local-seo-section {
+  background: var(--paper);
+}
+
+.local-seo-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.66fr) minmax(0, 1fr);
+  gap: clamp(44px, 7vw, 92px);
+  align-items: start;
+}
+
+.local-seo-grid > div:first-child p:not(.eyebrow) {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.local-seo-list {
+  display: grid;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.local-seo-list > div {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+.local-seo-list > div:first-child {
+  border-top: 0;
+}
+
+.local-seo-list svg {
+  color: var(--gold-dark);
+}
+
+.local-seo-list h3 {
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+}
+
+.local-seo-list p {
   color: var(--muted);
 }
 
@@ -3293,6 +3343,7 @@ p {
   .faq-stage,
   .contact-grid,
   .why-editorial,
+  .local-seo-grid,
   .editorial-grid,
   .service-body-grid,
   .related-services {
