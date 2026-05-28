@@ -1,32 +1,58 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { CheckCircle2, Send } from "lucide-react";
+import { AlertCircle, CheckCircle2, Send } from "lucide-react";
 import { useState } from "react";
-import { site } from "@/lib/content";
 
 export function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState("");
 
   return (
     <form
       className="contact-form"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
-        const form = new FormData(event.currentTarget);
-        const subject = encodeURIComponent("Consultation request from AdvancedTax website");
-        const body = encodeURIComponent(
-          [
-            `Name: ${form.get("name") ?? ""}`,
-            `Email: ${form.get("email") ?? ""}`,
-            `Phone: ${form.get("phone") ?? ""}`,
-            `Need: ${form.get("need") ?? ""}`,
-            "",
-            `${form.get("message") ?? ""}`
-          ].join("\n")
-        );
-        setSent(true);
-        window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+        const formElement = event.currentTarget;
+        const form = new FormData(formElement);
+
+        setStatus("sending");
+        setError("");
+
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              name: form.get("name"),
+              email: form.get("email"),
+              phone: form.get("phone"),
+              need: form.get("need"),
+              message: form.get("message")
+            })
+          });
+
+          if (!response.ok) {
+            const data = (await response.json().catch(() => null)) as
+              | { error?: string }
+              | null;
+            throw new Error(
+              data?.error || "We could not send your request. Please call or email us."
+            );
+          }
+
+          formElement.reset();
+          setStatus("sent");
+        } catch (sendError) {
+          setError(
+            sendError instanceof Error
+              ? sendError.message
+              : "We could not send your request. Please call or email us."
+          );
+          setStatus("error");
+        }
       }}
     >
       <label>
@@ -61,12 +87,16 @@ export function ContactForm() {
           placeholder="Tell us what you need help with."
         />
       </label>
-      <button className="button button-gold form-wide" type="submit">
+      <button
+        className="button button-gold form-wide"
+        type="submit"
+        disabled={status === "sending"}
+      >
         <Send size={18} />
-        Request consultation
+        {status === "sending" ? "Sending request..." : "Request consultation"}
       </button>
       <AnimatePresence>
-        {sent && (
+        {status === "sent" && (
           <motion.p
             className="form-success form-wide"
             initial={{ opacity: 0, y: 8 }}
@@ -74,8 +104,18 @@ export function ContactForm() {
             exit={{ opacity: 0, y: 8 }}
           >
             <CheckCircle2 size={18} />
-            Thanks. Your email app should open with the consultation details
-            ready for AATBS.
+            Thanks. Your consultation request has been sent to AATBS.
+          </motion.p>
+        )}
+        {status === "error" && (
+          <motion.p
+            className="form-error form-wide"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+          >
+            <AlertCircle size={18} />
+            {error}
           </motion.p>
         )}
       </AnimatePresence>
