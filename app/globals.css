@@ -3268,7 +3268,8 @@ p {
 }
 
 .legal-page,
-.not-found {
+.not-found,
+.thank-you-page {
   min-height: 68vh;
   display: grid;
   align-items: center;
@@ -3276,15 +3277,41 @@ p {
 }
 
 .legal-page .container,
-.not-found .container {
+.not-found .container,
+.thank-you-card {
   max-width: 860px;
 }
 
 .legal-page p:not(.eyebrow),
-.not-found p:not(.eyebrow) {
+.not-found p:not(.eyebrow),
+.thank-you-card p:not(.eyebrow) {
   margin-top: 22px;
   color: var(--muted);
   font-size: 1.1rem;
+}
+
+.thank-you-page {
+  background: var(--cream);
+}
+
+.thank-you-card {
+  padding: clamp(30px, 5vw, 54px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.thank-you-card > svg {
+  margin-bottom: 22px;
+  color: var(--gold-dark);
+}
+
+.thank-you-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
 }
 
 .site-footer {

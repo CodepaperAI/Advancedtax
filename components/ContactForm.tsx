@@ -45,6 +45,7 @@ export function ContactForm() {
 
           formElement.reset();
           setStatus("sent");
+          window.location.href = "/thank-you";
         } catch (sendError) {
           setError(
             sendError instanceof Error
