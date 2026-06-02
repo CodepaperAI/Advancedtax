@@ -3,6 +3,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { faqSchema, localBusinessSchema } from "@/lib/schema";
 import { faqs } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
+import { getGoogleReviewSummary } from "@/lib/googleReviews";
+
+export const revalidate = 86400;
 
 export const metadata = pageMetadata({
   title: "AdvancedTax Accountants in Sydney, Parramatta & Liverpool",
@@ -17,12 +20,14 @@ export const metadata = pageMetadata({
   ]
 });
 
-export default function Page() {
+export default async function Page() {
+  const googleReview = await getGoogleReviewSummary();
+
   return (
     <>
       <JsonLd data={localBusinessSchema()} />
       <JsonLd data={faqSchema(faqs)} />
-      <HomePage />
+      <HomePage googleReview={googleReview} />
     </>
   );
 }

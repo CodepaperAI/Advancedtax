@@ -24,7 +24,7 @@ export const coreSeoKeywords = [
   "bookkeeping Sydney",
   "SMSF accountant Sydney",
   "small business tax advice Sydney",
-  "registered tax agent Sydney"
+  "business tax finance advisers Sydney"
 ];
 
 export function withLocalKeywords(keywords: string[] = []) {

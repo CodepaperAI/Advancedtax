@@ -6,14 +6,17 @@ import {
   Building2,
   CalendarCheck,
   CheckCircle2,
+  ExternalLink,
   FileText,
   MapPin,
   Quote,
-  ShieldCheck
+  ShieldCheck,
+  Star
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import type { GoogleReviewSummary } from "@/lib/googleReviews";
 import {
   faqs,
   industries,
@@ -37,10 +40,11 @@ import {
 import { Accordion } from "./Accordion";
 import { ServiceAtlas } from "./ServiceAtlas";
 
-export function HomePage() {
+export function HomePage({ googleReview }: { googleReview: GoogleReviewSummary }) {
   return (
     <>
       <HeroFullBleedSection />
+      <GoogleReviewSection review={googleReview} />
 
       <section className="stats-section">
         <div className="container stats-grid">
@@ -104,8 +108,8 @@ export function HomePage() {
             {[
               {
                 icon: MapPin,
-                title: "Two Sydney offices",
-                text: "Parramatta and Liverpool access for clients who want a local adviser and the option to meet in person."
+                title: "Serving Australia-Wide",
+                text: "Serving Australia-Wide virtually with offices in Parramatta and Liverpool."
               },
               {
                 icon: Building2,
@@ -396,9 +400,9 @@ function HeroFullBleedSection() {
               </Link>
             </div>
             <div className="hero-trust-row" aria-label="Practice trust signals">
-              <span>Registered tax agent</span>
+              <span>Business, Tax & Finance Specialists</span>
               <span>20+ years</span>
-              <span>Two Sydney offices</span>
+              <span>Trusted Advisers</span>
             </div>
           </div>
         </div>
@@ -410,6 +414,55 @@ function HeroFullBleedSection() {
             become stressful.
           </small>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function GoogleReviewSection({ review }: { review: GoogleReviewSummary }) {
+  const ratingText = review.rating.toFixed(1).replace(/\.0$/, "");
+  const reviewCount =
+    typeof review.userRatingCount === "number" && review.userRatingCount > 0
+      ? `${review.userRatingCount.toLocaleString("en-AU")} Google reviews`
+      : "Google Rating";
+
+  return (
+    <section className="google-review-section" aria-labelledby="google-review-heading">
+      <div className="container google-review-grid">
+        <FadeIn className="google-review-copy">
+          <p className="eyebrow">Google reviews</p>
+          <h2 id="google-review-heading">
+            Trusted by clients for tax, accounting and finance advice.
+          </h2>
+          <p>
+            Clients choose AdvancedTax for practical support from Parramatta,
+            Liverpool and online, with advice available Australia-wide.
+          </p>
+        </FadeIn>
+        <FadeIn className="google-review-card">
+          <div className="google-review-stars" aria-hidden="true">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <Star key={index} size={22} fill="currentColor" />
+            ))}
+          </div>
+          <div className="google-review-score" aria-label={`${ratingText} out of 5 Google rating`}>
+            <strong>{ratingText}</strong>
+            <span>{reviewCount}</span>
+          </div>
+          <p>{review.displayName}</p>
+          {review.googleMapsUri ? (
+            <a
+              className="text-link"
+              href={review.googleMapsUri}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View Google profile <ExternalLink size={16} />
+            </a>
+          ) : (
+            <span className="google-review-source">Google Rating</span>
+          )}
+        </FadeIn>
       </div>
     </section>
   );

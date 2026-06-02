@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
     "Sydney tax accountant team",
     "Parramatta accountant team",
     "Liverpool accounting team",
-    "registered tax agent Sydney"
+    "business tax finance advisers Sydney"
   ]
 });
 

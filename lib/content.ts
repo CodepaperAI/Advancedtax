@@ -136,10 +136,10 @@ export const stats = [
     note: "Helping clients with accounting, tax and business advice."
   },
   {
-    label: "Offices",
+    label: "Trusted Advisers",
     value: 2,
     suffix: "",
-    note: "Parramatta and Liverpool."
+    note: "Serving Australia-Wide virtually with offices in Parramatta and Liverpool."
   },
   {
     label: "Happy clients",
@@ -436,9 +436,9 @@ export const industries: Industry[] = [
 
 export const team = [
   {
-    name: "Principal adviser",
-    role: "Registered tax agent and business adviser",
-    credential: "Tax, accounting and business advice",
+    name: "Abby Raweri",
+    role: "Director - Tax, Finance & Lending Solutions",
+    credential: "Business, Tax & Finance Specialist",
     image: "/team/principal.png"
   },
   {

@@ -24,8 +24,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About AATBS"
-        title="A Sydney accounting firm with two local offices."
-        copy="Meet the team behind AATBS and learn how we support Sydney, Parramatta and Liverpool clients with accounting, tax and business advice."
+        title="Business, tax and finance advice with Australia-wide virtual support."
+        copy="Meet the team behind AATBS and learn how we support clients virtually Australia-wide, with offices in Parramatta and Liverpool."
         image="/photos/sydney-cbd.jpg"
         alt="Sydney CBD skyline and business district"
       />
@@ -62,12 +62,12 @@ export default function AboutPage() {
           </FadeIn>
           <FadeIn className="founder-copy">
             <p className="eyebrow">Meet the founder</p>
-            <h2>The person behind the practice.</h2>
+            <h2>Abby Raweri</h2>
             <p className="founder-role">
-              Founder &amp; Principal Adviser &middot; Registered Tax Agent
+              Director - Tax, Finance &amp; Lending Solutions
             </p>
             <p>
-              For more than two decades, our founder has guided Australian
+              For more than two decades, Abby has guided Australian
               business owners through tax, accounting and business questions.
               Clients stay because the advice is direct and easy to understand.
             </p>
@@ -76,9 +76,9 @@ export default function AboutPage() {
               accurate and explain the reason behind each recommendation.
             </p>
             <ul className="founder-creds">
-              <li>Registered Tax Agent</li>
+              <li>Business, Tax &amp; Finance Specialist</li>
               <li>20+ years in Australian small business advisory</li>
-              <li>Parramatta &amp; Liverpool office access</li>
+              <li>Serving Australia-Wide virtually with offices in Parramatta and Liverpool</li>
             </ul>
             <Link className="button button-dark" href="/contact">
               Book a consultation
@@ -101,8 +101,8 @@ export default function AboutPage() {
             },
             {
               icon: MapPin,
-              title: "Local",
-              text: "Parramatta and Liverpool offices support clients across Western and South West Sydney."
+              title: "Australia-wide",
+              text: "Virtual support for clients Australia-wide, with Parramatta and Liverpool office access."
             }
           ].map((item) => (
             <FadeIn className="pillar light" key={item.title}>
@@ -117,7 +117,7 @@ export default function AboutPage() {
         <div className="container final-cta-grid">
           <div>
             <p className="eyebrow">Office access</p>
-            <h2>Meet in Parramatta or Liverpool.</h2>
+            <h2>Meet online, in Parramatta or in Liverpool.</h2>
           </div>
           <div className="office-mini-list">
             {offices.map((office) => (

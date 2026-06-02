@@ -60,7 +60,7 @@ export default function ServicesPage() {
             <h2>Find the right support for your accounts, tax or business.</h2>
           </FadeIn>
           <FadeIn className="service-dossier-note">
-            <span>Registered tax agent</span>
+            <span>Business, Tax & Finance Specialists</span>
             <p>
               We help Sydney, Parramatta and Liverpool clients with regular
               accounting work, business advice and SMSF support.

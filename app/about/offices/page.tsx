@@ -25,8 +25,8 @@ export default function OfficesPage() {
     <>
       <PageHero
         eyebrow="Parramatta and Liverpool"
-        title="Two Sydney offices for advice when it is easier to meet in person."
-        copy="Local access for owners who want a direct adviser, clear timing and the option to meet face to face in Parramatta, Liverpool or online."
+        title="Parramatta and Liverpool offices with Australia-wide virtual support."
+        copy="Serving Australia-Wide virtually with offices in Parramatta and Liverpool for clients who want a direct adviser, clear timing and the option to meet online or face to face."
         image="/photos/sydney-cbd.jpg"
         alt="Sydney business district and harbour skyline"
       />
