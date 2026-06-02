@@ -31,8 +31,8 @@ export function SiteHeader() {
             <Image
               src={site.logoDark}
               alt="Advanced Accounting Taxation and Business Services"
-              width={214}
-              height={146}
+              width={260}
+              height={120}
               priority
             />
           </Link>
@@ -158,8 +158,8 @@ export function SiteHeader() {
                 <Image
                   src={site.logoDark}
                   alt="Advanced Accounting Taxation and Business Services"
-                  width={180}
-                  height={123}
+                  width={260}
+                  height={120}
                 />
               </Link>
               <nav aria-label="Mobile navigation">

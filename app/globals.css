@@ -250,16 +250,17 @@ p {
 }
 
 .nav-inner {
-  min-height: 88px;
+  min-height: 118px;
   display: grid;
-  grid-template-columns: 180px 1fr auto;
-  gap: 28px;
+  grid-template-columns: 320px 1fr auto;
+  gap: 32px;
   align-items: center;
 }
 
 .brand img {
-  width: 120px;
+  width: 250px;
   height: auto;
+  display: block;
 }
 
 .desktop-nav {
@@ -424,7 +425,7 @@ p {
 }
 
 .mobile-brand img {
-  width: 150px;
+  width: 220px;
   height: auto;
   margin: 12px 0 24px;
 }
@@ -3420,7 +3421,7 @@ p {
 }
 
 .footer-brand img {
-  width: 220px;
+  width: 300px;
   height: auto;
   margin-bottom: 18px;
 }
@@ -3741,7 +3742,7 @@ p {
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    min-height: 74px;
+    min-height: 90px;
   }
 
   .nav-actions {
@@ -3782,7 +3783,7 @@ p {
   }
 
   .brand img {
-    width: 102px;
+    width: 176px;
   }
 
   .hero-grid {

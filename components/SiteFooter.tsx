@@ -11,7 +11,7 @@ export function SiteFooter() {
             src={site.logoLight}
             alt="Advanced Accounting Taxation and Business Services"
             width={260}
-            height={152}
+            height={120}
           />
           <p>
             Accounting, taxation, BAS, bookkeeping, SMSF and advisory support
