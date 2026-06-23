@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { accreditations, nav, offices, services, site } from "@/lib/content";
+import { locations } from "@/lib/seo/locations";
 
 export function SiteFooter() {
   return (
@@ -37,6 +38,15 @@ export function SiteFooter() {
           {services.slice(0, 8).map((service) => (
             <Link key={service.slug} href={`/services/${service.slug}`}>
               {service.title}
+            </Link>
+          ))}
+        </div>
+        <div>
+          <h2>Service Areas</h2>
+          <Link href="/service-areas">All service areas</Link>
+          {locations.map((loc) => (
+            <Link key={loc.slug} href={`/service-areas/${loc.slug}`}>
+              {loc.name}
             </Link>
           ))}
         </div>

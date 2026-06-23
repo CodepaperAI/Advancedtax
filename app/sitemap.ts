@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
 import { industries, posts, services, site } from "@/lib/content";
 import { getAllBlogs, getBlogDate } from "@/lib/uplift";
+import { locations } from "@/lib/seo/locations";
+import { serviceAreaPairs } from "@/lib/seo/service-areas";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { blogs } = await getAllBlogs({ status: "PUBLISH" });
+  const now = new Date();
   const staticRoutes = [
     "",
     "/about",
@@ -16,30 +19,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/resources",
     "/faq",
     "/contact",
+    "/service-areas",
     "/legal/privacy",
-    "/legal/terms"
+    "/legal/terms",
   ];
 
   return [
     ...staticRoutes.map((route) => ({
       url: `${site.domain}${route}`,
-      lastModified: new Date()
+      lastModified: now,
     })),
     ...services.map((service) => ({
       url: `${site.domain}/services/${service.slug}`,
-      lastModified: new Date()
+      lastModified: now,
+    })),
+    ...locations.map((loc) => ({
+      url: `${site.domain}/service-areas/${loc.slug}`,
+      lastModified: now,
+    })),
+    ...serviceAreaPairs.map(({ serviceSlug, citySlug }) => ({
+      url: `${site.domain}/services/${serviceSlug}/${citySlug}`,
+      lastModified: now,
     })),
     ...industries.map((industry) => ({
       url: `${site.domain}/industries/${industry.slug}`,
-      lastModified: new Date()
+      lastModified: now,
     })),
     ...posts.map((post) => ({
       url: `${site.domain}/resources/insights/${post.slug}`,
-      lastModified: new Date(post.date)
+      lastModified: new Date(post.date),
     })),
     ...blogs.map((blog) => ({
       url: `${site.domain}/blog/${blog.slug}`,
-      lastModified: new Date(getBlogDate(blog) ?? Date.now())
-    }))
+      lastModified: new Date(getBlogDate(blog) ?? Date.now()),
+    })),
   ];
 }
