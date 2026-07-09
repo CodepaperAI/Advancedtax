@@ -4304,3 +4304,760 @@ p {
     transition-duration: 0.01ms !important;
   }
 }
+.tax-services-hero {
+  padding: 2.5rem 0 3rem;
+  background: var(--navy, #10203f);
+  color: #fff;
+}
+
+.tax-services-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.tax-services-hero-content .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-hero-content h1 {
+  margin: 0.5rem 0 1rem;
+  color: #fff;
+}
+
+.tax-services-hero-content .lede {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tax-services-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.tax-services-hero .button-secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: transparent;
+}
+
+.tax-services-hero .button-secondary:hover,
+.tax-services-hero .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-hero .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-hero .button-primary:hover,
+.tax-services-hero .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-hero-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.tax-services-hero-image img {
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* ---------- Quick actions ---------- */
+
+.tax-services-quick-actions {
+  padding: 1.5rem 0 3rem;
+}
+
+.tax-services-quick-actions-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tax-services-quick-actions-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tax-services-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tax-services-quick-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--navy-100, #dbe1ec);
+  color: var(--navy, #10203f);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.tax-services-quick-links a:hover,
+.tax-services-quick-links a:focus-visible {
+  border-color: var(--gold, #b3924a);
+  background: var(--navy-050, #f4f6fa);
+}
+
+/* ---------- Why choose AATBS ---------- */
+
+.tax-services-why {
+  padding: 1rem 0 4rem;
+}
+
+.tax-services-why-intro {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.tax-services-why-intro .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.tax-services-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* CHANGE 1: navy card background, gold icon kept, white text, shadow + hover */
+.tax-services-why-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-lg, 12px);
+  background: var(--navy, #10203f);
+  box-shadow: 0 10px 24px -14px rgba(16, 32, 63, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.tax-services-why-card:hover,
+.tax-services-why-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -14px rgba(16, 32, 63, 0.6);
+  background: var(--navy-700, #1a2c52);
+}
+
+.tax-services-why-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.tax-services-why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--gold, #b3924a);
+}
+
+/* ---------- Investment Property (Treatment A: media + floating badge) ---------- */
+
+.tax-services-property {
+  padding: 4rem 0;
+  background: #fff;
+}
+
+.tax-services-property-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.tax-services-property-media {
+  position: relative;
+}
+
+.tax-services-property-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+}
+
+.tax-services-property-image img {
+  object-fit: cover;
+}
+
+.tax-services-property-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: -2rem;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  position: relative;
+  z-index: 2;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-lg, 12px);
+  background: var(--navy, #10203f);
+  color: #fff;
+  box-shadow: 0 12px 24px -12px rgba(16, 32, 63, 0.5);
+}
+
+.tax-services-property-badge svg {
+  color: var(--gold, #b3924a);
+  flex-shrink: 0;
+}
+
+.tax-services-property-badge span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tax-services-property-content .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.tax-services-property-checklist {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+}
+
+.tax-services-property-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.tax-services-property-checklist svg {
+  color: var(--gold, #b3924a);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+.tax-services-property-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: var(--gold, #b3924a);
+  border: 1px solid var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tax-services-property-cta:hover,
+.tax-services-property-cta:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+}
+
+/*
+  NOTE (item 3 — Investment Property CTA):
+  The "Book an Investment Property Consultation" link already uses
+  className="button button-primary" — identical to the other primary
+  CTAs. There's no scoped override on it below, so no new rule was
+  needed here. If it still renders differently in the browser, the
+  cause is a global .button-primary rule outside this file.
+*/
+
+/* ---------- Business Tax (Treatment B: image column + entity grid + tags) ---------- */
+
+.tax-services-business {
+  padding: 4rem 0;
+  background: var(--navy-050, #f4f6fa);
+}
+
+.tax-services-business-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* CHANGE 2: left image column, with CTA underneath the image */
+.tax-services-business-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tax-services-business-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.tax-services-business-image img {
+  object-fit: cover;
+}
+
+.tax-services-business-cta {
+  align-self: flex-start;
+}
+
+.tax-services-business-content {
+  min-width: 0;
+}
+
+.tax-services-business-intro {
+  max-width: 640px;
+  margin: 0 0 2rem;
+}
+
+.tax-services-business-intro .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.tax-services-business-entities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.tax-services-entity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: var(--radius-lg, 12px);
+  background: #fff;
+}
+
+.tax-services-entity-card svg {
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-entity-card span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy, #10203f);
+}
+
+.tax-services-business-tags-wrap {
+  display: flex;
+}
+
+.tax-services-business-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tax-services-business-tags li {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--navy-100, #dbe1ec);
+  background: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy, #10203f);
+}
+
+.tax-services-business-cta.button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-business-cta.button-primary:hover,
+.tax-services-business-cta.button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+/* ---------- Strategic Tax Advice (Treatment C: signature dark panel) ---------- */
+
+.tax-services-strategic {
+  padding: 4.5rem 0;
+  background: var(--navy, #10203f);
+  color: #fff;
+}
+
+.tax-services-strategic-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tax-services-strategic-inner .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-strategic-inner .lede {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tax-services-strategic-quote {
+  margin: 2.5rem auto;
+  padding: 0 0.5rem;
+}
+
+.tax-services-strategic-quote svg {
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-strategic-quote p {
+  margin-top: 0.75rem;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.tax-services-strategic-list-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.tax-services-strategic-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  max-width: 460px;
+}
+
+.tax-services-strategic-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.tax-services-strategic-list svg {
+  color: var(--gold, #b3924a);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.tax-services-strategic .button-secondary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-strategic .button-secondary:hover,
+.tax-services-strategic .button-secondary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+/* ---------- Virtual Tax Appointments ---------- */
+
+.tax-services-virtual {
+  padding: 4.5rem 0;
+  background: #fff;
+}
+
+.tax-services-virtual .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.tax-services-virtual-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.tax-services-virtual-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.tax-services-virtual-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: var(--radius-lg, 12px);
+  background: var(--navy-050, #f4f6fa);
+}
+
+.tax-services-virtual-card svg {
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-virtual-card span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy, #10203f);
+}
+
+/* ---------- Client Reviews ---------- */
+
+.tax-services-reviews {
+  padding: 4.5rem 0;
+  background: var(--navy-050, #f4f6fa);
+}
+
+.tax-services-reviews-intro {
+  max-width: 640px;
+  margin: 0 0 2rem;
+}
+
+.tax-services-reviews-intro .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.tax-services-reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.tax-services-review-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 9rem;
+  border-radius: var(--radius-lg, 12px);
+  background: #fff;
+  border: 1px dashed var(--navy-100, #dbe1ec);
+  color: var(--navy-100, #b7c0d4);
+}
+
+/* ---------- FAQ ---------- */
+
+.tax-services-faq {
+  padding: 4.5rem 0;
+  background: #fff;
+}
+
+.tax-services-faq-inner {
+  max-width: 800px;
+}
+
+.tax-services-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.tax-services-faq-item {
+  background: var(--navy-050, #f4f6fa);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.15rem 1.35rem;
+}
+
+.tax-services-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--navy, #10203f);
+  list-style: none;
+}
+
+.tax-services-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.tax-services-faq-item svg {
+  color: var(--gold, #b3924a);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.tax-services-faq-item[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.tax-services-faq-item p {
+  margin: 1rem 0 0;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Final CTA ---------- */
+
+.tax-services-final-cta {
+  padding: 4.5rem 0;
+  background: var(--navy, #10203f);
+  color: #fff;
+  text-align: center;
+}
+
+.tax-services-final-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.tax-services-final-cta-sub {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tax-services-final-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.tax-services-final-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-final-cta .button-primary:hover,
+.tax-services-final-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-final-cta .button-secondary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-final-cta .button-secondary:hover,
+.tax-services-final-cta .button-secondary:focus-visible {
+  border-color: var(--gold-dark, #96793a);
+  background: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+/* ---------- Breakpoints ---------- */
+
+@media (min-width: 640px) {
+  .tax-services-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tax-services-business-entities {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .tax-services-virtual-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tax-services-strategic-list {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 560px;
+  }
+
+  .tax-services-reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .tax-services-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .tax-services-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tax-services-property-grid {
+    grid-template-columns: 46% 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .tax-services-property-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    margin: 0;
+  }
+
+  .tax-services-property-checklist {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tax-services-business-grid {
+    grid-template-columns: 380px 1fr;
+    gap: 3rem;
+    align-items: stretch;
+  }
+
+  .tax-services-business-media {
+    height: 100%;
+  }
+
+  .tax-services-business-image {
+    flex: 1;
+    aspect-ratio: auto;
+    min-height: 320px;
+  }
+
+  .tax-services-business-entities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tax-services-virtual-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tax-services-final-cta-buttons {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .tax-services-quick-links a,
+  .tax-services-faq-item svg,
+  .tax-services-hero .button-secondary,
+  .tax-services-strategic .button-secondary,
+  .tax-services-final-cta .button-secondary,
+  .tax-services-why-card {
+    transition: none;
+  }
+}
