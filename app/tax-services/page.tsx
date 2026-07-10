@@ -6,18 +6,18 @@ import {
   Briefcase,
   Building2,
   Calculator,
+  Calendar,
   CheckCircle2,
   ChevronDown,
   ExternalLink,
+  Gem,
   Handshake,
+  Home,
   Landmark,
   MapPin,
   Phone,
-  Quote,
-  ShieldCheck,
   Star,
   TrendingUp,
-  User,
   Users,
   Video
 } from "lucide-react";
@@ -29,66 +29,102 @@ const PHONE_DISPLAY = "(02) 9734 0777";
 const PHONE_HREF = "tel:+61297340777";
 
 export const metadata = pageMetadata({
-  title: "Tax Advice for Property Investors & Business Owners in Sydney",
+  title: "Investment Property & Business Tax Returns | Pay Less Tax, Build Wealth",
   description:
-    "Practical tax advice for investment property owners, business owners and clients with complex tax matters. Meet in Parramatta, Liverpool or virtually across Sydney. Book a free consultation.",
+    "Specialist tax returns and proactive tax advice for property investors, business owners and high-income Australians. Maximise deductions, minimise tax and build long-term wealth. Meet in Parramatta, Liverpool or virtually across Sydney.",
   path: "/tax-services",
   keywords: [
-    "investment property tax accountant Sydney",
+    "investment property tax returns Sydney",
     "business tax returns Parramatta",
     "tax planning Sydney",
-    "negative gearing accountant",
-    "virtual tax accountant Sydney"
+    "capital gains tax accountant",
+    "company tax returns",
+    "trust tax returns",
+    "high net worth tax advice",
+    "strategic tax advice Sydney"
   ]
 });
 
+// Section 4: Investment Property & Business Tax Specialists — reuses the
+// existing trust-card grid (.tax-services-why-grid / .tax-services-why-card)
 const trustHighlights = [
-  { icon: Award, label: "Over 20 years of trusted accounting and taxation experience" },
-  { icon: Briefcase, label: "Specialists in investment property tax and business taxation" },
-  { icon: Users, label: "Personalised accounting and tax advice tailored to your circumstances" },
+  { icon: Award, label: "Over 20 years of trusted tax and accounting experience" },
+  { icon: Briefcase, label: "Specialists in investment property and business tax returns" },
+  { icon: Users, label: "Personalised tax advice tailored to your financial goals" },
   { icon: MapPin, label: "Convenient offices located in Parramatta and Liverpool" },
   { icon: Video, label: "Flexible virtual tax consultations available across Sydney" },
-  { icon: Calculator, label: "Strategic tax planning designed for long-term financial success" }
+  { icon: Calculator, label: "Strategic tax planning for long-term wealth building" }
 ];
 
-const investmentServices = [
-  "Rental property tax returns",
-  "Negative gearing",
-  "Depreciation claims",
-  "Capital gains tax",
-  "Investment property deductions",
-  "Multiple investment property portfolios"
+// Section 5: Who We Help
+const whoWeHelp = [
+  {
+    icon: Home,
+    title: "Investment Property Owners",
+    description:
+      "Maximise rental deductions, reduce CGT, structure your portfolio correctly and receive strategic tax advice as your investments grow."
+  },
+  {
+    icon: Briefcase,
+    title: "Business Owners",
+    description:
+      "Tax planning, compliance, cash flow management, business structuring and ongoing advisory for growing businesses."
+  },
+  {
+    icon: Gem,
+    title: "High Net Worth Individuals",
+    description: "Complex tax affairs, family groups, trusts, companies and SMSFs."
+  }
 ];
 
-const businessEntities = [
-  { icon: User, label: "Sole Traders" },
-  { icon: Handshake, label: "Partnerships" },
-  { icon: Building2, label: "Companies" },
-  { icon: Landmark, label: "Trusts" }
+// Section 6: Why Clients Choose Us — reuses the same trust-card style as
+// section 4 above
+const whyClientsChooseUs = [
+  { icon: Calculator, label: "Proactive tax planning, not just year-end compliance" },
+  { icon: Building2, label: "Property investment taxation specialists" },
+  { icon: Briefcase, label: "Business growth and advisory expertise" },
+  { icon: Landmark, label: "Integrated accounting, tax and lending solutions" },
+  { icon: Users, label: "Personalised advice from experienced professionals" },
+  { icon: Handshake, label: "One trusted team for tax, finance and business" }
 ];
 
-const businessServices = [
+// Section 7: Looking for an Accountant Who Understands Your Situation?
+// Reuses the existing checklist markup/style (.tax-services-property-checklist)
+const accountantChecklist = [
+  "Investment property tax returns",
+  "Multiple property portfolios",
   "Business tax returns",
-  "BAS preparation",
-  "Bookkeeping",
-  "Payroll",
-  "Tax planning"
-];
-
-const strategicServices = [
-  "Tax planning",
+  "Company tax returns",
+  "Trust tax returns",
+  "High-income salary earners",
   "Capital gains tax",
-  "Family trusts",
-  "Investment structures",
-  "Asset protection",
-  "Wealth structuring"
+  "Tax planning",
+  "Asset protection"
 ];
 
-const virtualMethods = [
-  { icon: Video, label: "Zoom consultations" },
-  { icon: Phone, label: "Phone appointments" },
-  { icon: ShieldCheck, label: "Secure document sharing" },
-  { icon: CheckCircle2, label: "Electronic signatures" }
+// Section 8: Choose Your Situation
+const situations = [
+  {
+    icon: Home,
+    title: "Own an Investment Property?",
+    description:
+      "We'll help you maximise rental deductions, depreciation claims, interest deductions and capital gains tax planning.",
+    cta: "Book a Property Tax Consultation"
+  },
+  {
+    icon: Briefcase,
+    title: "Run a Business?",
+    description:
+      "From sole traders to companies and trusts, we'll ensure your business stays compliant while identifying opportunities to legally minimise tax.",
+    cta: "Speak with a Business Tax Specialist"
+  },
+  {
+    icon: TrendingUp,
+    title: "High-Income Earner?",
+    description:
+      "If you're earning a high income, your tax strategy matters more than ever. We provide proactive advice to help reduce tax and protect your wealth.",
+    cta: "Arrange a Confidential Consultation"
+  }
 ];
 
 const faqItems = [
@@ -136,6 +172,20 @@ export default async function TaxServicesPage() {
 
   return (
     <main className="tax-services-page">
+      {/* Tax Time 2026 announcement banner — sits immediately under the
+          site navigation and stays visible while browsing the page. */}
+      <Link href="/contact" className="tax-announcement-banner">
+        <span className="tax-announcement-banner-inner">
+          <Calendar size={16} aria-hidden="true" />
+          <span>
+            <strong>Tax Time 2026</strong> · Appointments Now Available · Book
+            Your Tax Appointment
+          </span>
+          <ArrowRight size={16} aria-hidden="true" />
+        </span>
+      </Link>
+
+      {/* Hero — layout/buttons unchanged, copy updated */}
       <section className="tax-services-hero">
         <div className="container tax-services-hero-grid">
           <div className="tax-services-hero-content">
@@ -143,14 +193,17 @@ export default async function TaxServicesPage() {
               Investment Property Tax Returns • Business Tax Returns • Strategic Tax Advice
             </p>
 
-            <h1>Tax Advice That Works for You</h1>
+            <h1>Specialist tax returns and proactive tax advice for property
+              investors, business owners and high-income Australians.</h1>
+
+            <p className="tax-services-hero-subhead">
+              Pay Less Tax. Build More Wealth.
+            </p>
 
             <p className="lede">
-              Whether you&apos;re growing an investment portfolio, running a
-              business, or managing complex financial affairs, AATBS provides
-              practical tax advice tailored to your goals. Our experienced
-              accountants help you stay compliant, maximise legitimate tax
-              outcomes, and make informed financial decisions with confidence.
+              Whether you own one investment property or a growing business,
+              we&apos;ll help you maximise legitimate deductions, minimise tax
+              and keep more of what you&apos;ve earned.
             </p>
 
             <div className="tax-services-hero-buttons">
@@ -167,28 +220,28 @@ export default async function TaxServicesPage() {
 
           <div className="tax-services-hero-image">
             <Image
-              src="/team/principal.png"
+              src="/team/ABBY.png"
               alt="Adviser meeting with a client about tax services"
               fill
               sizes="(max-width: 900px) 100vw, 50vw"
               priority
-              style={{objectFit: "contain"}}
+              style={{ objectFit: "contain" }}
             />
           </div>
         </div>
       </section>
 
-      {/* Why choose AATBS — intro plus scannable trust-indicator grid */}
+      {/* Investment Property & Business Tax Specialists — reuses the
+          existing trust-card grid, wording updated for new positioning */}
       <section className="tax-services-why">
         <div className="container">
           <FadeIn className="tax-services-why-intro">
             <p className="eyebrow">Why Choose AATBS</p>
-            <h2>Trusted Tax Advice That Puts You First</h2>
+            <h2>Investment Property & Business Tax Specialists</h2>
             <p className="lede">
-              Tax advice should do more than keep you compliant. It should
-              give you clarity, confidence, and a strategy that supports your
-              financial goals. At AATBS, we take the time to understand your
-              circumstances before providing practical, personalised advice.
+              Helping Australians maximise deductions, reduce tax and build
+              long-term wealth through strategic accounting and taxation
+              advice.
             </p>
           </FadeIn>
 
@@ -205,177 +258,123 @@ export default async function TaxServicesPage() {
         </div>
       </section>
 
-      {/* Investment Property Tax Returns — media split with floating badge */}
-      <section id="investment-property" className="tax-services-property">
-        <div className="container tax-services-property-grid">
-          <FadeIn className="tax-services-property-media">
-            <div className="tax-services-property-image">
-              <Image
-                src="/photos/advisory-meeting.jpg"
-                alt="Investment property in Sydney"
-                fill
-                sizes="(max-width: 900px) 100vw, 46vw"
-              />
-            </div>
-            <div className="tax-services-property-badge">
-              <TrendingUp size={20} aria-hidden="true" />
-              <span>Multiple investment property portfolios welcome</span>
-            </div>
+      {/* Who We Help */}
+      <section className="tax-services-who">
+        <div className="container">
+          <FadeIn className="tax-services-who-intro">
+            <p className="eyebrow">Who We Help</p>
+            <h2>Tailored Tax Advice for Every Stage of Wealth</h2>
           </FadeIn>
 
-          <FadeIn className="tax-services-property-content">
-            <p className="eyebrow">Investment Property Tax Returns</p>
-            <h2>Maximise the Value of Your Investment Property</h2>
-            <p className="lede">
-              Whether you own your first investment property or manage a
-              growing portfolio, we&apos;ll help you understand your
-              obligations while identifying opportunities to improve your tax
-              position.
-            </p>
-
-            <ul className="tax-services-property-checklist">
-              {investmentServices.map((item) => (
-                <li key={item}>
-                  <CheckCircle2 size={18} aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Link
-  href="/contact"
-  className="tax-services-property-cta"
-  style={{
-    backgroundColor: "#b3924a",
-    borderColor: "#b3924a",
-    borderRadius: "5px",
-    fontWeight: 700
-  }}
->
-  Book an Investment Property Consultation
-  <ArrowRight size={18} aria-hidden="true" />
-</Link>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Business Tax Returns — image column + entity icon grid + service tags */}
-      <section id="business-tax" className="tax-services-business">
-        <div className="container tax-services-business-grid">
-          <div className="tax-services-business-media">
-            <div className="tax-services-business-image">
-              <Image
-                src="/photos/client-consultation.jpg"
-                alt="Adviser meeting with a business owner"
-                fill
-                sizes="(max-width: 900px) 100vw, 380px"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-
-            <Link href="/contact" className="button button-primary tax-services-business-cta">
-              Speak with a Business Tax Specialist
-              <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-          </div>
-
-          <div className="tax-services-business-content">
-            <FadeIn className="tax-services-business-intro">
-              <p className="eyebrow">Business Tax Returns</p>
-              <h2>Practical Tax Support for Growing Businesses</h2>
-              <p className="lede">
-                From sole traders to established companies, we provide
-                proactive accounting and taxation advice that helps businesses
-                stay compliant while planning confidently for the future.
-              </p>
-            </FadeIn>
-
-            <FadeIn className="tax-services-business-entities">
-              {businessEntities.map(({ icon: Icon, label }) => (
-                <div className="tax-services-entity-card" key={label}>
+          <FadeIn className="tax-services-who-grid">
+            {whoWeHelp.map(({ icon: Icon, title, description }) => (
+              <div className="tax-services-who-card" key={title}>
+                <span className="tax-services-who-icon">
                   <Icon size={24} aria-hidden="true" />
-                  <span>{label}</span>
-                </div>
-              ))}
-            </FadeIn>
-
-            <FadeIn className="tax-services-business-tags-wrap">
-              <ul className="tax-services-business-tags">
-                {businessServices.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategic Tax Advice — signature panel, distinct from the two treatments above */}
-      <section id="strategic-tax" className="tax-services-strategic">
-        <div className="container tax-services-strategic-inner">
-          <FadeIn>
-            <p className="eyebrow">Strategic Tax Advice</p>
-            <h2>Plan Ahead with Confidence</h2>
-            <p className="lede">
-              As your financial affairs become more complex, proactive tax
-              planning becomes increasingly important. We provide tailored
-              advice that helps you protect your assets, structure your
-              finances effectively, and plan for the future.
-            </p>
-          </FadeIn>
-
-          <FadeIn className="tax-services-strategic-quote">
-            <Quote size={28} aria-hidden="true" />
-            <p>
-              We also advise high net worth individuals on complex tax
-              matters, investment structures, family trusts, and long-term
-              tax planning.
-            </p>
-          </FadeIn>
-
-          <FadeIn className="tax-services-strategic-list-wrap">
-            <ul className="tax-services-strategic-list">
-              {strategicServices.map((item) => (
-                <li key={item}>
-                  <CheckCircle2 size={18} aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <Link href="/contact" className="button button-secondary">
-              Arrange a Confidential Consultation
-              <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Virtual Tax Appointments */}
-      <section className="tax-services-virtual">
-        <div className="container tax-services-virtual-grid">
-          <FadeIn>
-            <p className="eyebrow">Virtual Tax Appointments</p>
-            <h2>Professional Tax Advice, Wherever You Are</h2>
-            <p className="lede">
-              You don&apos;t need to visit one of our offices to receive
-              expert advice. We offer secure virtual consultations across
-              Sydney, making it easy to manage your tax affairs from wherever
-              you are.
-            </p>
-          </FadeIn>
-
-          <FadeIn className="tax-services-virtual-cards">
-            {virtualMethods.map(({ icon: Icon, label }) => (
-              <div className="tax-services-virtual-card" key={label}>
-                <Icon size={22} aria-hidden="true" />
-                <span>{label}</span>
+                </span>
+                <h3>{title}</h3>
+                <p>{description}</p>
               </div>
             ))}
           </FadeIn>
         </div>
       </section>
 
-      {/* Client Reviews */}
+      {/* Why Clients Choose Us — reuses the same trust-card style as above */}
+      <section className="tax-services-why-clients">
+        <div className="container">
+          <FadeIn className="tax-services-why-intro">
+            <p className="eyebrow">A Trusted Partner for Tax, Property and Business</p>
+            <h2>Why Clients Choose Us</h2>
+          </FadeIn>
+
+          <FadeIn className="tax-services-why-grid">
+            {whyClientsChooseUs.map(({ icon: Icon, label }) => (
+              <div className="tax-services-why-card" key={label}>
+                <span className="tax-services-why-icon">
+                  <Icon size={22} aria-hidden="true" />
+                </span>
+                <p>{label}</p>
+              </div>
+            ))}
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Looking for an Accountant Who Understands Your Situation? —
+          reuses the existing checklist markup/style, now paired with an image */}
+      <section className="tax-services-checklist-section">
+        <div className="container tax-services-checklist-layout">
+          <FadeIn className="tax-services-checklist-content">
+            <p className="eyebrow">Practical Advice, Tailored to You</p>
+            <h2 className="tax-services-checklist-heading">Looking for an Accountant Who Understands Your Situation?</h2>
+            <p className="lede">
+              Whether you&apos;re a property investor, business owner or
+              high-income earner, we provide practical accounting and
+              taxation advice tailored to your circumstances.
+            </p>
+
+            <ul className="tax-services-property-checklist">
+              {accountantChecklist.map((item) => (
+                <li key={item}>
+                  <CheckCircle2 size={18} aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="tax-services-hero-buttons tax-services-checklist-cta">
+        <a href={PHONE_HREF} className="button button-secondary">
+          <Phone size={18} aria-hidden="true" />
+          {PHONE_DISPLAY}
+        </a>
+
+        <Link href="/contact" className="button button-primary">
+          Book Consultation
+        </Link>
+      </div>
+          </FadeIn>
+
+          <FadeIn className="tax-services-checklist-media">
+            <div className="tax-services-checklist-image">
+              <Image
+                src="/photos/client-consultation.jpg"
+                alt="Accountant meeting with a client to discuss tax and business advice"
+                fill
+                sizes="(max-width: 900px) 100vw, 42vw"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Choose Your Situation */}
+      <section className="tax-services-situations">
+        <div className="container">
+          <FadeIn className="tax-services-situations-intro">
+            <p className="eyebrow">How Can We Help You?</p>
+            <h2>Expert Tax Advice Tailored to You</h2>
+          </FadeIn>
+
+          <FadeIn className="tax-services-situations-grid">
+            {situations.map(({ icon: Icon, title, description, cta }) => (
+              <div className="tax-services-situation-card" key={title}>
+                <span className="tax-services-situation-icon">
+                  <Icon size={24} aria-hidden="true" />
+                </span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <Link href="/contact" className="tax-services-property-cta">
+                  {cta}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Link>
+              </div>
+            ))}
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* What Clients Say About Us — kept exactly as-is */}
       <section className="google-review-section" aria-labelledby="google-review-heading">
         <div className="container google-review-grid">
           <FadeIn className="google-review-copy">
@@ -417,7 +416,7 @@ export default async function TaxServicesPage() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ — kept exactly as-is */}
       <section className="tax-services-faq">
         <div className="container tax-services-faq-inner">
           <FadeIn>
@@ -439,24 +438,23 @@ export default async function TaxServicesPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Final CTA — copy updated */}
       <section className="tax-services-final-cta">
         <div className="container tax-services-final-cta-inner">
           <FadeIn>
-            <p className="eyebrow">Ready to Get Started?</p>
+            <p className="eyebrow">Get Started</p>
 
-            <h2>Speak with an experienced tax accountant today.</h2>
+            <h2>Ready to Maximise Your Tax Outcome?</h2>
 
             <p className="tax-services-final-cta-sub">
-              Whether you&apos;re preparing your next tax return, investing in
-              property, growing your business, or planning ahead, we&apos;re
-              here to help you make informed financial decisions with
-              confidence.
+              Book your tax appointment today and let our experienced
+              accountants help you claim every deduction you&apos;re entitled
+              to.
             </p>
 
             <div className="tax-services-final-cta-buttons">
               <Link href="/contact" className="button button-primary">
-                Book a Free Consultation
+                Book Your Tax Return
               </Link>
 
               <a href={PHONE_HREF} className="button button-secondary">
@@ -464,6 +462,10 @@ export default async function TaxServicesPage() {
                 Give Us a Call
               </a>
             </div>
+
+            <p className="tax-services-final-cta-footer">
+              Helping Australians keep more of what they earn.
+            </p>
           </FadeIn>
         </div>
       </section>
