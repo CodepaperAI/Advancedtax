@@ -4304,3 +4304,613 @@ p {
     transition-duration: 0.01ms !important;
   }
 }
+/* ---------- Tax Time announcement banner (NEW) ---------- */
+
+.tax-announcement-banner {
+  display: block;
+  width: 100%;
+  background: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  text-decoration: none;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.tax-announcement-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tax-announcement-banner-inner svg {
+  flex-shrink: 0;
+}
+
+.tax-announcement-banner:hover,
+.tax-announcement-banner:focus-visible {
+  background: var(--gold-dark, #96793a);
+}
+
+/* ---------- Hero ---------- */
+
+.tax-services-hero {
+  padding: 2.5rem 0 3rem;
+  background: var(--navy, #10203f);
+  color: #fff;
+}
+
+.tax-services-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.tax-services-hero-content .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-hero-content h1 {
+  margin: 0.5rem 0 1rem;
+  color: #fff;
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.tax-services-hero-content .tax-services-hero-subhead {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 0.85rem;
+}
+
+.tax-services-hero-content .lede {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tax-services-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.tax-services-hero .button-secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: transparent;
+}
+
+.tax-services-hero .button-secondary:hover,
+.tax-services-hero .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-hero .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-hero .button-primary:hover,
+.tax-services-hero .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-hero-image {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+}
+
+.tax-services-hero-image img {
+  object-fit: contain;
+  object-position: bottom center;
+  transform: scale(1.05);
+  transform-origin: bottom center;
+}
+
+/* ---------- Why choose AATBS / Why Clients Choose Us ----------
+   Shared trust-card grid, reused by both the
+   "Investment Property & Business Tax Specialists" section and the
+   "Why Clients Choose Us" section. */
+
+.tax-services-why,
+.tax-services-who,
+.tax-services-why-clients,
+.tax-services-checklist-section,
+.tax-services-situations {
+  padding: 4rem 0;
+}
+
+.tax-services-why {
+  background: #fff;
+}
+
+.tax-services-who {
+  background: var(--navy-050, #f4f6fa);
+}
+
+.tax-services-why-clients {
+  background: #fff;
+}
+
+.tax-services-checklist-section {
+  background: var(--navy-050, #f4f6fa);
+}
+
+.tax-services-situations {
+  background: #fff;
+}
+
+.tax-services-why-intro,
+.tax-services-who-intro,
+.tax-services-situations-intro {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.tax-services-why-intro .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.tax-services-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.tax-services-why-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-lg, 12px);
+  background: var(--navy, #10203f);
+  box-shadow: 0 10px 24px -14px rgba(16, 32, 63, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.tax-services-why-card:hover,
+.tax-services-why-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -14px rgba(16, 32, 63, 0.6);
+  background: var(--navy-700, #1a2c52);
+}
+
+.tax-services-why-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.tax-services-why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--gold, #b3924a);
+}
+
+/* ---------- Who We Help (NEW cards, styled to match the palette above) ---------- */
+
+.tax-services-who-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.tax-services-who-card {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  background: #fff;
+  box-shadow: 0 10px 24px -16px rgba(16, 32, 63, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tax-services-who-card:hover,
+.tax-services-who-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -16px rgba(16, 32, 63, 0.4);
+}
+
+.tax-services-who-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--navy-050, #f4f6fa);
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-who-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--navy, #10203f);
+}
+
+.tax-services-who-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Looking for an Accountant Who Understands Your Situation? ----------
+   Reuses the existing checklist markup/style from the investment property
+   treatment; .tax-services-checklist-grid only adjusts spacing context. */
+
+.tax-services-checklist-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.tax-services-checklist-content {
+  max-width: 640px;
+}
+
+.tax-services-checklist-content .lede {
+  color: var(--navy-700, #3a4560);
+  margin-bottom: 1.5rem;
+}
+
+.tax-services-checklist-heading {
+  font-size: clamp(1.35rem, 2.2vw, 2.15rem);
+}
+
+.tax-services-checklist-cta .button-secondary {
+  background: #fff;
+  border-color: var(--navy-100, #dbe1ec);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-checklist-cta .button-secondary:hover,
+.tax-services-checklist-cta .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-checklist-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-checklist-cta .button-primary:hover,
+.tax-services-checklist-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-checklist-media {
+  position: relative;
+}
+
+.tax-services-checklist-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.tax-services-checklist-image img {
+  object-fit: cover;
+}
+
+.tax-services-property-checklist {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+}
+
+.tax-services-property-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.tax-services-property-checklist svg {
+  color: var(--gold, #b3924a);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* CTA pill button — used by the investment property checklist area and
+   reused by the "Choose Your Situation" cards below */
+.tax-services-property-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: var(--gold, #b3924a);
+  border: 1px solid var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tax-services-property-cta:hover,
+.tax-services-property-cta:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+}
+
+/* ---------- Choose Your Situation (NEW cards) ---------- */
+
+.tax-services-situations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.tax-services-situation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--navy-100, #dbe1ec);
+  background: var(--navy-050, #f4f6fa);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.tax-services-situation-card:hover,
+.tax-services-situation-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -18px rgba(16, 32, 63, 0.35);
+  border-color: var(--gold, #b3924a);
+}
+
+.tax-services-situation-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--navy, #10203f);
+  color: var(--gold, #b3924a);
+}
+
+.tax-services-situation-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--navy, #10203f);
+}
+
+.tax-services-situation-card p {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--navy-700, #3a4560);
+}
+
+.tax-services-situation-card .tax-services-property-cta {
+  margin-top: auto;
+}
+
+/* ---------- What Clients Say About Us ----------
+   Dark navy treatment. Base .google-review-* layout rules live in the
+   global stylesheet; these overrides adjust colors for the dark background. */
+
+.google-review-section {
+  background: var(--navy, #10203f);
+}
+
+.google-review-copy .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.google-review-copy h2 {
+  color: #fff;
+}
+
+.google-review-copy p {
+  color: rgb(255, 255, 255);
+}
+
+/* ---------- FAQ ---------- */
+
+.tax-services-faq {
+  padding: 4.5rem 0;
+  background: #fff;
+}
+
+.tax-services-faq-inner {
+  max-width: 800px;
+}
+
+.tax-services-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.tax-services-faq-item {
+  background: var(--navy-050, #f4f6fa);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.15rem 1.35rem;
+}
+
+.tax-services-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--navy, #10203f);
+  list-style: none;
+}
+
+.tax-services-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.tax-services-faq-item svg {
+  color: var(--gold, #b3924a);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.tax-services-faq-item[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.tax-services-faq-item p {
+  margin: 1rem 0 0;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Final CTA (copy updated, footer line added) ---------- */
+
+.tax-services-final-cta {
+  padding: 4.5rem 0;
+  background: var(--navy, #10203f);
+  color: #fff;
+  text-align: center;
+}
+
+.tax-services-final-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.tax-services-final-cta-sub {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tax-services-final-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.tax-services-final-cta-footer {
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.tax-services-final-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-final-cta .button-primary:hover,
+.tax-services-final-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-final-cta .button-secondary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.tax-services-final-cta .button-secondary:hover,
+.tax-services-final-cta .button-secondary:focus-visible {
+  border-color: var(--gold-dark, #96793a);
+  background: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+/* ---------- Breakpoints ---------- */
+
+@media (min-width: 640px) {
+  .tax-services-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tax-services-who-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tax-services-situations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tax-services-property-checklist {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .tax-services-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .tax-services-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tax-services-who-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tax-services-situations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tax-services-checklist-layout {
+    grid-template-columns: 1fr 42%;
+    gap: 3.5rem;
+  }
+
+  .tax-services-final-cta-buttons {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .tax-services-faq-item svg,
+  .tax-services-hero .button-secondary,
+  .tax-services-final-cta .button-secondary,
+  .tax-services-why-card,
+  .tax-services-who-card,
+  .tax-services-situation-card {
+    transition: none;
+    animation: none;
+  }
+}
