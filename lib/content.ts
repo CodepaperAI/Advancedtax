@@ -40,9 +40,9 @@ export const site = {
   mobileHref: "tel:+61412093385",
   email: "info@advancedtax.com.au",
   bookingHref: "/contact",
-  logoLight: "/brand/logo-light.svg",
-  logoDark: "/brand/logo.svg",
-  logoAbsolute: "https://www.advancedtax.com.au/brand/logo.svg",
+  logoLight: "/brand/logo-light.png",
+  logoDark: "/brand/logo.png",
+  logoAbsolute: "https://www.advancedtax.com.au/brand/logo.png",
   social: {
     facebook: "https://www.facebook.com/AdvancedAccountingBusinessServices/",
     instagram: "https://www.instagram.com/advancedaccounting_au/"
