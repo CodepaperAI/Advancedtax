@@ -263,7 +263,7 @@ export default async function TaxServicesPage() {
         <div className="container">
           <FadeIn className="tax-services-who-intro">
             <p className="eyebrow">Who We Help</p>
-            <h2>Tailored Tax Advice for Every Stage of Wealth</h2>
+            <h2>Tailored Tax Advice for Every Stage</h2>
           </FadeIn>
 
           <FadeIn className="tax-services-who-grid">
