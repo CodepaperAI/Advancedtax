@@ -92,6 +92,7 @@ const whyClientsChooseUs = [
 // Reuses the existing checklist markup/style (.tax-services-property-checklist)
 const accountantChecklist = [
   "Investment property tax returns",
+  "Self-Managed Super Fund tax returns"
   "Multiple property portfolios",
   "Business tax returns",
   "Company tax returns",
