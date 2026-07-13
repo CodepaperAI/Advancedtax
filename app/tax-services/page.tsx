@@ -214,7 +214,7 @@ export default async function TaxServicesPage() {
               </a>
 
               <Link href="/contact" className="button button-primary">
-                Book Consultation
+                Book A Virtual Consultation
               </Link>
             </div>
           </div>
@@ -330,7 +330,7 @@ export default async function TaxServicesPage() {
         </a>
 
         <Link href="/contact" className="button button-primary">
-          Book Consultation
+          Book A Virtual Consultation
         </Link>
       </div>
           </FadeIn>

@@ -38,7 +38,7 @@ export const site = {
   phoneHref: "tel:+61297340777",
   mobileDisplay: "0412 093 385",
   mobileHref: "tel:+61412093385",
-  email: "info@advancedtax.com.au",
+  email: "accountants@advancedtax.com.au",
   bookingHref: "/contact",
   logoLight: "/brand/logo-light.png",
   logoDark: "/brand/logo.png",
