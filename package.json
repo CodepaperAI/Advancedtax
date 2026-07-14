@@ -14,6 +14,7 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-signature-canvas": "^1.1.0-alpha.2",
     "resend": "^6.12.4",
     "tailwindcss": "latest"
   },
