@@ -90,7 +90,7 @@ export default function ClientInformationFormPage() {
 
       // Optional redirect after a short delay so the success message is visible.
       setTimeout(() => {
-        router.push("/thank-you");
+        router.push("/cis-thank-you");
       }, 1500);
     } catch (error) {
       console.error("Client information form submit failed", error);
