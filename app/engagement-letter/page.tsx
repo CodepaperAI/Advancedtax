@@ -44,11 +44,12 @@ export default function EngagementLetterPage() {
     const formData = new FormData(e.currentTarget);
 
     const payload = {
-      printedName: formData.get("printedName") as string,
-      signatureDate: formData.get("signatureDate") as string,
-      termsAccepted: formData.get("termsAccepted") as string,
-      signatureImage
-    };
+  printedName: formData.get("printedName") as string,
+  email: formData.get("email") as string,
+  signatureDate: formData.get("signatureDate") as string,
+  termsAccepted: formData.get("termsAccepted") as string,
+  signatureImage,
+};
 const response = await fetch("/api/engagement-letter", {
   method: "POST",
   headers: {
