@@ -5,15 +5,11 @@ export const runtime = "nodejs";
 
 const MAX_FIELD_LENGTH = 160;
 
-type IdVerificationPayload = {
-  clientName?: unknown;
-};
-
 type IdVerificationFields = {
   clientName: string;
 };
 
-function getText(value: unknown, maxLength = MAX_FIELD_LENGTH) {
+function getText(value: FormDataEntryValue | null, maxLength = MAX_FIELD_LENGTH) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 }
 
@@ -31,9 +27,9 @@ function getConfig() {
 export async function POST(request: Request) {
   const formData = await request.formData();
 
-const fields: IdVerificationFields = {
-  clientName: getText(formData.get("clientName")),
-};
+  const fields: IdVerificationFields = {
+    clientName: getText(formData.get("clientName")),
+  };
 
   if (!fields.clientName) {
     return NextResponse.json(
@@ -41,8 +37,6 @@ const fields: IdVerificationFields = {
       { status: 400 }
     );
   }
-
-  console.log("Config:", getConfig());
 
   const config = getConfig();
 
@@ -56,17 +50,9 @@ const fields: IdVerificationFields = {
   const resend = new Resend(config.apiKey);
 
   try {
-    console.log("About to send ID confirmation");
-
-    console.log({
-      from: config.from,
-      to: "egarcia@advancedtax.com.au",
-      clientName: fields.clientName,
-    });
-
     const result = await resend.emails.send({
       from: config.from,
-      to: "egarcia@advancedtax.com.au", // Change to accountants@advancedtax.com.au when ready
+      to: "egarcia@advancedtax.com.au", // Change to egarcia@advancedtax.com.au while testing if required
       subject: `Identity Verification Submitted - ${fields.clientName}`,
       text: [
         "Identity Verification Confirmation",
@@ -103,7 +89,60 @@ const fields: IdVerificationFields = {
       );
     }
 
-    return NextResponse.json({ ok: true });
+    return new NextResponse(
+      `
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <title>Thank You</title>
+          <style>
+            body{
+              margin:0;
+              font-family:Arial,Helvetica,sans-serif;
+              background:#f5f7fa;
+              display:flex;
+              justify-content:center;
+              align-items:center;
+              min-height:100vh;
+            }
+            .card{
+              background:#fff;
+              padding:48px;
+              max-width:600px;
+              border-radius:10px;
+              box-shadow:0 6px 18px rgba(0,0,0,.08);
+              text-align:center;
+            }
+            h1{
+              color:#005ea2;
+              margin-bottom:16px;
+            }
+            p{
+              color:#444;
+              line-height:1.7;
+              margin:0;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="card">
+            <h1>Thank You</h1>
+            <p>
+              Your forms have been successfully submitted.
+              Our team will review your information and contact you if any
+              additional details are required.
+            </p>
+          </div>
+        </body>
+      </html>
+      `,
+      {
+        headers: {
+          "Content-Type": "text/html",
+        },
+      }
+    );
   } catch (error) {
     console.error("========== ID VERIFICATION ERROR ==========");
     console.error(error);
