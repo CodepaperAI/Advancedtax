@@ -21,7 +21,7 @@ export default function ThankYouPage() {
 
         <p className="eyebrow">Almost Complete</p>
 
-        <h1>One Final Step</h1>
+        <h1>Finally,</h1>
 
         <p>
           Your Client Information Form and signed Engagement Letter have been

@@ -52,7 +52,7 @@ export async function POST(request: Request) {
   try {
     const result = await resend.emails.send({
       from: config.from,
-      to: "egarcia@advancedtax.com.au", // Change to egarcia@advancedtax.com.au while testing if required
+      to: "accountants@advancedtax.com.au", // Change to  while testing if required
       subject: `Identity Verification Submitted - ${fields.clientName}`,
       text: [
         "Identity Verification Confirmation",
@@ -74,7 +74,7 @@ export async function POST(request: Request) {
           </p>
 
           <p>
-            Please review the inbox and continue with the onboarding process.
+            Please review the inbox.
           </p>
         </div>
       `,
