@@ -121,7 +121,7 @@ setTimeout(() => {
               <p className="engagement-letter-paragraph">
                 Thank you for your instructions. We are pleased to accept an
                 appointment as your tax agent for your 2026 and outstanding
-                years tax returns if require.
+                years tax returns if applicable.
               </p>
               <p className="engagement-letter-paragraph">
                 At the outset, we need to enter into an agreement with you
