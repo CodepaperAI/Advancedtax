@@ -70,6 +70,7 @@ export default function ThankYouPage() {
           Once we have received your identification, our team will review your
           information and contact you if any additional details are required.
         </p>
+<form action="/api/id-verification" method="POST">
 <div style={{ marginTop: "28px", textAlign: "left" }}>
   <label
     htmlFor="clientName"
@@ -137,12 +138,13 @@ export default function ThankYouPage() {
           }}
         >
           <button
-            type="button"
-            className="button button-gold"
-          >
-            Submit Confirmation
-          </button>
+  type="submit"
+  className="button button-gold"
+>
+  Submit Confirmation
+</button>
         </div>
+        </form>
       </div>
     </section>
   );
