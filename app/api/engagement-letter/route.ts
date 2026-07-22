@@ -247,12 +247,12 @@ console.log("Config:", getConfig());
     console.log("About to send email");
 console.log({
   from: config.from,
-  to: "egarcia@advancedtax.com.au",
+  to: "accountants@advancedtax.com.au",
   replyTo: fields.email,
 });
     await resend.emails.send({
   from: config.from,
-  to: "egarcia@advancedtax.com.au",
+  to: "accountants@advancedtax.com.au",
   replyTo: fields.email,
   subject: `Signed Engagement Letter - ${fields.printedName}`,
   text: createEmailText(fields),
