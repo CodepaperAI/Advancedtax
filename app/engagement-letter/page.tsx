@@ -98,7 +98,7 @@ setTimeout(() => {
       <main className="engagement-letter-page">
         {/* Simple page heading — intentionally NOT a marketing hero */}
         <section className="engagement-letter-intro">
-          <h1 className="engagement-letter-title">Engagement Letter</h1>
+          <h1 className="engagement-letter-title">Step 2: Engagement Letter</h1>
           <p className="engagement-letter-subtitle">
             Please read the Engagement Letter below carefully, then sign and
             submit it to confirm your instructions.

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { Buffer } from "node:buffer";
 
 export const runtime = "nodejs";
 
@@ -197,11 +198,11 @@ function createEmailHtml(fields: ClientInformationFields) {
     ["Signature Date", fields.signatureDate]
   ];
 
-  const signatureImageHtml = fields.signatureImage
-    ? `<div style="margin-top:12px">
-         <img src="${fields.signatureImage}" alt="Client signature" style="max-width:320px;border:1px solid #d9d3c7;padding:8px;background:#fbfaf6" />
-       </div>`
-    : "";
+  const signatureImageHtml = `
+  <div style="margin-top:12px;padding:12px;border:1px solid #d9d3c7;background:#fbfaf6;">
+    <strong>Client signature:</strong> Attached as <em>client-signature.png</em>.
+  </div>
+`;
 
   return `
     <div style="font-family:Arial,sans-serif;color:#0f1f2e;line-height:1.5">
@@ -299,16 +300,28 @@ console.log("Config:", getConfig());
     console.log("About to send email");
 console.log({
   from: config.from,
-  to: "accountants@advancedtax.com.au",
+  to: "egarcia@advancedtax.com.au",
   replyTo: fields.email,
 });
+const signatureBase64 = fields.signatureImage.replace(
+  /^data:image\/\w+;base64,/,
+  ""
+);
+
+const signatureBuffer = Buffer.from(signatureBase64, "base64");
     const result = await resend.emails.send({
       from: config.from,
-      to: "accountants@advancedtax.com.au",
+      to: "egarcia@advancedtax.com.au",
       replyTo: fields.email,
       subject: `New Client Information Form - ${fields.firstName} ${fields.familyName}`,
       text: createEmailText(fields),
-      html: createEmailHtml(fields)
+      html: createEmailHtml(fields),
+      attachments: [
+        {
+          filename: "client-signature.png",
+          content: signatureBuffer,
+        },
+      ],
     });
 
     if (result.error) {

@@ -106,7 +106,7 @@ export default function ClientInformationFormPage() {
       <main className="client-form-page">
         {/* Simple page heading — intentionally NOT a marketing hero */}
         <section className="client-form-intro">
-          <h1 className="client-form-title">Client Information Form</h1>
+          <h1 className="client-form-title">Step 1: Client Information Form</h1>
           <p className="client-form-subtitle">
             Please complete the form below so we can prepare your taxation
             and accounting records accurately.

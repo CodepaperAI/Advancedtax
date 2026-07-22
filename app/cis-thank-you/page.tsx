@@ -22,7 +22,7 @@ export default function ThankYouPage() {
 
 <p className="eyebrow">Submission successful</p>
 
-<h1>Thank you!</h1>
+<h1>Finally,</h1>
 
 <p>
   Your Client Information Form and signed Engagement Letter have been
@@ -63,6 +63,8 @@ export default function ThankYouPage() {
 <p>
   Once we have received your identification, our team will review your
   information and contact you if any additional details are required.
+
+  Thank you!
 </p>
 
 <div className="thank-you-actions">
