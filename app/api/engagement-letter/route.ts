@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { Buffer } from "node:buffer";
 
 export const runtime = "nodejs";
 
@@ -247,16 +248,28 @@ console.log("Config:", getConfig());
     console.log("About to send email");
 console.log({
   from: config.from,
-  to: "accountants@advancedtax.com.au",
+  to: "egarcia@advancedtax.com.au",
   replyTo: fields.email,
 });
+const signatureBase64 = fields.signatureImage.replace(
+  /^data:image\/\w+;base64,/,
+  ""
+);
+
+const signatureBuffer = Buffer.from(signatureBase64, "base64");
     await resend.emails.send({
   from: config.from,
-  to: "accountants@advancedtax.com.au",
+  to: "egarcia@advancedtax.com.au",
   replyTo: fields.email,
   subject: `Signed Engagement Letter - ${fields.printedName}`,
   text: createEmailText(fields),
   html: createEmailHtml(fields),
+  attachments: [
+    {
+      filename: "engagement-letter-signature.png",
+      content: signatureBuffer,
+    },
+  ],
 });
 
 const result = await resend.emails.send({
@@ -265,6 +278,12 @@ const result = await resend.emails.send({
   subject: "Your Signed Engagement Letter",
   text: createEmailText(fields),
   html: createEmailHtml(fields),
+  attachments: [
+    {
+      filename: "engagement-letter-signature.png",
+      content: signatureBuffer,
+    },
+  ],
 });
 
     if (result.error) {
