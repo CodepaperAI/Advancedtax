@@ -74,7 +74,7 @@ formRef.current?.reset();
 signaturePadRef.current?.clear?.();
 
 setTimeout(() => {
-  router.push("/cis-thank-you");
+  router.push("/id-verification");
 }, 1500);
 
       // TODO: Once the above steps are implemented, redirect the client to
