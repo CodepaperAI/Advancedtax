@@ -136,14 +136,22 @@ console.log({
   to: "egarcia@advancedtax.com.au",
   replyTo: fields.email,
 });
-    const result = await resend.emails.send({
-      from: config.from,
-      to: "egarcia@advancedtax.com.au",
-      replyTo: fields.email,
-      subject: `Signed Engagement Letter - ${fields.printedName}`,
-      text: createEmailText(fields),
-      html: createEmailHtml(fields)
-    });
+    await resend.emails.send({
+  from: config.from,
+  to: "egarcia@advancedtax.com.au",
+  replyTo: fields.email,
+  subject: `Signed Engagement Letter - ${fields.printedName}`,
+  text: createEmailText(fields),
+  html: createEmailHtml(fields),
+});
+
+const result = await resend.emails.send({
+  from: config.from,
+  to: fields.email,
+  subject: "Your Signed Engagement Letter",
+  text: createEmailText(fields),
+  html: createEmailHtml(fields),
+});
 
     if (result.error) {
       console.error("Resend client information form error", result.error);
