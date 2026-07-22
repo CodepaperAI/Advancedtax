@@ -32,8 +32,8 @@ export default function ThankYouPage() {
 
 <p>
   <strong style={{ color: "#d32f2f" }}>
-  Identity Verification Required
-</strong>
+    <em>Final Step - Identity Verification Required</em>
+  </strong>
 </p>
 
 <p>
@@ -47,9 +47,12 @@ export default function ThankYouPage() {
 {" "}so we can complete the verification process.
 </p>
 
-<p>The following forms of identification are accepted:</p>
+<p>Please provide one (1) of the following acceptable forms of identification:</p>
 
-<ul className="thank-you-id-list">
+<ul
+  className="thank-you-id-list"
+  style={{ listStyleType: "disc", paddingLeft: "20px" }}
+>
   <li>Australian Driver Licence</li>
   <li>Australian or International Passport</li>
   <li>Proof of Age Card</li>
