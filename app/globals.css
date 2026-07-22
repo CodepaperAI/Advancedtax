@@ -264,9 +264,10 @@ p {
 }
 
 .desktop-nav {
+  margin-left: -150px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
 }
 
@@ -276,11 +277,15 @@ p {
 
 .nav-link {
   display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  min-width: max-content;
   padding: 12px 14px;
   border-radius: 4px;
   color: rgba(15, 31, 46, 0.72);
   font-size: 0.92rem;
   font-weight: 800;
+  white-space: nowrap;
   transition: color 180ms ease, background 180ms ease;
 }
 

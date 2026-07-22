@@ -90,7 +90,7 @@ export default function ClientInformationFormPage() {
 
       // Optional redirect after a short delay so the success message is visible.
       setTimeout(() => {
-        router.push("cis-thank-you");
+        router.push("engagement-letter");
       }, 1500);
     } catch (error) {
       console.error("Client information form submit failed", error);
@@ -329,31 +329,6 @@ export default function ClientInformationFormPage() {
               </fieldset>
             </div>
           </section>
-
-          {/* ---------------------------------------------------------- */}
-          {/* Terms                                                      */}
-          {/* ---------------------------------------------------------- */}
-          <section className="client-form-section client-form-terms">
-            <div className="client-form-section-header">
-              <h2>Terms</h2>
-            </div>
-            <div className="client-form-section-body">
-              <div className="client-form-terms-block">
-                <h3>CLIENTS Account Keeping Fee</h3>
-                <p className="client-form-placeholder-text">
-                  We agree that, in addition to any fees outlined in the agreed fee schedule, if our account with Advanced Accounting, Taxation & Business Services remains unpaid for more than 30 days from the invoice date, Advanced Accounting, Taxation & Business Services may, at its discretion, charge an account keeping fee in accordance with its terms and conditions. We acknowledge that professional fees remain payable for work completed, subject to the firm's refund policy and applicable consumer laws.
-                </p>
-              </div>
-
-              <div className="client-form-terms-block">
-                <h3>Acknowledgement of Terms of Engagement</h3>
-                <p className="client-form-placeholder-text">
-                  We acknowledge that we have read, understood, and agree to be bound by the Terms of Engagement and Fee Schedule provided by Advanced Accounting, Taxation & Business Services. We appoint Advanced Accounting, Taxation & Business Services as our authorised tax agent to act on our behalf in matters relating to the Australian Taxation Office, as authorised by this engagement.
-                </p>
-              </div>
-            </div>
-          </section>
-
           {/* ---------------------------------------------------------- */}
           {/* Signature                                                  */}
           {/* ---------------------------------------------------------- */}
@@ -393,6 +368,30 @@ export default function ClientInformationFormPage() {
                     {signatureError}
                   </p>
                 )}
+              </div>
+            </div>
+          </section>
+
+          {/* ---------------------------------------------------------- */}
+          {/* Terms                                                      */}
+          {/* ---------------------------------------------------------- */}
+          <section className="client-form-section client-form-terms">
+            <div className="client-form-section-header">
+              <h2>Terms</h2>
+            </div>
+            <div className="client-form-section-body">
+              <div className="client-form-terms-block">
+                <h3>CLIENTS Account Keeping Fee (NB ONLY applies if you do not pay your fees as agreed)</h3>
+                <p className="client-form-placeholder-text">
+                  We, the parties named in this Client Information Form, agree that, in addition to any fees outlined in the applicable Fee Schedule, should our account with Advanced Accounting, Taxation & Business Services remain outstanding for more than 30 days from the date of invoice, Advanced Accounting, Taxation & Business Services may, at its sole discretion, charge an additional Account Keeping Fee of $150, which we agree to pay. We further acknowledge that the professional fees of Advanced Accounting, Taxation & Business Services remain payable even if we choose not to proceed with or complete the requested services, subject to the firm's Refund Policy and applicable Australian Consumer Law.
+                </p>
+              </div>
+
+              <div className="client-form-terms-block">
+                <h3>Acknowledgement of Terms of Engagement</h3>
+                <p className="client-form-placeholder-text">
+                  We acknowledge that we have read, understood, and agree to be bound by the Terms of Engagement and Fee Schedule provided by Advanced Accounting, Taxation & Business Services. We appoint Advanced Accounting, Taxation & Business Services as our authorised tax agent to act on our behalf in matters relating to the Australian Taxation Office, as authorised by this engagement.
+                </p>
               </div>
             </div>
           </section>
