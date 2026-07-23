@@ -78,6 +78,7 @@ export function SiteFooter() {
         <span>{site.legal}</span>
         <Link href="/legal/privacy">Privacy</Link>
         <Link href="/legal/terms">Terms</Link>
+        <Link href="/legal/disclaimer">Disclaimer</Link>
       </div>
     </footer>
   );
