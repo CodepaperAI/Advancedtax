@@ -1,8 +1,7 @@
   import { createEngagementLetterPdf } from "@/lib/createEngagementLetterPdf";
   import { NextResponse } from "next/server";
   import { Resend } from "resend";
-  import { Buffer } from "node:buffer";
-
+  
   export const runtime = "nodejs";
 
   const MAX_FIELD_LENGTH = 2000;
@@ -131,24 +130,9 @@
           <strong>Fees:</strong>
             ${escapeHtml(fields.fees)}
             </p>
-
-            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-              Declaration
-            </h2>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              I declare that the information I have provided is true and correct to the best of my knowledge.
-            </p>
             <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
               I acknowledge that I have read, understood and agree to this Engagement Letter.
             </p>
-
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:28px 0 2px 0;">
-              Yours sincerely,
-            </p>
-            <p style="font-size:14px;font-weight:bold;line-height:1.6;color:#212824;margin:0 0 8px 0;">
-              Advanced Accounting, Taxation &amp; Business Services
-            </p>
-
           </div>
 
           <div style="border-top:1px solid #e1e5e1;background-color:#fbfbfa;padding:28px 40px 32px 40px;">
@@ -263,8 +247,13 @@
       replyTo: fields.email,
     });
 
-    // Generate the completed PDF
-   const pdfBuffer = Buffer.from("Temporary test");
+const pdfBuffer = await createEngagementLetterPdf({
+  printedName: fields.printedName,
+  email: fields.email,
+  fees: fields.fees,
+  signatureDate: fields.signatureDate,
+});
+
 console.log("3. Sending internal email");
     await resend.emails.send({
       from: config.from,
@@ -284,9 +273,13 @@ console.log("3. Sending internal email");
   <p>Kind regards,<br>
   <strong>Advanced Accounting Taxation &amp; Business Services</strong></p>
   `,
-      
+      attachments: [
+        {
+          filename: `Engagement Letter - ${fields.printedName}.pdf`,
+          content: pdfBuffer,
+        },
+      ],
     });
-
     const result = await resend.emails.send({
       from: config.from,
       to: fields.email,
@@ -303,7 +296,12 @@ console.log("3. Sending internal email");
 
   Advanced Accounting Taxation & Business Services`,
       html: createEmailHtml(fields),
-     
+      attachments: [
+        {
+          filename: `Engagement Letter - ${fields.printedName}.pdf`,
+          content: pdfBuffer,
+        },
+      ],
     });
       if (result.error) {
         console.error("Resend client information form error", result.error);
