@@ -229,26 +229,26 @@ export async function POST(request: Request) {
   }
 
   const fields: EngagementLetterFields = {
-  printedName: getText(payload.printedName, 160),
-  email: getText(payload.email, 320),
-  fees: getText(payload.fees, 100),
-  signatureDate: getText(payload.signatureDate, 40),
-  signatureImage: getText(payload.signatureImage, MAX_SIGNATURE_LENGTH),
-};
+    printedName: getText(payload.printedName, 160),
+    email: getText(payload.email, 320),
+    fees: getText(payload.fees, 100),
+    signatureDate: getText(payload.signatureDate, 40),
+    signatureImage: getText(payload.signatureImage, MAX_SIGNATURE_LENGTH),
+  };
 
- if (
-  !fields.printedName ||
-  !isEmail(fields.email) ||
-  !fields.fees ||
-  !fields.signatureDate ||
-  !fields.signatureImage
-) {
-  return NextResponse.json(
-    { error: "Please complete all required fields and try again." },
-    { status: 400 }
-  );
-}
-console.log("Config:", getConfig());
+  if (
+    !fields.printedName ||
+    !isEmail(fields.email) ||
+    !fields.fees ||
+    !fields.signatureDate
+  ) {
+    return NextResponse.json(
+      { error: "Please complete all required fields and try again." },
+      { status: 400 }
+    );
+  }
+
+  console.log("Config:", getConfig());
   const config = getConfig();
 
   if (!config) {
@@ -277,20 +277,24 @@ console.log("Config:", getConfig());
     signatureDate: fields.signatureDate,
   });
 
-  const signatureBase64 = fields.signatureImage.replace(
-    /^data:image\/\w+;base64,/,
-    ""
-  );
-
-  const signatureBuffer = Buffer.from(signatureBase64, "base64");
-
   await resend.emails.send({
     from: config.from,
     to: "egarcia@advancedtax.com.au",
     replyTo: fields.email,
-    subject: `Signed Engagement Letter - ${fields.printedName}`,
+    subject: ` Engagement Letter - ${fields.printedName}`,
     text: createEmailText(fields),
-    html: createEmailHtml(fields),
+    html: `
+<p>Dear ${escapeHtml(fields.printedName)},</p>
+
+<p>Please find your <strong>Engagement Letter</strong> attached.</p>
+
+<p>Please review the document, sign the attached PDF, and reply to this email with the signed copy.</p>
+
+<p>If you have any questions, please contact us.</p>
+
+<p>Kind regards,<br>
+<strong>Advanced Accounting Taxation &amp; Business Services</strong></p>
+`,
     attachments: [
   {
     filename: `Engagement Letter - ${fields.printedName}.pdf`,
@@ -302,8 +306,18 @@ console.log("Config:", getConfig());
   const result = await resend.emails.send({
     from: config.from,
     to: fields.email,
-    subject: "Your Signed Engagement Letter",
-    text: createEmailText(fields),
+    subject: `Action Required: Please Sign and Return Your Engagement Letter - ${fields.printedName}`,
+    text: `Dear ${fields.printedName},
+
+Please find your Engagement Letter attached.
+
+Kindly review the document, sign it, and reply to this email with the signed PDF attached.
+
+If you have any questions, please contact us.
+
+Kind regards,
+
+Advanced Accounting Taxation & Business Services`,
     html: createEmailHtml(fields),
     attachments: [
   {
