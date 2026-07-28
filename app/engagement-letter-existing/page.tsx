@@ -16,7 +16,6 @@ function getTodayIsoDate(): string {
 export default function EngagementLetterPage() {
   const formRef = useRef<HTMLFormElement>(null);
   const signaturePadRef = useRef<SignaturePadHandle>(null);
-  const [signatureError, setSignatureError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -26,21 +25,12 @@ export default function EngagementLetterPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const isSignatureEmpty = signaturePadRef.current?.isEmpty?.() ?? true;
-
-    if (isSignatureEmpty) {
-      setSignatureError("Please provide your signature before submitting.");
-      return;
-    }
-
-    setSignatureError(null);
     setSubmitError(null);
     setSubmitSuccess(false);
 
     // NOTE: assumes SignaturePadHandle exposes toDataURL(). Adjust the
     // method name here if your SignaturePad component uses a different one.
-    const signatureImage = signaturePadRef.current?.toDataURL?.() ?? "";
-
+    
     const formData = new FormData(e.currentTarget);
 
     const payload = {
@@ -49,7 +39,6 @@ export default function EngagementLetterPage() {
   fees: formData.get("fees") as string,
   signatureDate: formData.get("signatureDate") as string,
   termsAccepted: formData.get("termsAccepted") as string,
-  signatureImage,
 };
 const response = await fetch("/api/engagement-letter", {
   method: "POST",
@@ -266,18 +255,6 @@ setTimeout(() => {
                   the top of this file for the assumption this relies on.
                 */}
                 <SignaturePad ref={signaturePadRef} />
-
-                {/* Manual validation message for the signature pad, since
-                    a canvas can't use the native `required` attribute. */}
-                {signatureError && (
-                  <p
-                    className="engagement-letter-error-message"
-                    role="alert"
-                    style={{ color: "#c0392b", marginTop: "0.5rem" }}
-                  >
-                    {signatureError}
-                  </p>
-                )}
               </div>
             </div>
           </section>
