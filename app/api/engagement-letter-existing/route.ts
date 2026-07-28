@@ -264,20 +264,8 @@
     });
 
     // Generate the completed PDF
-    let pdfBuffer: Buffer;
-
-try {
-  pdfBuffer = await createEngagementLetterPdf({
-    printedName: fields.printedName,
-    email: fields.email,
-    fees: fields.fees,
-    signatureDate: fields.signatureDate,
-  });
-} catch (error) {
-  console.error("PDF generation failed:", error);
-  throw error;
-}
-
+   const pdfBuffer = Buffer.from("Temporary test");
+console.log("3. Sending internal email");
     await resend.emails.send({
       from: config.from,
       to: "egarcia@advancedtax.com.au",
@@ -296,12 +284,7 @@ try {
   <p>Kind regards,<br>
   <strong>Advanced Accounting Taxation &amp; Business Services</strong></p>
   `,
-      attachments: [
-    {
-      filename: `Engagement Letter - ${fields.printedName}.pdf`,
-      content: pdfBuffer,
-    },
-  ],
+      
     });
 
     const result = await resend.emails.send({
@@ -320,12 +303,7 @@ try {
 
   Advanced Accounting Taxation & Business Services`,
       html: createEmailHtml(fields),
-      attachments: [
-    {
-      filename: `Engagement Letter - ${fields.printedName}.pdf`,
-      content: pdfBuffer,
-    },
-  ],
+     
     });
       if (result.error) {
         console.error("Resend client information form error", result.error);
