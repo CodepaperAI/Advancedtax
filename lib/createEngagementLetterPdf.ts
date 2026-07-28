@@ -22,12 +22,10 @@ export async function createEngagementLetterPdf(fields: PdfFields) {
 
   const form = pdfDoc.getForm();
 
-  const form = pdfDoc.getForm();
-
-form.getTextField("printedName").setText(fields.printedName);
-form.getTextField("email").setText(fields.email);
-form.getTextField("fees").setText(fields.fees);
-form.getTextField("signatureDate").setText(fields.signatureDate);
+  form.getTextField("printedName").setText(fields.printedName);
+  form.getTextField("email").setText(fields.email);
+  form.getTextField("fees").setText(fields.fees);
+  form.getTextField("signatureDate").setText(fields.signatureDate);
 
 // Makes the PDF non-editable after filling it
 form.flatten();
