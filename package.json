@@ -13,6 +13,7 @@
     "framer-motion": "latest",
     "lucide-react": "latest",
     "next": "latest",
+    "pdf-lib": "^1.17.1",
     "react": "latest",
     "react-dom": "latest",
     "react-signature-canvas": "^1.1.0-alpha.2",

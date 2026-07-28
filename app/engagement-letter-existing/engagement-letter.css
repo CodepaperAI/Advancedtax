@@ -1,0 +1,366 @@
+/* ============================================================
+   engagement-letter.css
+   Styling for the Engagement Letter page.
+
+   All classes are prefixed with "engagement-letter-" to avoid
+   clashing with existing site styles.
+
+   Follows the same design language as client-information-form.css
+   (spacing, radius, section/card treatment, button styling), using
+   AATBS's brand tokens: navy, gold, Georgia headings, Arial body.
+   The document section is treated more like a printed letter than
+   a web form — narrower measure, serif body copy, generous rhythm.
+   ============================================================ */
+
+:root {
+  --engagement-letter-color-primary: #0d1b3e;
+  --engagement-letter-color-primary-dark: #060e22;
+  --engagement-letter-color-accent: #c9a84c;
+  --engagement-letter-color-bg: #f6f7f5;
+  --engagement-letter-color-surface: #ffffff;
+  --engagement-letter-color-border: #e1e5e1;
+  --engagement-letter-color-text: #212824;
+  --engagement-letter-color-text-muted: #5c6862;
+  --engagement-letter-font-heading: Georgia, "Times New Roman", serif;
+  --engagement-letter-font-body: Arial, Helvetica, sans-serif;
+  --engagement-letter-radius: 6px;
+  --engagement-letter-max-width: 980px;
+  --engagement-letter-document-max-width: 760px;
+}
+
+/* ------------------------------------------------------------
+   Page shell
+   ------------------------------------------------------------ */
+
+.engagement-letter-page {
+  background-color: var(--engagement-letter-color-bg);
+  color: var(--engagement-letter-color-text);
+  font-family: var(--engagement-letter-font-body);
+  padding-bottom: 64px;
+}
+
+/* ------------------------------------------------------------
+   Intro — simple heading, not a marketing hero
+   ------------------------------------------------------------ */
+
+.engagement-letter-intro {
+  max-width: var(--engagement-letter-max-width);
+  margin: 0 auto;
+  padding: 48px 24px 24px;
+}
+
+.engagement-letter-title {
+  font-family: var(--engagement-letter-font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--engagement-letter-color-primary-dark);
+  margin: 0 0 12px;
+}
+
+.engagement-letter-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--engagement-letter-color-text-muted);
+  margin: 0;
+  max-width: 65ch;
+}
+
+/* ------------------------------------------------------------
+   Form layout
+   ------------------------------------------------------------ */
+
+.engagement-letter-form {
+  max-width: var(--engagement-letter-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.engagement-letter-section {
+  background-color: var(--engagement-letter-color-surface);
+  border: 1px solid var(--engagement-letter-color-border);
+  border-radius: var(--engagement-letter-radius);
+  overflow: hidden;
+}
+
+.engagement-letter-section-header {
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--engagement-letter-color-border);
+  background-color: #fbfbfa;
+}
+
+.engagement-letter-section-header h2 {
+  margin: 0;
+  font-family: var(--engagement-letter-font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--engagement-letter-color-primary);
+}
+
+.engagement-letter-section-body {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ------------------------------------------------------------
+   The letter itself — styled as a document, not a form panel
+   ------------------------------------------------------------ */
+
+.engagement-letter-document {
+  border-top: 4px solid var(--engagement-letter-color-accent);
+}
+
+.engagement-letter-document .engagement-letter-section-body {
+  padding: 40px 48px 48px;
+  gap: 0;
+  max-width: var(--engagement-letter-document-max-width);
+  margin: 0 auto;
+}
+
+.engagement-letter-document h2 {
+  font-family: var(--engagement-letter-font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--engagement-letter-color-primary-dark);
+  margin: 32px 0 14px;
+}
+
+.engagement-letter-document h2:first-of-type {
+  margin-top: 8px;
+}
+
+.engagement-letter-salutation {
+  font-family: var(--engagement-letter-font-heading);
+  font-size: 1.05rem;
+  color: var(--engagement-letter-color-text);
+  margin: 0 0 24px;
+}
+
+.engagement-letter-paragraph {
+  font-family: var(--engagement-letter-font-heading);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--engagement-letter-color-text);
+  margin: 0 0 14px;
+}
+
+.engagement-letter-placeholder-text {
+  font-family: var(--engagement-letter-font-heading);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--engagement-letter-color-text-muted);
+  font-style: italic;
+  margin: 0 0 14px;
+}
+
+.engagement-letter-divider {
+  border: none;
+  border-top: 1px solid var(--engagement-letter-color-border);
+  margin: 28px 0;
+}
+
+.engagement-letter-signoff {
+  font-family: var(--engagement-letter-font-heading);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--engagement-letter-color-text);
+  margin: 32px 0 0;
+}
+
+/* ------------------------------------------------------------
+   Field grids (signature section)
+   ------------------------------------------------------------ */
+
+.engagement-letter-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.engagement-letter-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.engagement-letter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.engagement-letter-field--full {
+  grid-column: 1 / -1;
+}
+
+.engagement-letter-field label,
+.engagement-letter-field-label-static {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--engagement-letter-color-text);
+}
+
+/* ------------------------------------------------------------
+   Inputs
+   ------------------------------------------------------------ */
+
+.engagement-letter-section input[type="text"],
+.engagement-letter-section input[type="email"],
+.engagement-letter-section input[type="date"] {
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--engagement-letter-color-text);
+  background-color: var(--engagement-letter-color-surface);
+  border: 1px solid var(--engagement-letter-color-border);
+  border-radius: var(--engagement-letter-radius);
+  padding: 10px 12px;
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.engagement-letter-section input[type="text"]:focus,
+.engagement-letter-section input[type="date"]:focus {
+  outline: none;
+  border-color: var(--engagement-letter-color-primary);
+  box-shadow: 0 0 0 3px rgba(13, 27, 62, 0.12);
+}
+
+/* ------------------------------------------------------------
+   Required declaration checkbox
+   ------------------------------------------------------------ */
+
+.engagement-letter-checkbox {
+  display: flex;
+  border: 1px solid var(--engagement-letter-color-border);
+  border-radius: var(--engagement-letter-radius);
+  background-color: #fbfbfa;
+  padding: 16px 20px;
+}
+
+.engagement-letter-checkbox label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--engagement-letter-color-text);
+  cursor: pointer;
+}
+
+.engagement-letter-checkbox input[type="checkbox"] {
+  accent-color: var(--engagement-letter-color-primary);
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* ------------------------------------------------------------
+   Status messages
+   ------------------------------------------------------------ */
+
+.engagement-letter-error-message,
+.engagement-letter-success-message {
+  max-width: var(--engagement-letter-max-width);
+  margin: 0 auto;
+  padding: 12px 16px;
+  border-radius: var(--engagement-letter-radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.engagement-letter-error-message {
+  background-color: #fdecea;
+  border: 1px solid #f5c6c0;
+}
+
+.engagement-letter-success-message {
+  background-color: #eaf6ec;
+  border: 1px solid #bfe3c4;
+}
+
+/* ------------------------------------------------------------
+   Submit
+   ------------------------------------------------------------ */
+
+.engagement-letter-submit-row {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 8px;
+}
+
+.engagement-letter-submit-button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--engagement-letter-color-primary);
+  border: none;
+  border-radius: var(--engagement-letter-radius);
+  padding: 14px 48px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.engagement-letter-submit-button:hover:not(:disabled) {
+  background-color: var(--engagement-letter-color-primary-dark);
+}
+
+.engagement-letter-submit-button:focus-visible {
+  outline: 3px solid var(--engagement-letter-color-accent);
+  outline-offset: 2px;
+}
+
+.engagement-letter-submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+
+@media (max-width: 720px) {
+  .engagement-letter-grid--2 {
+    grid-template-columns: 1fr;
+  }
+
+  .engagement-letter-section-header {
+    padding: 16px 20px;
+  }
+
+  .engagement-letter-section-body {
+    padding: 20px 20px 24px;
+  }
+
+  .engagement-letter-document .engagement-letter-section-body {
+    padding: 28px 24px 32px;
+  }
+
+  .engagement-letter-title {
+    font-size: 1.6rem;
+  }
+
+  .engagement-letter-intro {
+    padding: 32px 20px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .engagement-letter-submit-button {
+    width: 100%;
+  }
+
+  .engagement-letter-document .engagement-letter-section-body {
+    padding: 24px 18px 28px;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .engagement-letter-section input,
+  .engagement-letter-submit-button {
+    transition: none;
+  }
+}
