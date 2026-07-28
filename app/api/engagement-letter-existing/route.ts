@@ -62,123 +62,35 @@
     ].join("\n");
   }
 
-  function createEmailHtml(fields: EngagementLetterFields) {
-    return `
-      <div style="background-color:#f6f7f5;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;">
-        <div style="max-width:640px;margin:0 auto;background-color:#ffffff;border:1px solid #e1e5e1;border-radius:6px;overflow:hidden;">
+function createEmailHtml(fields: EngagementLetterFields) {
+  return `
+    <div style="font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto;">
 
-          <div style="border-top:4px solid #1b4332;padding:32px 40px 8px 40px;">
+      <p>Dear ${escapeHtml(fields.printedName)},</p>
 
-            <p style="font-size:16px;line-height:1.5;color:#212824;margin:0 0 20px 0;">
-              Dear Client,
-            </p>
+      <p>Thank you for choosing <strong>Advanced Accounting Taxation &amp; Business Services</strong>.</p>
 
-            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-              Engagement as your tax agent for an individual income tax return
-            </h2>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              Thank you for your instructions. We are pleased to accept an appointment as your tax agent for your 2026 and outstanding years tax returns if require.
-            </p>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              At the outset, we need to enter into an agreement with you setting out the terms on which we will assist you, including how we will charge you for the work.
-            </p>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              This letter and the enclosed Terms of Business set out the terms of the engagement. Any additions will be by the written agreement of both parties. Please read this letter and the Terms of Business carefully. If the terms are acceptable to you, please sign and return this letter to us. If you do not return a signed copy of this letter, but continue to provide us with information and instructions, we will assume that you have accepted the terms contained in this letter.
-            </p>
+      <p>Please find your Engagement Letter attached to this email.</p>
 
-            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
+      <p>Kindly review the attached document. If you agree with the terms of engagement, please sign the designated signature section and reply to this email with the signed PDF attached.</p>
 
-            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-              Scope of services
-            </h2>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              As your tax agent we will prepare and lodge your individual income tax return for 2026 and outstanding years tax returns (&#8220;the Services&#8221;).
-            </p>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              In addition to the financial information required to complete your tax return, it is expected that you will make available all relevant source documentation to us.
-            </p>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              In preparing your individual tax return, we will rely on the documents and information provided, and representations made by you.
-            </p>
+      <p>If you have any questions or require any clarification before signing, please feel free to reply to this email or contact our office.</p>
 
-            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
+      <p>We look forward to assisting you.</p>
 
-            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-              Matters outside the scope of services
-            </h2>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              In performing the Services, we will not perform an audit or review. Accordingly, no assurances are made in this regard. This engagement cannot be relied upon to disclose irregularities including fraud, other illegal acts and errors that may exist. However, we will inform you of any such matters that come to our attention.
-            </p>
+      <br>
 
-            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
+      <p>
+        Kind regards,<br><br>
 
-            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-              Deduction of professional fees from your tax refund
-            </h2>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              It is agreed that fees for the Services will be deducted directly from any tax refund you receive. In accordance with the requirements of Advanced Accounting Taxation &amp; Business Services, your refund will be deposited into our Trust Account with our professional fees deducted and the balance of the funds forwarded to you as agreed.
-            </p>
+        <strong>Advanced Accounting Taxation &amp; Business Services</strong><br>
+        📞 (02) 9734 0777<br>
+        🌐 https://www.advancedtax.com.au
+      </p>
 
-            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
-
-            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
-
-            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-              Professional Fees
-            </h2>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-          <strong>Fees:</strong>
-            ${escapeHtml(fields.fees)}
-            </p>
-            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-              I acknowledge that I have read, understood and agree to this Engagement Letter.
-            </p>
-          </div>
-
-          <div style="border-top:1px solid #e1e5e1;background-color:#fbfbfa;padding:28px 40px 32px 40px;">
-
-            <h2 style="font-size:15px;font-weight:bold;color:#10281e;margin:0 0 16px 0;">
-              Client Declaration &amp; Signature
-            </h2>
-
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
-              <tr>
-                <td style="padding-right:16px;padding-bottom:14px;vertical-align:top;width:50%;">
-                  <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
-                    Printed Name
-                  </p>
-                  <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
-                    ${escapeHtml(fields.printedName)}
-                  </p>
-                </td>
-                <td style="padding-bottom:14px;vertical-align:top;width:50%;">
-                  <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
-                    Email Address
-                  </p>
-                  <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
-                    ${escapeHtml(fields.email)}
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding-right:16px;vertical-align:top;width:50%;">
-                  <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
-                    Date Signed
-                  </p>
-                  <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
-                    ${escapeHtml(fields.signatureDate)}
-                  </p>
-                </td>
-                <td style="vertical-align:top;width:50%;"></td>
-              </tr>
-            </table>
-
-          </div>
-
-        </div>
-      </div>
-    `;
-  }
+    </div>
+  `;
+}
 
 
   export async function POST(request: Request) {
@@ -258,7 +170,7 @@ console.log("3. Sending internal email");
     await resend.emails.send({
       from: config.from,
       to: "egarcia@advancedtax.com.au",
-      replyTo: fields.email,
+      replyTo:  "egarcia@advancedtax.com.au",
       subject: ` Engagement Letter - ${fields.printedName}`,
       text: createEmailText(fields),
       html: `
@@ -283,6 +195,7 @@ console.log("3. Sending internal email");
     const result = await resend.emails.send({
       from: config.from,
       to: fields.email,
+      replyTo: "egarcia@advancedtax.com.au",
       subject: `Action Required: Please Sign and Return Your Engagement Letter - ${fields.printedName}`,
       text: `Dear ${fields.printedName},
 
