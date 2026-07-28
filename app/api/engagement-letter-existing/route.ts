@@ -238,17 +238,29 @@ export async function POST(request: Request) {
 
 console.log("Received fields:", fields);
 
-  if (
-    !fields.printedName ||
-    !isEmail(fields.email) ||
-    !fields.fees ||
-    !fields.signatureDate
-  ) {
-    return NextResponse.json(
-      { error: "Please complete all required fields and try again." },
-      { status: 400 }
-    );
-  }
+ console.log({
+  printedName: fields.printedName,
+  email: fields.email,
+  emailValid: isEmail(fields.email),
+  fees: fields.fees,
+  signatureDate: fields.signatureDate,
+});
+
+if (!fields.printedName) {
+  return NextResponse.json({ error: "printedName is empty" }, { status: 400 });
+}
+
+if (!isEmail(fields.email)) {
+  return NextResponse.json({ error: "email is invalid" }, { status: 400 });
+}
+
+if (!fields.fees) {
+  return NextResponse.json({ error: "fees is empty" }, { status: 400 });
+}
+
+if (!fields.signatureDate) {
+  return NextResponse.json({ error: "signatureDate is empty" }, { status: 400 });
+}
 
   console.log("Config:", getConfig());
   const config = getConfig();
