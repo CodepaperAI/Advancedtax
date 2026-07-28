@@ -1,341 +1,348 @@
-import { createEngagementLetterPdf } from "@/lib/createEngagementLetterPdf";
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
-import { Buffer } from "node:buffer";
+  import { createEngagementLetterPdf } from "@/lib/createEngagementLetterPdf";
+  import { NextResponse } from "next/server";
+  import { Resend } from "resend";
+  import { Buffer } from "node:buffer";
 
-export const runtime = "nodejs";
+  export const runtime = "nodejs";
 
-const MAX_FIELD_LENGTH = 2000;
-const MAX_SIGNATURE_LENGTH = 5_000_000;
+  const MAX_FIELD_LENGTH = 2000;
+  const MAX_SIGNATURE_LENGTH = 5_000_000;
 
-type EngagementLetterPayload = {
-  printedName?: unknown;
-  email?: unknown;
-  fees?: unknown;
-  signatureDate?: unknown;
-};
-
-type EngagementLetterFields = {
-  printedName: string;
-  email: string;
-  fees: string;
- signatureDate: string;
-};
-
-function getText(value: unknown, maxLength = MAX_FIELD_LENGTH) {
-  return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
-}
-
-function isEmail(value: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-function getConfig() {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL;
-
-  if (!apiKey || !from) {
-    return null;
-  }
-
-  return { apiKey, from };
-}
-
-function createEmailText(fields: EngagementLetterFields) {
-  return [
-    "Signed Engagement Letter",
-    "",
-    `Printed Name: ${fields.printedName}`,
-    `Email: ${fields.email}`,
-    `Fees: ${fields.fees}`,
-    `Date Signed: ${fields.signatureDate}`,
-    "",
-    "The client's signature is included in the HTML version of this email."
-  ].join("\n");
-}
-
-function createEmailHtml(fields: EngagementLetterFields) {
-  return `
-    <div style="background-color:#f6f7f5;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;">
-      <div style="max-width:640px;margin:0 auto;background-color:#ffffff;border:1px solid #e1e5e1;border-radius:6px;overflow:hidden;">
-
-        <div style="border-top:4px solid #1b4332;padding:32px 40px 8px 40px;">
-
-          <p style="font-size:16px;line-height:1.5;color:#212824;margin:0 0 20px 0;">
-            Dear Client,
-          </p>
-
-          <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-            Engagement as your tax agent for an individual income tax return
-          </h2>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            Thank you for your instructions. We are pleased to accept an appointment as your tax agent for your 2026 and outstanding years tax returns if require.
-          </p>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            At the outset, we need to enter into an agreement with you setting out the terms on which we will assist you, including how we will charge you for the work.
-          </p>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            This letter and the enclosed Terms of Business set out the terms of the engagement. Any additions will be by the written agreement of both parties. Please read this letter and the Terms of Business carefully. If the terms are acceptable to you, please sign and return this letter to us. If you do not return a signed copy of this letter, but continue to provide us with information and instructions, we will assume that you have accepted the terms contained in this letter.
-          </p>
-
-          <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
-
-          <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-            Scope of services
-          </h2>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            As your tax agent we will prepare and lodge your individual income tax return for 2026 and outstanding years tax returns (&#8220;the Services&#8221;).
-          </p>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            In addition to the financial information required to complete your tax return, it is expected that you will make available all relevant source documentation to us.
-          </p>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            In preparing your individual tax return, we will rely on the documents and information provided, and representations made by you.
-          </p>
-
-          <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
-
-          <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-            Matters outside the scope of services
-          </h2>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            In performing the Services, we will not perform an audit or review. Accordingly, no assurances are made in this regard. This engagement cannot be relied upon to disclose irregularities including fraud, other illegal acts and errors that may exist. However, we will inform you of any such matters that come to our attention.
-          </p>
-
-          <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
-
-          <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-            Deduction of professional fees from your tax refund
-          </h2>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            It is agreed that fees for the Services will be deducted directly from any tax refund you receive. In accordance with the requirements of Advanced Accounting Taxation &amp; Business Services, your refund will be deposited into our Trust Account with our professional fees deducted and the balance of the funds forwarded to you as agreed.
-          </p>
-
-          <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
-
-          <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
-
-          <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-            Professional Fees
-          </h2>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-         <strong>Fees:</strong>
-          ${escapeHtml(fields.fees)}
-          </p>
-
-          <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
-            Declaration
-          </h2>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            I declare that the information I have provided is true and correct to the best of my knowledge.
-          </p>
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
-            I acknowledge that I have read, understood and agree to this Engagement Letter.
-          </p>
-
-          <p style="font-size:14px;line-height:1.6;color:#212824;margin:28px 0 2px 0;">
-            Yours sincerely,
-          </p>
-          <p style="font-size:14px;font-weight:bold;line-height:1.6;color:#212824;margin:0 0 8px 0;">
-            Advanced Accounting, Taxation &amp; Business Services
-          </p>
-
-        </div>
-
-        <div style="border-top:1px solid #e1e5e1;background-color:#fbfbfa;padding:28px 40px 32px 40px;">
-
-          <h2 style="font-size:15px;font-weight:bold;color:#10281e;margin:0 0 16px 0;">
-            Client Declaration &amp; Signature
-          </h2>
-
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
-            <tr>
-              <td style="padding-right:16px;padding-bottom:14px;vertical-align:top;width:50%;">
-                <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
-                  Printed Name
-                </p>
-                <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
-                  ${escapeHtml(fields.printedName)}
-                </p>
-              </td>
-              <td style="padding-bottom:14px;vertical-align:top;width:50%;">
-                <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
-                  Email Address
-                </p>
-                <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
-                  ${escapeHtml(fields.email)}
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding-right:16px;vertical-align:top;width:50%;">
-                <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
-                  Date Signed
-                </p>
-                <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
-                  ${escapeHtml(fields.signatureDate)}
-                </p>
-              </td>
-              <td style="vertical-align:top;width:50%;"></td>
-            </tr>
-          </table>
-
-        </div>
-
-      </div>
-    </div>
-  `;
-}
-
-
-export async function POST(request: Request) {
-  let payload: EngagementLetterPayload;
-
-  try {
-    payload = await request.json();
-  } catch {
-    return NextResponse.json(
-      { error: "Please complete the form and try again." },
-      { status: 400 }
-    );
-  }
-
-  const fields: EngagementLetterFields = {
-    printedName: getText(payload.printedName, 160),
-    email: getText(payload.email, 320),
-    fees: getText(payload.fees, 100),
-    signatureDate: getText(payload.signatureDate, 40),
+  type EngagementLetterPayload = {
+    printedName?: unknown;
+    email?: unknown;
+    fees?: unknown;
+    signatureDate?: unknown;
   };
 
-console.log("Received fields:", fields);
+  type EngagementLetterFields = {
+    printedName: string;
+    email: string;
+    fees: string;
+  signatureDate: string;
+  };
 
- console.log({
-  printedName: fields.printedName,
-  email: fields.email,
-  emailValid: isEmail(fields.email),
-  fees: fields.fees,
-  signatureDate: fields.signatureDate,
-});
-
-if (!fields.printedName) {
-  return NextResponse.json({ error: "printedName is empty" }, { status: 400 });
-}
-
-if (!isEmail(fields.email)) {
-  return NextResponse.json({ error: "email is invalid" }, { status: 400 });
-}
-
-if (!fields.fees) {
-  return NextResponse.json({ error: "fees is empty" }, { status: 400 });
-}
-
-if (!fields.signatureDate) {
-  return NextResponse.json({ error: "signatureDate is empty" }, { status: 400 });
-}
-
-  console.log("Config:", getConfig());
-  const config = getConfig();
-
-  if (!config) {
-    return NextResponse.json(
-      { error: "Email delivery is not configured yet." },
-      { status: 500 }
-    );
+  function getText(value: unknown, maxLength = MAX_FIELD_LENGTH) {
+    return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
   }
 
-  const resend = new Resend(config.apiKey);
+  function isEmail(value: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
 
-  try {
-  console.log("About to send email");
+  function escapeHtml(value: string) {
+    return value
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function getConfig() {
+    const apiKey = process.env.RESEND_API_KEY;
+    const from = process.env.RESEND_FROM_EMAIL;
+
+    if (!apiKey || !from) {
+      return null;
+    }
+
+    return { apiKey, from };
+  }
+
+  function createEmailText(fields: EngagementLetterFields) {
+    return [
+      "Signed Engagement Letter",
+      "",
+      `Printed Name: ${fields.printedName}`,
+      `Email: ${fields.email}`,
+      `Fees: ${fields.fees}`,
+      `Date Signed: ${fields.signatureDate}`,
+      "",
+      "The client's signature is included in the HTML version of this email."
+    ].join("\n");
+  }
+
+  function createEmailHtml(fields: EngagementLetterFields) {
+    return `
+      <div style="background-color:#f6f7f5;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;">
+        <div style="max-width:640px;margin:0 auto;background-color:#ffffff;border:1px solid #e1e5e1;border-radius:6px;overflow:hidden;">
+
+          <div style="border-top:4px solid #1b4332;padding:32px 40px 8px 40px;">
+
+            <p style="font-size:16px;line-height:1.5;color:#212824;margin:0 0 20px 0;">
+              Dear Client,
+            </p>
+
+            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
+              Engagement as your tax agent for an individual income tax return
+            </h2>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              Thank you for your instructions. We are pleased to accept an appointment as your tax agent for your 2026 and outstanding years tax returns if require.
+            </p>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              At the outset, we need to enter into an agreement with you setting out the terms on which we will assist you, including how we will charge you for the work.
+            </p>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              This letter and the enclosed Terms of Business set out the terms of the engagement. Any additions will be by the written agreement of both parties. Please read this letter and the Terms of Business carefully. If the terms are acceptable to you, please sign and return this letter to us. If you do not return a signed copy of this letter, but continue to provide us with information and instructions, we will assume that you have accepted the terms contained in this letter.
+            </p>
+
+            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
+
+            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
+              Scope of services
+            </h2>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              As your tax agent we will prepare and lodge your individual income tax return for 2026 and outstanding years tax returns (&#8220;the Services&#8221;).
+            </p>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              In addition to the financial information required to complete your tax return, it is expected that you will make available all relevant source documentation to us.
+            </p>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              In preparing your individual tax return, we will rely on the documents and information provided, and representations made by you.
+            </p>
+
+            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
+
+            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
+              Matters outside the scope of services
+            </h2>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              In performing the Services, we will not perform an audit or review. Accordingly, no assurances are made in this regard. This engagement cannot be relied upon to disclose irregularities including fraud, other illegal acts and errors that may exist. However, we will inform you of any such matters that come to our attention.
+            </p>
+
+            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
+
+            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
+              Deduction of professional fees from your tax refund
+            </h2>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              It is agreed that fees for the Services will be deducted directly from any tax refund you receive. In accordance with the requirements of Advanced Accounting Taxation &amp; Business Services, your refund will be deposited into our Trust Account with our professional fees deducted and the balance of the funds forwarded to you as agreed.
+            </p>
+
+            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
+
+            <hr style="border:none;border-top:1px solid #e1e5e1;margin:24px 0;" />
+
+            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
+              Professional Fees
+            </h2>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+          <strong>Fees:</strong>
+            ${escapeHtml(fields.fees)}
+            </p>
+
+            <h2 style="font-size:16px;font-weight:bold;color:#10281e;margin:24px 0 10px 0;">
+              Declaration
+            </h2>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              I declare that the information I have provided is true and correct to the best of my knowledge.
+            </p>
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:0 0 12px 0;">
+              I acknowledge that I have read, understood and agree to this Engagement Letter.
+            </p>
+
+            <p style="font-size:14px;line-height:1.6;color:#212824;margin:28px 0 2px 0;">
+              Yours sincerely,
+            </p>
+            <p style="font-size:14px;font-weight:bold;line-height:1.6;color:#212824;margin:0 0 8px 0;">
+              Advanced Accounting, Taxation &amp; Business Services
+            </p>
+
+          </div>
+
+          <div style="border-top:1px solid #e1e5e1;background-color:#fbfbfa;padding:28px 40px 32px 40px;">
+
+            <h2 style="font-size:15px;font-weight:bold;color:#10281e;margin:0 0 16px 0;">
+              Client Declaration &amp; Signature
+            </h2>
+
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
+              <tr>
+                <td style="padding-right:16px;padding-bottom:14px;vertical-align:top;width:50%;">
+                  <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
+                    Printed Name
+                  </p>
+                  <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
+                    ${escapeHtml(fields.printedName)}
+                  </p>
+                </td>
+                <td style="padding-bottom:14px;vertical-align:top;width:50%;">
+                  <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
+                    Email Address
+                  </p>
+                  <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
+                    ${escapeHtml(fields.email)}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-right:16px;vertical-align:top;width:50%;">
+                  <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px 0;">
+                    Date Signed
+                  </p>
+                  <p style="font-size:14px;color:#212824;margin:0;border-bottom:1px solid #e1e5e1;padding-bottom:6px;">
+                    ${escapeHtml(fields.signatureDate)}
+                  </p>
+                </td>
+                <td style="vertical-align:top;width:50%;"></td>
+              </tr>
+            </table>
+
+          </div>
+
+        </div>
+      </div>
+    `;
+  }
+
+
+  export async function POST(request: Request) {
+    let payload: EngagementLetterPayload;
+
+    try {
+      payload = await request.json();
+    } catch {
+      return NextResponse.json(
+        { error: "Please complete the form and try again." },
+        { status: 400 }
+      );
+    }
+
+    const fields: EngagementLetterFields = {
+      printedName: getText(payload.printedName, 160),
+      email: getText(payload.email, 320),
+      fees: getText(payload.fees, 100),
+      signatureDate: getText(payload.signatureDate, 40),
+    };
+
+  console.log("Received fields:", fields);
 
   console.log({
-    from: config.from,
-    to: "egarcia@advancedtax.com.au",
-    replyTo: fields.email,
+    printedName: fields.printedName,
+    email: fields.email,
+    emailValid: isEmail(fields.email),
+    fees: fields.fees,
+    signatureDate: fields.signatureDate,
   });
 
-  // Generate the completed PDF
-  const pdfBuffer = await createEngagementLetterPdf({
+  if (!fields.printedName) {
+    return NextResponse.json({ error: "printedName is empty" }, { status: 400 });
+  }
+
+  if (!isEmail(fields.email)) {
+    return NextResponse.json({ error: "email is invalid" }, { status: 400 });
+  }
+
+  if (!fields.fees) {
+    return NextResponse.json({ error: "fees is empty" }, { status: 400 });
+  }
+
+  if (!fields.signatureDate) {
+    return NextResponse.json({ error: "signatureDate is empty" }, { status: 400 });
+  }
+
+    console.log("Config:", getConfig());
+    const config = getConfig();
+
+    if (!config) {
+      return NextResponse.json(
+        { error: "Email delivery is not configured yet." },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(config.apiKey);
+
+    try {
+    console.log("About to send email");
+
+    console.log({
+      from: config.from,
+      to: "egarcia@advancedtax.com.au",
+      replyTo: fields.email,
+    });
+
+    // Generate the completed PDF
+    let pdfBuffer: Buffer;
+
+try {
+  pdfBuffer = await createEngagementLetterPdf({
     printedName: fields.printedName,
     email: fields.email,
     fees: fields.fees,
     signatureDate: fields.signatureDate,
   });
+} catch (error) {
+  console.error("PDF generation failed:", error);
+  throw error;
+}
 
-  await resend.emails.send({
-    from: config.from,
-    to: "egarcia@advancedtax.com.au",
-    replyTo: fields.email,
-    subject: ` Engagement Letter - ${fields.printedName}`,
-    text: createEmailText(fields),
-    html: `
-<p>Dear ${escapeHtml(fields.printedName)},</p>
+    await resend.emails.send({
+      from: config.from,
+      to: "egarcia@advancedtax.com.au",
+      replyTo: fields.email,
+      subject: ` Engagement Letter - ${fields.printedName}`,
+      text: createEmailText(fields),
+      html: `
+  <p>Dear ${escapeHtml(fields.printedName)},</p>
 
-<p>Please find your <strong>Engagement Letter</strong> attached.</p>
+  <p>Please find your <strong>Engagement Letter</strong> attached.</p>
 
-<p>Please review the document, sign the attached PDF, and reply to this email with the signed copy.</p>
+  <p>Please review the document, sign the attached PDF, and reply to this email with the signed copy.</p>
 
-<p>If you have any questions, please contact us.</p>
+  <p>If you have any questions, please contact us.</p>
 
-<p>Kind regards,<br>
-<strong>Advanced Accounting Taxation &amp; Business Services</strong></p>
-`,
-    attachments: [
-  {
-    filename: `Engagement Letter - ${fields.printedName}.pdf`,
-    content: pdfBuffer,
-  },
-],
-  });
+  <p>Kind regards,<br>
+  <strong>Advanced Accounting Taxation &amp; Business Services</strong></p>
+  `,
+      attachments: [
+    {
+      filename: `Engagement Letter - ${fields.printedName}.pdf`,
+      content: pdfBuffer,
+    },
+  ],
+    });
 
-  const result = await resend.emails.send({
-    from: config.from,
-    to: fields.email,
-    subject: `Action Required: Please Sign and Return Your Engagement Letter - ${fields.printedName}`,
-    text: `Dear ${fields.printedName},
+    const result = await resend.emails.send({
+      from: config.from,
+      to: fields.email,
+      subject: `Action Required: Please Sign and Return Your Engagement Letter - ${fields.printedName}`,
+      text: `Dear ${fields.printedName},
 
-Please find your Engagement Letter attached.
+  Please find your Engagement Letter attached.
 
-Kindly review the document, sign it, and reply to this email with the signed PDF attached.
+  Kindly review the document, sign it, and reply to this email with the signed PDF attached.
 
-If you have any questions, please contact us.
+  If you have any questions, please contact us.
 
-Kind regards,
+  Kind regards,
 
-Advanced Accounting Taxation & Business Services`,
-    html: createEmailHtml(fields),
-    attachments: [
-  {
-    filename: `Engagement Letter - ${fields.printedName}.pdf`,
-    content: pdfBuffer,
-  },
-],
-  });
-    if (result.error) {
-      console.error("Resend client information form error", result.error);
+  Advanced Accounting Taxation & Business Services`,
+      html: createEmailHtml(fields),
+      attachments: [
+    {
+      filename: `Engagement Letter - ${fields.printedName}.pdf`,
+      content: pdfBuffer,
+    },
+  ],
+    });
+      if (result.error) {
+        console.error("Resend client information form error", result.error);
+        return NextResponse.json(
+          { error: "We could not send your form. Please call or email us." },
+          { status: 502 }
+        );
+      }
+
+      return NextResponse.json({ ok: true });
+    } catch (error) {
+      console.error("========== CLIENT FORM ERROR ==========");
+  console.error(error);
+  console.error("======================================");
       return NextResponse.json(
         { error: "We could not send your form. Please call or email us." },
-        { status: 502 }
+        { status: 500 }
       );
     }
-
-    return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error("========== CLIENT FORM ERROR ==========");
-console.error(error);
-console.error("======================================");
-    return NextResponse.json(
-      { error: "We could not send your form. Please call or email us." },
-      { status: 500 }
-    );
   }
-}
