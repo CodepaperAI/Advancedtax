@@ -22,6 +22,13 @@ export async function createEngagementLetterPdf(fields: PdfFields) {
 
   const form = pdfDoc.getForm();
 
+console.log(
+  form.getFields().map((field) => ({
+    name: field.getName(),
+    type: field.constructor.name,
+  }))
+);
+
   form.getTextField("printedName").setText(fields.printedName);
   form.getTextField("email").setText(fields.email);
   form.getTextField("fees").setText(fields.fees);
