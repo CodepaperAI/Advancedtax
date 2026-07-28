@@ -13,7 +13,6 @@ type EngagementLetterPayload = {
   email?: unknown;
   fees?: unknown;
   signatureDate?: unknown;
-  signatureImage?: unknown;
 };
 
 type EngagementLetterFields = {
@@ -21,7 +20,6 @@ type EngagementLetterFields = {
   email: string;
   fees: string;
  signatureDate: string;
-  signatureImage: string;
 };
 
 function getText(value: unknown, maxLength = MAX_FIELD_LENGTH) {
@@ -191,23 +189,6 @@ function createEmailHtml(fields: EngagementLetterFields) {
             </tr>
           </table>
 
-          <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 8px 0;">
-            Client Signature
-          </p>
-          <img
-            src="${fields.signatureImage}"
-            alt="Client Signature"
-            style="
-              max-width:280px;
-              max-height:100px;
-              display:block;
-              border:1px solid #e1e5e1;
-              border-radius:6px;
-              padding:10px;
-              background:#ffffff;
-            "
-          />
-
         </div>
 
       </div>
@@ -233,7 +214,6 @@ export async function POST(request: Request) {
     email: getText(payload.email, 320),
     fees: getText(payload.fees, 100),
     signatureDate: getText(payload.signatureDate, 40),
-    signatureImage: getText(payload.signatureImage, MAX_SIGNATURE_LENGTH),
   };
 
 console.log("Received fields:", fields);

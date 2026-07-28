@@ -3,7 +3,6 @@
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./engagement-letter.css";
-import { SignaturePad, type SignaturePadHandle } from "@/components/SignaturePad";
 
 function getTodayIsoDate(): string {
   const now = new Date();
@@ -15,7 +14,6 @@ function getTodayIsoDate(): string {
 
 export default function EngagementLetterPage() {
   const formRef = useRef<HTMLFormElement>(null);
-  const signaturePadRef = useRef<SignaturePadHandle>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -61,7 +59,6 @@ if (!response.ok) {
       setSubmitSuccess(true);
 
 formRef.current?.reset();
-signaturePadRef.current?.clear?.();
 
 setTimeout(() => {
   router.push("/ef-thankyou");
@@ -245,29 +242,22 @@ setTimeout(() => {
   </div>
 </div>
 
-              <div className="engagement-letter-field engagement-letter-field--full">
-                <span className="engagement-letter-field-label-static">
-                  Digital Signature
-                </span>
                 {/*
                   The ref lets handleSubmit() ask the pad whether anything
                   has been drawn yet — see the SignaturePadHandle note near
                   the top of this file for the assumption this relies on.
                 */}
-                <SignaturePad ref={signaturePadRef} />
+              <div className="engagement-letter-checkbox">
+                <label>
+                  <input type="checkbox" name="termsAccepted" required />
+                  <span>
+                    I have read, understood and agree to the terms of this
+                    Engagement Letter.
+                  </span>
+                </label>
               </div>
             </div>
           </section>
-
-          <div className="engagement-letter-checkbox">
-            <label>
-              <input type="checkbox" name="termsAccepted" required />
-              <span>
-                I have read, understood and agree to the terms of this
-                Engagement Letter.
-              </span>
-            </label>
-          </div>
 
           {/* ---------------------------------------------------------- */}
           {/* Submit                                                     */}
