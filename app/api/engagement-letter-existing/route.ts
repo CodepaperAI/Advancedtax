@@ -236,6 +236,8 @@ export async function POST(request: Request) {
     signatureImage: getText(payload.signatureImage, MAX_SIGNATURE_LENGTH),
   };
 
+console.log("Received fields:", fields);
+
   if (
     !fields.printedName ||
     !isEmail(fields.email) ||
