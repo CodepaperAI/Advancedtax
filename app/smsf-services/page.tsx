@@ -770,42 +770,6 @@ export default function SmsfServicesPage() {
         </div>
       </section>
 
-      {/* Why clients switch to AATBS */}
-      <section className="smsf-services-section smsf-services-section--white">
-        <div className="smsf-services-container">
-          <div className="smsf-services-section-intro">
-            <span className="smsf-services-eyebrow">A Better Experience</span>
-            <h2>Why Clients Switch to AATBS</h2>
-          </div>
-
-          <div className="smsf-services-switch-layout">
-            <div className="smsf-services-switch-copy">
-              <p>
-                Many of our clients come to us because they&rsquo;re looking
-                for a better experience.
-              </p>
-              <p className="smsf-services-switch-lead">
-                Perhaps your current accountant:
-              </p>
-              <p className="smsf-services-switch-closing">
-                If any of these sound familiar, we&rsquo;d love the
-                opportunity to show you a more responsive and personalised
-                approach.
-              </p>
-            </div>
-
-            <ul className="smsf-services-switch-list">
-              {SWITCH_REASONS.map((reason) => (
-                <li key={reason}>
-                  <IconXCircle />
-                  <span>{reason}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
       {/* Who we help */}
       <section className="smsf-services-section smsf-services-section--alt">
         <div className="smsf-services-container">
