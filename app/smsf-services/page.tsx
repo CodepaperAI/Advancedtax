@@ -12,7 +12,7 @@
  * defined elsewhere in the project.
  *
  * One assumption worth checking against the real project before shipping:
- * the "Book a Visual Consultation" / "Speak with an SMSF Accountant" links
+ * the "Book a Virtual Consultation" / "Speak with an SMSF Accountant" links
  * point at "/contact". Update BOOKING_URL and CONTACT_URL below if the
  * real booking/contact routes are named differently.
  *
@@ -38,7 +38,7 @@ const HERO_IMAGE_ALT = "AATBS SMSF accountant";
 export const metadata: Metadata = {
   title: "SMSF Accountant Sydney | SMSF Accounting & Compliance | AATBS",
   description:
-    "Experienced SMSF accountants providing SMSF administration, compliance, tax returns, accounting and audit coordination. Introductory SMSF services from $990*. Book a visual consultation.",
+    "Experienced SMSF accountants providing SMSF administration, compliance, tax returns, accounting and audit coordination. Introductory SMSF services from $990*. Book a Virtual Consultation.",
 };
 
 /* -------------------------------------------------------------------- */
@@ -443,7 +443,7 @@ const SERVICE_CARDS = [
 
 const PROCESS_STEPS = [
   {
-    title: "Book Your Visual Consultation",
+    title: "Book Your Virtual Consultation",
   },
   {
     title: "We Review Your Fund",
@@ -525,7 +525,7 @@ export default function SmsfServicesPage() {
           <span className="smsf-services-announcement-divider">|</span>
           Professional SMSF Administration &amp; Compliance from just $990*
           <span className="smsf-services-announcement-divider">|</span>
-          Book Your Visual Consultation Today
+          Book Your Virtual Consultation Today
         </span>
       </Link>
 
@@ -552,7 +552,7 @@ export default function SmsfServicesPage() {
                 href={BOOKING_URL}
                 className="smsf-services-btn smsf-services-btn-primary"
               >
-                Book a Visual Consultation
+                Book a Virtual Consultation
                 <IconArrowRight />
               </Link>
               <Link
@@ -870,7 +870,7 @@ export default function SmsfServicesPage() {
               href={BOOKING_URL}
               className="smsf-services-btn smsf-services-btn-primary"
             >
-              Book Your Visual Consultation
+              Book Your Virtual Consultation
               <IconArrowRight />
             </Link>
           </div>
