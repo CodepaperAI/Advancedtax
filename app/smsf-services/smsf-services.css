@@ -1,0 +1,903 @@
+/* ==========================================================================
+   SMSF Services Landing Page
+   Self-contained styles for smsf-services.tsx.
+   All classes are prefixed with "smsf-services-" so nothing here collides
+   with existing tax-services-* rules or global styles. Uses the same design
+   tokens as the rest of the site (--navy, --gold, --navy-050, --navy-700,
+   --navy-100, --gold-dark, --radius-lg) with local fallbacks in case a
+   variable isn't defined globally on the page this is dropped into.
+   ========================================================================== */
+
+.smsf-services-page {
+  --smsf-navy: var(--navy, #10203f);
+  --smsf-navy-700: var(--navy-700, #3a4560);
+  --smsf-navy-100: var(--navy-100, #dbe1ec);
+  --smsf-navy-050: var(--navy-050, #f4f6fa);
+  --smsf-gold: var(--gold, #b3924a);
+  --smsf-gold-dark: var(--gold-dark, #96793a);
+  --smsf-radius-lg: var(--radius-lg, 12px);
+}
+
+.smsf-services-page img {
+  max-width: 100%;
+}
+
+/* ---------- Shared container ---------- */
+
+.smsf-services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---------- Announcement banner ---------- */
+
+.smsf-services-announcement {
+  display: block;
+  width: 100%;
+  background: var(--smsf-gold);
+  color: var(--smsf-navy);
+  text-decoration: none;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.smsf-services-announcement-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 0.6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.smsf-services-announcement-inner svg {
+  flex-shrink: 0;
+}
+
+.smsf-services-announcement:hover,
+.smsf-services-announcement:focus-visible {
+  background: var(--smsf-gold-dark);
+}
+
+.smsf-services-announcement-divider {
+  opacity: 0.6;
+}
+
+/* ---------- Hero ---------- */
+
+.smsf-services-hero {
+  padding: 2.5rem 0 3rem;
+  background: var(--smsf-navy);
+  color: #fff;
+}
+
+.smsf-services-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.smsf-services-hero-content .smsf-services-eyebrow {
+  display: inline-block;
+  color: var(--smsf-gold);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.smsf-services-hero-content h1 {
+  margin: 0.5rem 0 1rem;
+  color: #fff;
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  line-height: 1.15;
+}
+
+.smsf-services-hero-content .smsf-services-lede {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.smsf-services-hero-content .smsf-services-hero-support {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+}
+
+.smsf-services-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+/* ---------- Buttons ---------- */
+
+.smsf-services-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.smsf-services-btn:active {
+  transform: translateY(1px);
+}
+
+.smsf-services-btn-primary {
+  background: var(--smsf-gold);
+  border-color: var(--smsf-gold);
+  color: var(--smsf-navy);
+}
+
+.smsf-services-btn-primary:hover,
+.smsf-services-btn-primary:focus-visible {
+  background: var(--smsf-gold-dark);
+  border-color: var(--smsf-gold-dark);
+  color: var(--smsf-navy);
+}
+
+.smsf-services-btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.smsf-services-btn-secondary:hover,
+.smsf-services-btn-secondary:focus-visible {
+  border-color: var(--smsf-gold);
+  color: var(--smsf-gold);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.smsf-services-btn--block {
+  width: 100%;
+}
+
+.smsf-services-hero-image {
+  position: relative;
+  min-height: 440px;
+  border-radius: var(--smsf-radius-lg);
+  overflow: hidden;
+}
+
+.smsf-services-hero-image img {
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* Accessible, clearly-marked placeholder used when no approved image asset
+   is available yet. Swap this block for a real <Image> once an asset exists. */
+.smsf-services-hero-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  height: 100%;
+  min-height: 320px;
+  padding: 2rem;
+  border-radius: var(--smsf-radius-lg);
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.smsf-services-hero-placeholder svg {
+  color: var(--smsf-gold);
+}
+
+.smsf-services-hero-placeholder span {
+  font-size: 0.85rem;
+  max-width: 260px;
+}
+
+/* ---------- Introductory offer ---------- */
+
+.smsf-services-offer-section {
+  padding: 3.5rem 0;
+  background: var(--smsf-navy-050);
+}
+
+.smsf-services-offer-card {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.25rem 2rem 2rem;
+  border-radius: var(--smsf-radius-lg);
+  background: var(--smsf-navy);
+  color: #fff;
+  box-shadow: 0 20px 40px -20px rgba(16, 32, 63, 0.45);
+  border-top: 4px solid var(--smsf-gold);
+}
+
+.smsf-services-offer-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--smsf-gold);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.smsf-services-offer-card h2 {
+  margin: 0.6rem 0 0.25rem;
+  color: #fff;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+}
+
+.smsf-services-offer-sub {
+  margin: 0 0 1.25rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+}
+
+.smsf-services-offer-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.smsf-services-offer-price-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.smsf-services-offer-price-value {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--smsf-gold);
+  line-height: 1;
+}
+
+.smsf-services-offer-list {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.smsf-services-offer-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.smsf-services-offer-list svg {
+  color: var(--smsf-gold);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.smsf-services-offer-disclaimer {
+  margin: 1rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------- Trust bar ---------- */
+
+.smsf-services-trust {
+  padding: 2.5rem 0;
+  background: #fff;
+  border-bottom: 1px solid var(--smsf-navy-100);
+}
+
+.smsf-services-trust-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.smsf-services-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.smsf-services-trust-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--smsf-navy-050);
+  color: var(--smsf-gold);
+}
+
+.smsf-services-trust-item span {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--smsf-navy);
+}
+
+/* ---------- Generic section shell ---------- */
+
+.smsf-services-section {
+  padding: 4rem 0;
+}
+
+.smsf-services-section--alt {
+  background: var(--smsf-navy-050);
+}
+
+.smsf-services-section--white {
+  background: #fff;
+}
+
+.smsf-services-section-intro {
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.smsf-services-section-intro .smsf-services-eyebrow {
+  display: inline-block;
+  color: var(--smsf-gold);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.smsf-services-section-intro h2 {
+  margin: 0 0 0.85rem;
+  color: var(--smsf-navy);
+  font-size: clamp(1.5rem, 2.4vw, 2.15rem);
+}
+
+.smsf-services-section-intro p {
+  color: var(--smsf-navy-700);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+/* ---------- "Managing an SMSF doesn't have to be complicated" ---------- */
+
+.smsf-services-intro-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.smsf-services-intro-copy p {
+  color: var(--smsf-navy-700);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin: 0 0 1.1rem;
+}
+
+.smsf-services-intro-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1.5rem;
+}
+
+.smsf-services-intro-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--smsf-navy-100);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--smsf-navy);
+}
+
+.smsf-services-intro-tag svg {
+  color: var(--smsf-gold);
+  flex-shrink: 0;
+}
+
+.smsf-services-intro-callout {
+  padding: 1.5rem 1.5rem;
+  border-radius: var(--smsf-radius-lg);
+  background: var(--smsf-navy);
+  color: #fff;
+  border-left: 4px solid var(--smsf-gold);
+}
+
+.smsf-services-intro-callout p {
+  margin: 0 0 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.65;
+}
+
+.smsf-services-intro-callout p:last-child {
+  margin-bottom: 0;
+}
+
+.smsf-services-intro-callout .smsf-services-intro-lead {
+  font-weight: 700;
+  color: var(--smsf-gold);
+}
+
+/* ---------- Why choose AATBS ---------- */
+
+.smsf-services-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.smsf-services-why-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--smsf-radius-lg);
+  background: var(--smsf-navy);
+  box-shadow: 0 10px 24px -14px rgba(16, 32, 63, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.smsf-services-why-card:hover,
+.smsf-services-why-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -14px rgba(16, 32, 63, 0.6);
+  background: var(--smsf-navy-700);
+}
+
+.smsf-services-why-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.smsf-services-why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--smsf-gold);
+}
+
+/* ---------- Complete SMSF services (cards) ---------- */
+
+.smsf-services-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.smsf-services-card {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--smsf-radius-lg);
+  background: #fff;
+  box-shadow: 0 10px 24px -16px rgba(16, 32, 63, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.smsf-services-card:hover,
+.smsf-services-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -16px rgba(16, 32, 63, 0.4);
+}
+
+.smsf-services-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--smsf-navy-050);
+  color: var(--smsf-gold);
+}
+
+.smsf-services-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--smsf-navy);
+}
+
+.smsf-services-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--smsf-navy-700);
+}
+
+/* ---------- Our process ---------- */
+
+.smsf-services-process-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  counter-reset: smsf-step;
+}
+
+.smsf-services-process-step {
+  position: relative;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: var(--smsf-radius-lg);
+  background: #fff;
+  border: 1px solid var(--smsf-navy-100);
+}
+
+.smsf-services-process-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--smsf-navy);
+  color: var(--smsf-gold);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.smsf-services-process-step h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  color: var(--smsf-navy);
+}
+
+.smsf-services-process-step p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--smsf-navy-700);
+}
+
+.smsf-services-process-connector {
+  display: none;
+}
+
+/* ---------- Why clients switch ---------- */
+
+.smsf-services-switch-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.smsf-services-switch-copy p {
+  color: var(--smsf-navy-700);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin: 0 0 1.1rem;
+}
+
+.smsf-services-switch-copy .smsf-services-switch-lead {
+  color: var(--smsf-navy);
+  font-weight: 600;
+}
+
+.smsf-services-switch-list {
+  list-style: none;
+  margin: 0;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--smsf-radius-lg);
+  background: #fff;
+  border: 1px solid var(--smsf-navy-100);
+  display: grid;
+  gap: 0.85rem;
+}
+
+.smsf-services-switch-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--smsf-navy-700);
+}
+
+.smsf-services-switch-list svg {
+  color: var(--smsf-gold);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+/* ---------- Who we help ---------- */
+
+.smsf-services-who-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.smsf-services-who-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--smsf-radius-lg);
+  background: #fff;
+  border: 1px solid var(--smsf-navy-100);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.smsf-services-who-card:hover,
+.smsf-services-who-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -18px rgba(16, 32, 63, 0.35);
+  border-color: var(--smsf-gold);
+}
+
+.smsf-services-who-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--smsf-navy-050);
+  color: var(--smsf-gold);
+}
+
+.smsf-services-who-card span {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--smsf-navy);
+}
+
+/* ---------- FAQ ---------- */
+
+.smsf-services-faq {
+  padding: 4.5rem 0;
+  background: #fff;
+}
+
+.smsf-services-faq-inner {
+  max-width: 800px;
+}
+
+.smsf-services-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.smsf-services-faq-item {
+  background: var(--smsf-navy-050);
+  border-radius: var(--smsf-radius-lg);
+  padding: 1.15rem 1.35rem;
+}
+
+.smsf-services-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--smsf-navy);
+  list-style: none;
+}
+
+.smsf-services-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.smsf-services-faq-item summary:focus-visible {
+  outline: 2px solid var(--smsf-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.smsf-services-faq-item svg {
+  color: var(--smsf-gold);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.smsf-services-faq-item[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.smsf-services-faq-item p {
+  margin: 1rem 0 0;
+  color: var(--smsf-navy-700);
+  line-height: 1.6;
+}
+
+/* ---------- Final CTA ---------- */
+
+.smsf-services-final-cta {
+  padding: 4.5rem 0;
+  background: var(--smsf-navy);
+  color: #fff;
+  text-align: center;
+}
+
+.smsf-services-final-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.smsf-services-final-cta h2 {
+  color: #fff;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  margin: 0;
+}
+
+.smsf-services-final-cta-sub {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.7;
+}
+
+.smsf-services-final-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.smsf-services-final-cta-footer {
+  margin-top: 1.75rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------- Focus states (base, non-hero buttons) ---------- */
+
+.smsf-services-page a:focus-visible,
+.smsf-services-page button:focus-visible {
+  outline: 2px solid var(--smsf-gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Breakpoints ---------- */
+
+@media (min-width: 640px) {
+  .smsf-services-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .smsf-services-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .smsf-services-who-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .smsf-services-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .smsf-services-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .smsf-services-offer-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .smsf-services-hero-grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 3rem;
+  }
+
+  .smsf-services-hero-image {
+    min-height: 620px;
+  }
+
+  .smsf-services-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .smsf-services-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .smsf-services-who-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .smsf-services-trust-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .smsf-services-intro-layout {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+
+  .smsf-services-switch-layout {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+
+  .smsf-services-process-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Connecting line between steps on desktop, drawn behind the number badge */
+  .smsf-services-process-connector {
+    display: block;
+    position: absolute;
+    top: 2.5rem;
+    left: 100%;
+    width: 1.5rem;
+    height: 2px;
+    background: var(--smsf-navy-100);
+  }
+
+  .smsf-services-process-step {
+    position: relative;
+  }
+
+  .smsf-services-final-cta-buttons {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .smsf-services-card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .smsf-services-faq-item svg,
+  .smsf-services-hero .button-secondary,
+  .smsf-services-why-card,
+  .smsf-services-card,
+  .smsf-services-who-card {
+    transition: none;
+    animation: none;
+  }
+}
