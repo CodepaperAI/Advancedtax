@@ -556,7 +556,7 @@ export default function SmsfServicesPage() {
                 <IconArrowRight />
               </Link>
               <Link
-                href={CONTACT_URL}
+                href="tel:+6129734077"
                 className="smsf-services-btn smsf-services-btn-secondary"
               >
                 Speak with an SMSF Accountant
