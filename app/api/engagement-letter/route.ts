@@ -17,7 +17,7 @@ type EngagementLetterPayload = {
 type EngagementLetterFields = {
   printedName: string;
   email: string;
- signatureDate: string;
+  signatureDate: string;
   signatureImage: string;
 };
 
@@ -53,15 +53,40 @@ function createEmailText(fields: EngagementLetterFields) {
   return [
     "Signed Engagement Letter",
     "",
-    `Printed Name: ${fields.printedName}`,
-    `Email: ${fields.email}`,
-    `Date Signed: ${fields.signatureDate}`,
+    `Printed Name: ${fields.printedName || "(not provided)"}`,
+    `Email: ${fields.email || "(not provided)"}`,
+    `Date Signed: ${fields.signatureDate || "(not provided)"}`,
     "",
-    "The client's signature is included in the HTML version of this email."
+    fields.signatureImage
+      ? "The client's signature is included in the HTML version of this email."
+      : "No signature was provided."
   ].join("\n");
 }
 
 function createEmailHtml(fields: EngagementLetterFields) {
+  const signatureBlock = fields.signatureImage
+    ? `
+          <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 8px 0;">
+            Client Signature
+          </p>
+          <img
+            src="${fields.signatureImage}"
+            alt="Client Signature"
+            style="
+              max-width:280px;
+              max-height:100px;
+              display:block;
+              border:1px solid #e1e5e1;
+              border-radius:6px;
+              padding:10px;
+              background:#ffffff;
+            "
+          />`
+    : `
+          <p style="font-size:14px;color:#5c6862;margin:0;">
+            No signature was provided.
+          </p>`;
+
   return `
     <div style="background-color:#f6f7f5;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;">
       <div style="max-width:640px;margin:0 auto;background-color:#ffffff;border:1px solid #e1e5e1;border-radius:6px;overflow:hidden;">
@@ -176,23 +201,7 @@ function createEmailHtml(fields: EngagementLetterFields) {
               <td style="vertical-align:top;width:50%;"></td>
             </tr>
           </table>
-
-          <p style="font-size:10px;font-weight:bold;color:#5c6862;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 8px 0;">
-            Client Signature
-          </p>
-          <img
-            src="${fields.signatureImage}"
-            alt="Client Signature"
-            style="
-              max-width:280px;
-              max-height:100px;
-              display:block;
-              border:1px solid #e1e5e1;
-              border-radius:6px;
-              padding:10px;
-              background:#ffffff;
-            "
-          />
+${signatureBlock}
 
         </div>
 
@@ -215,24 +224,24 @@ export async function POST(request: Request) {
   }
 
   const fields: EngagementLetterFields = {
-  printedName: getText(payload.printedName, 160),
-  email: getText(payload.email, 320),
-  signatureDate: getText(payload.signatureDate, 40),
-  signatureImage: getText(payload.signatureImage, MAX_SIGNATURE_LENGTH),
-};
+    printedName: getText(payload.printedName, 160),
+    email: getText(payload.email, 320),
+    signatureDate: getText(payload.signatureDate, 40),
+    signatureImage: getText(payload.signatureImage, MAX_SIGNATURE_LENGTH),
+  };
 
- if (
-  !fields.printedName ||
-  !isEmail(fields.email) ||
-  !fields.signatureDate ||
-  !fields.signatureImage
-) {
-  return NextResponse.json(
-    { error: "Please complete all required fields and try again." },
-    { status: 400 }
-  );
-}
-console.log("Config:", getConfig());
+  // No fields are required — an empty or partially-filled form is still
+  // accepted and sent through. If an email address is provided, it must
+  // at least look like a valid email so we don't try to send to garbage;
+  // an empty email simply means we skip the client-facing confirmation.
+  if (fields.email && !isEmail(fields.email)) {
+    return NextResponse.json(
+      { error: "That doesn't look like a valid email address." },
+      { status: 400 }
+    );
+  }
+
+  console.log("Config:", getConfig());
   const config = getConfig();
 
   if (!config) {
@@ -244,61 +253,75 @@ console.log("Config:", getConfig());
 
   const resend = new Resend(config.apiKey);
 
+  // Only build a signature attachment if a signature was actually provided.
+  const signatureBuffer = fields.signatureImage
+    ? Buffer.from(
+        fields.signatureImage.replace(/^data:image\/\w+;base64,/, ""),
+        "base64"
+      )
+    : null;
+
+  const attachments = signatureBuffer
+    ? [
+        {
+          filename: "engagement-letter-signature.png",
+          content: signatureBuffer,
+        },
+      ]
+    : undefined;
+
   try {
     console.log("About to send email");
-console.log({
-  from: config.from,
-  to: "accountants@advancedtax.com.au",
-  replyTo: fields.email,
-});
-const signatureBase64 = fields.signatureImage.replace(
-  /^data:image\/\w+;base64,/,
-  ""
-);
+    console.log({
+      from: config.from,
+      to: "accountants@advancedtax.com.au",
+      replyTo: fields.email || undefined,
+    });
 
-const signatureBuffer = Buffer.from(signatureBase64, "base64");
-    await resend.emails.send({
-  from: config.from,
-  to: "accountants@advancedtax.com.au",
-  replyTo: fields.email,
-  subject: `Signed Engagement Letter - ${fields.printedName}`,
-  text: createEmailText(fields),
-  html: createEmailHtml(fields),
-  attachments: [
-    {
-      filename: "engagement-letter-signature.png",
-      content: signatureBuffer,
-    },
-  ],
-});
+    const internalResult = await resend.emails.send({
+      from: config.from,
+      to: "accountants@advancedtax.com.au",
+      replyTo: fields.email || undefined,
+      subject: `Signed Engagement Letter - ${fields.printedName || "Unnamed client"}`,
+      text: createEmailText(fields),
+      html: createEmailHtml(fields),
+      attachments,
+    });
 
-const result = await resend.emails.send({
-  from: config.from,
-  to: fields.email,
-  subject: "Your Signed Engagement Letter",
-  text: createEmailText(fields),
-  html: createEmailHtml(fields),
-  attachments: [
-    {
-      filename: "engagement-letter-signature.png",
-      content: signatureBuffer,
-    },
-  ],
-});
-
-    if (result.error) {
-      console.error("Resend client information form error", result.error);
+    if (internalResult.error) {
+      console.error("Resend engagement letter internal-email error", internalResult.error);
       return NextResponse.json(
         { error: "We could not send your form. Please call or email us." },
         { status: 502 }
       );
     }
 
+    // Only send the client-facing confirmation if we actually have an
+    // email address to send it to.
+    if (fields.email) {
+      const clientResult = await resend.emails.send({
+        from: config.from,
+        to: fields.email,
+        subject: "Your Signed Engagement Letter",
+        text: createEmailText(fields),
+        html: createEmailHtml(fields),
+        attachments,
+      });
+
+      if (clientResult.error) {
+        console.error("Resend engagement letter client-email error", clientResult.error);
+        return NextResponse.json(
+          { error: "We could not send your form. Please call or email us." },
+          { status: 502 }
+        );
+      }
+    }
+
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("========== CLIENT FORM ERROR ==========");
-console.error(error);
-console.error("======================================");
+    console.error(error);
+    console.error("======================================");
     return NextResponse.json(
       { error: "We could not send your form. Please call or email us." },
       { status: 500 }
