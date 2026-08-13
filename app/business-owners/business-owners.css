@@ -1,0 +1,608 @@
+/* ---------- Tax Time announcement banner ---------- */
+
+.business-owners-announcement-banner {
+  display: block;
+  width: 100%;
+  background: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  text-decoration: none;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.business-owners-announcement-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.business-owners-announcement-banner-inner svg {
+  flex-shrink: 0;
+}
+
+.business-owners-announcement-banner:hover,
+.business-owners-announcement-banner:focus-visible {
+  background: var(--gold-dark, #96793a);
+}
+
+/* ---------- Hero ---------- */
+
+.business-owners-hero {
+  padding: 2.5rem 0 3rem;
+  background: var(--navy, #10203f);
+  color: #fff;
+}
+
+.business-owners-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.business-owners-hero-content .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.business-owners-hero-content h1 {
+  margin: 0.5rem 0 1rem;
+  color: #fff;
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.business-owners-hero-content .business-owners-hero-subhead {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 0.85rem;
+}
+
+.business-owners-hero-content .lede {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.business-owners-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.business-owners-hero .button-secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: transparent;
+}
+
+.business-owners-hero .button-secondary:hover,
+.business-owners-hero .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.business-owners-hero .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.business-owners-hero .button-primary:hover,
+.business-owners-hero .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.business-owners-hero-image {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+}
+
+.business-owners-hero-image img {
+  object-fit: contain;
+  object-position: bottom center;
+  transform: scale(1.05);
+  transform-origin: bottom center;
+}
+
+/* ---------- Why choose AATBS / Why Clients Choose Us ----------
+   Shared trust-card grid, reused by both the
+   "Business Tax & Advisory Specialists" section and the
+   "Why Clients Choose Us" section. */
+
+.business-owners-why,
+.business-owners-who,
+.business-owners-why-clients,
+.business-owners-checklist-section,
+.business-owners-situations {
+  padding: 4rem 0;
+}
+
+.business-owners-why {
+  background: #fff;
+}
+
+.business-owners-who {
+  background: var(--navy-050, #f4f6fa);
+}
+
+.business-owners-why-clients {
+  background: #fff;
+}
+
+.business-owners-checklist-section {
+  background: var(--navy-050, #f4f6fa);
+}
+
+.business-owners-situations {
+  background: #fff;
+}
+
+.business-owners-why-intro,
+.business-owners-who-intro,
+.business-owners-situations-intro {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.business-owners-why-intro .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.business-owners-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.business-owners-why-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-lg, 12px);
+  background: var(--navy, #10203f);
+  box-shadow: 0 10px 24px -14px rgba(16, 32, 63, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.business-owners-why-card:hover,
+.business-owners-why-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -14px rgba(16, 32, 63, 0.6);
+  background: var(--navy-700, #1a2c52);
+}
+
+.business-owners-why-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.business-owners-why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--gold, #b3924a);
+}
+
+/* ---------- Who We Help ---------- */
+
+.business-owners-who-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.business-owners-who-card {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  background: #fff;
+  box-shadow: 0 10px 24px -16px rgba(16, 32, 63, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.business-owners-who-card:hover,
+.business-owners-who-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -16px rgba(16, 32, 63, 0.4);
+}
+
+.business-owners-who-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--navy-050, #f4f6fa);
+  color: var(--gold, #b3924a);
+}
+
+.business-owners-who-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--navy, #10203f);
+}
+
+.business-owners-who-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Looking for an Accountant Who Understands Your Business? ---------- */
+
+.business-owners-checklist-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.business-owners-checklist-content {
+  max-width: 640px;
+}
+
+.business-owners-checklist-content .lede {
+  color: var(--navy-700, #3a4560);
+  margin-bottom: 1.5rem;
+}
+
+.business-owners-checklist-heading {
+  font-size: clamp(1.35rem, 2.2vw, 2.15rem);
+}
+
+.business-owners-checklist-cta .button-secondary {
+  background: #fff;
+  border-color: var(--navy-100, #dbe1ec);
+  color: var(--navy, #10203f);
+}
+
+.business-owners-checklist-cta .button-secondary:hover,
+.business-owners-checklist-cta .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.business-owners-checklist-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.business-owners-checklist-cta .button-primary:hover,
+.business-owners-checklist-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.business-owners-checklist-media {
+  position: relative;
+}
+
+.business-owners-checklist-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.business-owners-checklist-image img {
+  object-fit: cover;
+}
+
+.business-owners-property-checklist {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+}
+
+.business-owners-property-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.business-owners-property-checklist svg {
+  color: var(--gold, #b3924a);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* CTA pill button — used by the checklist area and the
+   "Choose Your Situation" cards below */
+.business-owners-property-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: var(--gold, #b3924a);
+  border: 1px solid var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.business-owners-property-cta:hover,
+.business-owners-property-cta:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+}
+
+/* ---------- Choose Your Situation ---------- */
+
+.business-owners-situations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.business-owners-situation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--navy-100, #dbe1ec);
+  background: var(--navy-050, #f4f6fa);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.business-owners-situation-card:hover,
+.business-owners-situation-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -18px rgba(16, 32, 63, 0.35);
+  border-color: var(--gold, #b3924a);
+}
+
+.business-owners-situation-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--navy, #10203f);
+  color: var(--gold, #b3924a);
+}
+
+.business-owners-situation-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--navy, #10203f);
+}
+
+.business-owners-situation-card p {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--navy-700, #3a4560);
+}
+
+.business-owners-situation-card .business-owners-property-cta {
+  margin-top: auto;
+}
+
+/* ---------- What Business Owners Say About Us ----------
+   Dark navy treatment. Base .google-review-* layout rules live in the
+   global stylesheet; these overrides adjust colors for the dark background. */
+
+.google-review-section {
+  background: var(--navy, #10203f);
+}
+
+.google-review-copy .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.google-review-copy h2 {
+  color: #fff;
+}
+
+.google-review-copy p {
+  color: rgb(255, 255, 255);
+}
+
+/* ---------- FAQ ---------- */
+
+.business-owners-faq {
+  padding: 4.5rem 0;
+  background: #fff;
+}
+
+.business-owners-faq-inner {
+  max-width: 800px;
+}
+
+.business-owners-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.business-owners-faq-item {
+  background: var(--navy-050, #f4f6fa);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.15rem 1.35rem;
+}
+
+.business-owners-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--navy, #10203f);
+  list-style: none;
+}
+
+.business-owners-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.business-owners-faq-item svg {
+  color: var(--gold, #b3924a);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.business-owners-faq-item[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.business-owners-faq-item p {
+  margin: 1rem 0 0;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Final CTA ---------- */
+
+.business-owners-final-cta {
+  padding: 4.5rem 0;
+  background: var(--navy, #10203f);
+  color: #fff;
+  text-align: center;
+}
+
+.business-owners-final-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.business-owners-final-cta-sub {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.business-owners-final-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.business-owners-final-cta-footer {
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.business-owners-final-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.business-owners-final-cta .button-primary:hover,
+.business-owners-final-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.business-owners-final-cta .button-secondary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.business-owners-final-cta .button-secondary:hover,
+.business-owners-final-cta .button-secondary:focus-visible {
+  border-color: var(--gold-dark, #96793a);
+  background: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+/* ---------- Breakpoints ---------- */
+
+@media (min-width: 640px) {
+  .business-owners-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .business-owners-who-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .business-owners-situations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .business-owners-property-checklist {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .business-owners-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .business-owners-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .business-owners-who-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .business-owners-situations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .business-owners-checklist-layout {
+    grid-template-columns: 1fr 42%;
+    gap: 3.5rem;
+  }
+
+  .business-owners-final-cta-buttons {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .business-owners-faq-item svg,
+  .business-owners-hero .button-secondary,
+  .business-owners-final-cta .button-secondary,
+  .business-owners-why-card,
+  .business-owners-who-card,
+  .business-owners-situation-card {
+    transition: none;
+    animation: none;
+  }
+}

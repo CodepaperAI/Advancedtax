@@ -1,0 +1,608 @@
+/* ---------- Tax Time announcement banner ---------- */
+
+.property-investors-announcement-banner {
+  display: block;
+  width: 100%;
+  background: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  text-decoration: none;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.property-investors-announcement-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.property-investors-announcement-banner-inner svg {
+  flex-shrink: 0;
+}
+
+.property-investors-announcement-banner:hover,
+.property-investors-announcement-banner:focus-visible {
+  background: var(--gold-dark, #96793a);
+}
+
+/* ---------- Hero ---------- */
+
+.property-investors-hero {
+  padding: 2.5rem 0 3rem;
+  background: var(--navy, #10203f);
+  color: #fff;
+}
+
+.property-investors-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.property-investors-hero-content .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.property-investors-hero-content h1 {
+  margin: 0.5rem 0 1rem;
+  color: #fff;
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.property-investors-hero-content .property-investors-hero-subhead {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 0.85rem;
+}
+
+.property-investors-hero-content .lede {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.property-investors-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.property-investors-hero .button-secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: transparent;
+}
+
+.property-investors-hero .button-secondary:hover,
+.property-investors-hero .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.property-investors-hero .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.property-investors-hero .button-primary:hover,
+.property-investors-hero .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.property-investors-hero-image {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+}
+
+.property-investors-hero-image img {
+  object-fit: contain;
+  object-position: bottom center;
+  transform: scale(1.05);
+  transform-origin: bottom center;
+}
+
+/* ---------- Why choose AATBS / Why Clients Choose Us ----------
+   Shared trust-card grid, reused by both the
+   "Investment Property Tax Specialists" section and the
+   "Why Clients Choose Us" section. */
+
+.property-investors-why,
+.property-investors-who,
+.property-investors-why-clients,
+.property-investors-checklist-section,
+.property-investors-situations {
+  padding: 4rem 0;
+}
+
+.property-investors-why {
+  background: #fff;
+}
+
+.property-investors-who {
+  background: var(--navy-050, #f4f6fa);
+}
+
+.property-investors-why-clients {
+  background: #fff;
+}
+
+.property-investors-checklist-section {
+  background: var(--navy-050, #f4f6fa);
+}
+
+.property-investors-situations {
+  background: #fff;
+}
+
+.property-investors-why-intro,
+.property-investors-who-intro,
+.property-investors-situations-intro {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.property-investors-why-intro .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.property-investors-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.property-investors-why-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-lg, 12px);
+  background: var(--navy, #10203f);
+  box-shadow: 0 10px 24px -14px rgba(16, 32, 63, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.property-investors-why-card:hover,
+.property-investors-why-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -14px rgba(16, 32, 63, 0.6);
+  background: var(--navy-700, #1a2c52);
+}
+
+.property-investors-why-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.property-investors-why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--gold, #b3924a);
+}
+
+/* ---------- Who We Help ---------- */
+
+.property-investors-who-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.property-investors-who-card {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  background: #fff;
+  box-shadow: 0 10px 24px -16px rgba(16, 32, 63, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.property-investors-who-card:hover,
+.property-investors-who-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -16px rgba(16, 32, 63, 0.4);
+}
+
+.property-investors-who-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--navy-050, #f4f6fa);
+  color: var(--gold, #b3924a);
+}
+
+.property-investors-who-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--navy, #10203f);
+}
+
+.property-investors-who-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Looking for an Accountant Who Understands Property Investment? ---------- */
+
+.property-investors-checklist-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.property-investors-checklist-content {
+  max-width: 640px;
+}
+
+.property-investors-checklist-content .lede {
+  color: var(--navy-700, #3a4560);
+  margin-bottom: 1.5rem;
+}
+
+.property-investors-checklist-heading {
+  font-size: clamp(1.35rem, 2.2vw, 2.15rem);
+}
+
+.property-investors-checklist-cta .button-secondary {
+  background: #fff;
+  border-color: var(--navy-100, #dbe1ec);
+  color: var(--navy, #10203f);
+}
+
+.property-investors-checklist-cta .button-secondary:hover,
+.property-investors-checklist-cta .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.property-investors-checklist-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.property-investors-checklist-cta .button-primary:hover,
+.property-investors-checklist-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.property-investors-checklist-media {
+  position: relative;
+}
+
+.property-investors-checklist-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.property-investors-checklist-image img {
+  object-fit: cover;
+}
+
+.property-investors-property-checklist {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+}
+
+.property-investors-property-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.property-investors-property-checklist svg {
+  color: var(--gold, #b3924a);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* CTA pill button — used by the checklist area and the
+   "Choose Your Situation" cards below */
+.property-investors-property-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: var(--gold, #b3924a);
+  border: 1px solid var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.property-investors-property-cta:hover,
+.property-investors-property-cta:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+}
+
+/* ---------- Choose Your Situation ---------- */
+
+.property-investors-situations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.property-investors-situation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--navy-100, #dbe1ec);
+  background: var(--navy-050, #f4f6fa);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.property-investors-situation-card:hover,
+.property-investors-situation-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -18px rgba(16, 32, 63, 0.35);
+  border-color: var(--gold, #b3924a);
+}
+
+.property-investors-situation-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--navy, #10203f);
+  color: var(--gold, #b3924a);
+}
+
+.property-investors-situation-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--navy, #10203f);
+}
+
+.property-investors-situation-card p {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--navy-700, #3a4560);
+}
+
+.property-investors-situation-card .property-investors-property-cta {
+  margin-top: auto;
+}
+
+/* ---------- What Property Investors Say About Us ----------
+   Dark navy treatment. Base .google-review-* layout rules live in the
+   global stylesheet; these overrides adjust colors for the dark background. */
+
+.google-review-section {
+  background: var(--navy, #10203f);
+}
+
+.google-review-copy .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.google-review-copy h2 {
+  color: #fff;
+}
+
+.google-review-copy p {
+  color: rgb(255, 255, 255);
+}
+
+/* ---------- FAQ ---------- */
+
+.property-investors-faq {
+  padding: 4.5rem 0;
+  background: #fff;
+}
+
+.property-investors-faq-inner {
+  max-width: 800px;
+}
+
+.property-investors-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.property-investors-faq-item {
+  background: var(--navy-050, #f4f6fa);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.15rem 1.35rem;
+}
+
+.property-investors-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--navy, #10203f);
+  list-style: none;
+}
+
+.property-investors-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.property-investors-faq-item svg {
+  color: var(--gold, #b3924a);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.property-investors-faq-item[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.property-investors-faq-item p {
+  margin: 1rem 0 0;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Final CTA ---------- */
+
+.property-investors-final-cta {
+  padding: 4.5rem 0;
+  background: var(--navy, #10203f);
+  color: #fff;
+  text-align: center;
+}
+
+.property-investors-final-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.property-investors-final-cta-sub {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.property-investors-final-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.property-investors-final-cta-footer {
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.property-investors-final-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.property-investors-final-cta .button-primary:hover,
+.property-investors-final-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.property-investors-final-cta .button-secondary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.property-investors-final-cta .button-secondary:hover,
+.property-investors-final-cta .button-secondary:focus-visible {
+  border-color: var(--gold-dark, #96793a);
+  background: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+/* ---------- Breakpoints ---------- */
+
+@media (min-width: 640px) {
+  .property-investors-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .property-investors-who-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .property-investors-situations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .property-investors-property-checklist {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .property-investors-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .property-investors-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .property-investors-who-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .property-investors-situations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .property-investors-checklist-layout {
+    grid-template-columns: 1fr 42%;
+    gap: 3.5rem;
+  }
+
+  .property-investors-final-cta-buttons {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .property-investors-faq-item svg,
+  .property-investors-hero .button-secondary,
+  .property-investors-final-cta .button-secondary,
+  .property-investors-why-card,
+  .property-investors-who-card,
+  .property-investors-situation-card {
+    transition: none;
+    animation: none;
+  }
+}

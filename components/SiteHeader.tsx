@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { industries, nav, services, site } from "@/lib/content";
+import { audiences, industries, nav, services, site } from "@/lib/content";
 
 const serviceGroups = ["Compliance", "Advisory", "Specialist"] as const;
 
@@ -85,6 +85,17 @@ export function SiteHeader() {
                                         <span>{service.outcome}</span>
                                       </Link>
                                     ))}
+                                  {group === "Advisory" && (
+                                    <>
+                                      <p className="mega-services-subheading">Who We Help</p>
+                                      {audiences.map((audience) => (
+                                        <Link key={audience.slug} href={`/${audience.slug}`}>
+                                          <strong>{audience.title}</strong>
+                                          <span>{audience.outcome}</span>
+                                        </Link>
+                                      ))}
+                                    </>
+                                  )}
                                 </div>
                               ))}
                             </div>

@@ -1,0 +1,608 @@
+/* ---------- Tax Time announcement banner ---------- */
+
+.high-net-worth-announcement-banner {
+  display: block;
+  width: 100%;
+  background: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  text-decoration: none;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.high-net-worth-announcement-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.high-net-worth-announcement-banner-inner svg {
+  flex-shrink: 0;
+}
+
+.high-net-worth-announcement-banner:hover,
+.high-net-worth-announcement-banner:focus-visible {
+  background: var(--gold-dark, #96793a);
+}
+
+/* ---------- Hero ---------- */
+
+.high-net-worth-hero {
+  padding: 2.5rem 0 3rem;
+  background: var(--navy, #10203f);
+  color: #fff;
+}
+
+.high-net-worth-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.high-net-worth-hero-content .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.high-net-worth-hero-content h1 {
+  margin: 0.5rem 0 1rem;
+  color: #fff;
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.high-net-worth-hero-content .high-net-worth-hero-subhead {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 0.85rem;
+}
+
+.high-net-worth-hero-content .lede {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.high-net-worth-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.high-net-worth-hero .button-secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: transparent;
+}
+
+.high-net-worth-hero .button-secondary:hover,
+.high-net-worth-hero .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.high-net-worth-hero .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-hero .button-primary:hover,
+.high-net-worth-hero .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-hero-image {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+}
+
+.high-net-worth-hero-image img {
+  object-fit: contain;
+  object-position: bottom center;
+  transform: scale(1.05);
+  transform-origin: bottom center;
+}
+
+/* ---------- Why choose AATBS / Why Clients Choose Us ----------
+   Shared trust-card grid, reused by both the
+   "Private Wealth & Complex Tax Specialists" section and the
+   "Why Clients Choose Us" section. */
+
+.high-net-worth-why,
+.high-net-worth-who,
+.high-net-worth-why-clients,
+.high-net-worth-checklist-section,
+.high-net-worth-situations {
+  padding: 4rem 0;
+}
+
+.high-net-worth-why {
+  background: #fff;
+}
+
+.high-net-worth-who {
+  background: var(--navy-050, #f4f6fa);
+}
+
+.high-net-worth-why-clients {
+  background: #fff;
+}
+
+.high-net-worth-checklist-section {
+  background: var(--navy-050, #f4f6fa);
+}
+
+.high-net-worth-situations {
+  background: #fff;
+}
+
+.high-net-worth-why-intro,
+.high-net-worth-who-intro,
+.high-net-worth-situations-intro {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.high-net-worth-why-intro .lede {
+  color: var(--navy-700, #3a4560);
+}
+
+.high-net-worth-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.high-net-worth-why-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-lg, 12px);
+  background: var(--navy, #10203f);
+  box-shadow: 0 10px 24px -14px rgba(16, 32, 63, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.high-net-worth-why-card:hover,
+.high-net-worth-why-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -14px rgba(16, 32, 63, 0.6);
+  background: var(--navy-700, #1a2c52);
+}
+
+.high-net-worth-why-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.high-net-worth-why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--gold, #b3924a);
+}
+
+/* ---------- Who We Help ---------- */
+
+.high-net-worth-who-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.high-net-worth-who-card {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  background: #fff;
+  box-shadow: 0 10px 24px -16px rgba(16, 32, 63, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.high-net-worth-who-card:hover,
+.high-net-worth-who-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -16px rgba(16, 32, 63, 0.4);
+}
+
+.high-net-worth-who-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--navy-050, #f4f6fa);
+  color: var(--gold, #b3924a);
+}
+
+.high-net-worth-who-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-who-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Looking for an Accountant Who Understands Complex Affairs? ---------- */
+
+.high-net-worth-checklist-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.high-net-worth-checklist-content {
+  max-width: 640px;
+}
+
+.high-net-worth-checklist-content .lede {
+  color: var(--navy-700, #3a4560);
+  margin-bottom: 1.5rem;
+}
+
+.high-net-worth-checklist-heading {
+  font-size: clamp(1.35rem, 2.2vw, 2.15rem);
+}
+
+.high-net-worth-checklist-cta .button-secondary {
+  background: #fff;
+  border-color: var(--navy-100, #dbe1ec);
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-checklist-cta .button-secondary:hover,
+.high-net-worth-checklist-cta .button-secondary:focus-visible {
+  border-color: var(--gold, #b3924a);
+  color: var(--gold, #b3924a);
+}
+
+.high-net-worth-checklist-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-checklist-cta .button-primary:hover,
+.high-net-worth-checklist-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-checklist-media {
+  position: relative;
+}
+
+.high-net-worth-checklist-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.high-net-worth-checklist-image img {
+  object-fit: cover;
+}
+
+.high-net-worth-property-checklist {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+}
+
+.high-net-worth-property-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.high-net-worth-property-checklist svg {
+  color: var(--gold, #b3924a);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* CTA pill button — used by the checklist area and the
+   "Choose Your Situation" cards below */
+.high-net-worth-property-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: var(--gold, #b3924a);
+  border: 1px solid var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.high-net-worth-property-cta:hover,
+.high-net-worth-property-cta:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+}
+
+/* ---------- Choose Your Situation ---------- */
+
+.high-net-worth-situations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.high-net-worth-situation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--navy-100, #dbe1ec);
+  background: var(--navy-050, #f4f6fa);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.high-net-worth-situation-card:hover,
+.high-net-worth-situation-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -18px rgba(16, 32, 63, 0.35);
+  border-color: var(--gold, #b3924a);
+}
+
+.high-net-worth-situation-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--navy, #10203f);
+  color: var(--gold, #b3924a);
+}
+
+.high-net-worth-situation-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-situation-card p {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--navy-700, #3a4560);
+}
+
+.high-net-worth-situation-card .high-net-worth-property-cta {
+  margin-top: auto;
+}
+
+/* ---------- What Our Clients Say About Us ----------
+   Dark navy treatment. Base .google-review-* layout rules live in the
+   global stylesheet; these overrides adjust colors for the dark background. */
+
+.google-review-section {
+  background: var(--navy, #10203f);
+}
+
+.google-review-copy .eyebrow {
+  color: var(--gold, #b3924a);
+}
+
+.google-review-copy h2 {
+  color: #fff;
+}
+
+.google-review-copy p {
+  color: rgb(255, 255, 255);
+}
+
+/* ---------- FAQ ---------- */
+
+.high-net-worth-faq {
+  padding: 4.5rem 0;
+  background: #fff;
+}
+
+.high-net-worth-faq-inner {
+  max-width: 800px;
+}
+
+.high-net-worth-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.high-net-worth-faq-item {
+  background: var(--navy-050, #f4f6fa);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.15rem 1.35rem;
+}
+
+.high-net-worth-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--navy, #10203f);
+  list-style: none;
+}
+
+.high-net-worth-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.high-net-worth-faq-item svg {
+  color: var(--gold, #b3924a);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.high-net-worth-faq-item[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.high-net-worth-faq-item p {
+  margin: 1rem 0 0;
+  color: var(--navy-700, #3a4560);
+}
+
+/* ---------- Final CTA ---------- */
+
+.high-net-worth-final-cta {
+  padding: 4.5rem 0;
+  background: var(--navy, #10203f);
+  color: #fff;
+  text-align: center;
+}
+
+.high-net-worth-final-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.high-net-worth-final-cta-sub {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.high-net-worth-final-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.high-net-worth-final-cta-footer {
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.high-net-worth-final-cta .button-primary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-final-cta .button-primary:hover,
+.high-net-worth-final-cta .button-primary:focus-visible {
+  background: var(--gold-dark, #96793a);
+  border-color: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-final-cta .button-secondary {
+  background: var(--gold, #b3924a);
+  border-color: var(--gold, #b3924a);
+  color: var(--navy, #10203f);
+}
+
+.high-net-worth-final-cta .button-secondary:hover,
+.high-net-worth-final-cta .button-secondary:focus-visible {
+  border-color: var(--gold-dark, #96793a);
+  background: var(--gold-dark, #96793a);
+  color: var(--navy, #10203f);
+}
+
+/* ---------- Breakpoints ---------- */
+
+@media (min-width: 640px) {
+  .high-net-worth-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .high-net-worth-who-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .high-net-worth-situations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .high-net-worth-property-checklist {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .high-net-worth-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .high-net-worth-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .high-net-worth-who-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .high-net-worth-situations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .high-net-worth-checklist-layout {
+    grid-template-columns: 1fr 42%;
+    gap: 3.5rem;
+  }
+
+  .high-net-worth-final-cta-buttons {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .high-net-worth-faq-item svg,
+  .high-net-worth-hero .button-secondary,
+  .high-net-worth-final-cta .button-secondary,
+  .high-net-worth-why-card,
+  .high-net-worth-who-card,
+  .high-net-worth-situation-card {
+    transition: none;
+    animation: none;
+  }
+}

@@ -20,6 +20,12 @@ export type Industry = {
   needs: string[];
 };
 
+export type Audience = {
+  slug: string;
+  title: string;
+  outcome: string;
+};
+
 export type Post = {
   slug: string;
   title: string;
@@ -434,6 +440,24 @@ export const industries: Industry[] = [
   }
 ];
 
+export const audiences: Audience[] = [
+  {
+    slug: "property-investors",
+    title: "Property Investors",
+    outcome: "Maximise deductions on your rental portfolio."
+  },
+  {
+    slug: "business-owners",
+    title: "Business Owners",
+    outcome: "Stay compliant and plan ahead as you grow."
+  },
+  {
+    slug: "high-net-worth",
+    title: "High Net Worth Individuals",
+    outcome: "Protect and structure complex financial affairs."
+  }
+];
+
 export const team = [
   {
     name: "Abby Raweri",
@@ -681,6 +705,10 @@ export function getService(slug: string) {
 
 export function getIndustry(slug: string) {
   return industries.find((industry) => industry.slug === slug);
+}
+
+export function getAudience(slug: string) {
+  return audiences.find((audience) => audience.slug === slug);
 }
 
 export function getPost(slug: string) {
