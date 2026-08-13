@@ -130,7 +130,6 @@ export default function ClientInformationFormPage() {
                   name="office"
                   defaultValue=""
                   className="client-form-select"
-                  required
                 >
                   <option value="" disabled>
                     Select an office
@@ -193,7 +192,6 @@ export default function ClientInformationFormPage() {
                     name="postcode"
                     type="text"
                     inputMode="numeric"
-                    required
                   />
                 </div>
               </div>
@@ -265,7 +263,6 @@ export default function ClientInformationFormPage() {
                     type="text"
                     inputMode="numeric"
                     placeholder="e.g. 062-000"
-                    required
                   />
                 </div>
                 <div className="client-form-field">
@@ -275,7 +272,6 @@ export default function ClientInformationFormPage() {
                     name="accountNumber"
                     type="text"
                     inputMode="numeric"
-                    required
                   />
                 </div>
               </div>
