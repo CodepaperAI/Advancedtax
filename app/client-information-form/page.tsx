@@ -8,7 +8,6 @@ import { SignaturePad, type SignaturePadHandle } from "@/components/SignaturePad
 export default function ClientInformationFormPage() {
   const formRef = useRef<HTMLFormElement>(null);
   const signaturePadRef = useRef<SignaturePadHandle>(null);
-  const [signatureError, setSignatureError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -17,20 +16,17 @@ export default function ClientInformationFormPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Signature is optional — no validation blocks submission if it's empty.
     const isSignatureEmpty = signaturePadRef.current?.isEmpty?.() ?? true;
-
-    if (isSignatureEmpty) {
-      setSignatureError("Please provide your signature before submitting.");
-      return;
-    }
-
-    setSignatureError(null);
-    setSubmitError(null);
-    setSubmitSuccess(false);
 
     // NOTE: assumes SignaturePadHandle exposes toDataURL(). Adjust the
     // method name here if your SignaturePad component uses a different one.
-    const signatureImage = signaturePadRef.current?.toDataURL?.() ?? "";
+    const signatureImage = isSignatureEmpty
+      ? ""
+      : signaturePadRef.current?.toDataURL?.() ?? "";
+
+    setSubmitError(null);
+    setSubmitSuccess(false);
 
     const formData = new FormData(e.currentTarget);
 
@@ -124,16 +120,14 @@ export default function ClientInformationFormPage() {
             <div className="client-form-section-body">
               <div className="client-form-field">
                 <label htmlFor="office">Servicing Office</label>
-                {/* required: office must be selected */}
+                {/* Optional — no field in this form is required for submission. */}
                 <select
                   id="office"
                   name="office"
                   defaultValue=""
                   className="client-form-select"
                 >
-                  <option value="" disabled>
-                    Select an office
-                  </option>
+                  <option value="">Select an office</option>
                   <option value="parramatta">Parramatta</option>
                   <option value="liverpool">Liverpool</option>
                 </select>
@@ -196,7 +190,6 @@ export default function ClientInformationFormPage() {
                 </div>
               </div>
 
-              {/* Postal address fields stay optional, per requirements */}
               <div className="client-form-field client-form-field--full">
                 <label htmlFor="postalAddress">Postal Address</label>
                 <input id="postalAddress" name="postalAddress" type="text" />
@@ -227,7 +220,6 @@ export default function ClientInformationFormPage() {
                   <label htmlFor="mobile">Mobile Number</label>
                   <input id="mobile" name="mobile" type="tel" />
                 </div>
-                {/* Work / Home Phone stays optional, per requirements */}
                 <div className="client-form-field">
                   <label htmlFor="homePhone">Work / Home Phone</label>
                   <input id="homePhone" name="homePhone" type="tel" />
@@ -293,13 +285,7 @@ export default function ClientInformationFormPage() {
                 appointments.
               </p>
 
-              {/*
-                For radio groups, the native `required` attribute needs to
-                be present on the inputs (not the fieldset) for the browser
-                to enforce "at least one selected". Adding it to both
-                options in the group keeps behavior consistent across
-                browsers.
-              */}
+              {/* Radio groups are optional — neither option carries `required`. */}
               <fieldset className="client-form-radio-group">
                 <legend>Income tax matters</legend>
                 <label className="client-form-radio-option">
@@ -347,23 +333,11 @@ export default function ClientInformationFormPage() {
               <div className="client-form-field client-form-field--full">
                 <span className="client-form-field-label-static">Signature</span>
                 {/*
-                  The ref lets handleSubmit() ask the pad whether anything
-                  has been drawn yet — see the SignaturePadHandle note near
-                  the top of this file for the assumption this relies on.
+                  The ref lets handleSubmit() check whether anything has been
+                  drawn, purely so it can decide whether to send an image —
+                  submission is never blocked if it's left blank.
                 */}
                 <SignaturePad ref={signaturePadRef} />
-
-                {/* Manual validation message for the signature pad, since
-                    a canvas can't use the native `required` attribute. */}
-                {signatureError && (
-                  <p
-                    className="client-form-error-message"
-                    role="alert"
-                    style={{ color: "#c0392b", marginTop: "0.5rem" }}
-                  >
-                    {signatureError}
-                  </p>
-                )}
               </div>
             </div>
           </section>
@@ -416,9 +390,9 @@ export default function ClientInformationFormPage() {
           )}
 
           <div className="client-form-submit-row">
-            {/* Changed from type="button" to type="submit" so the browser
-                runs native `required`/type validation on all the fields
-                above, then calls handleSubmit() once those pass. */}
+            {/* type="submit" is kept for normal form behavior, but since no
+                field carries `required`, the browser never blocks submission
+                — every field on this form is optional. */}
             <button type="submit" className="client-form-submit-button" disabled={isSubmitting}>
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
