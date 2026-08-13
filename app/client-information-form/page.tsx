@@ -153,38 +153,38 @@ export default function ClientInformationFormPage() {
               <div className="client-form-grid client-form-grid--2">
                 <div className="client-form-field">
                   <label htmlFor="tfn">Tax File Number (TFN)</label>
-                  <input id="tfn" name="tfn" type="text" autoComplete="off" required />
+                  <input id="tfn" name="tfn" type="text" autoComplete="off" />
                 </div>
                 <div className="client-form-field">
                   <label htmlFor="dob">Date of Birth</label>
-                  <input id="dob" name="dob" type="date" required />
+                  <input id="dob" name="dob" type="date" />
                 </div>
               </div>
 
               <div className="client-form-grid client-form-grid--2">
                 <div className="client-form-field">
                   <label htmlFor="firstName">First Name</label>
-                  <input id="firstName" name="firstName" type="text" required />
+                  <input id="firstName" name="firstName" type="text" />
                 </div>
                 <div className="client-form-field">
                   <label htmlFor="familyName">Family Name</label>
-                  <input id="familyName" name="familyName" type="text" required />
+                  <input id="familyName" name="familyName" type="text" />
                 </div>
               </div>
 
               <div className="client-form-field client-form-field--full">
                 <label htmlFor="currentAddress">Current Address</label>
-                <input id="currentAddress" name="currentAddress" type="text" required />
+                <input id="currentAddress" name="currentAddress" type="text" />
               </div>
 
               <div className="client-form-grid client-form-grid--3">
                 <div className="client-form-field">
                   <label htmlFor="suburb">Suburb</label>
-                  <input id="suburb" name="suburb" type="text" required />
+                  <input id="suburb" name="suburb" type="text" />
                 </div>
                 <div className="client-form-field">
                   <label htmlFor="state">State</label>
-                  <input id="state" name="state" type="text" required />
+                  <input id="state" name="state" type="text" />
                 </div>
                 <div className="client-form-field">
                   <label htmlFor="postcode">Postcode</label>
@@ -227,7 +227,7 @@ export default function ClientInformationFormPage() {
               <div className="client-form-grid client-form-grid--2">
                 <div className="client-form-field">
                   <label htmlFor="mobile">Mobile Number</label>
-                  <input id="mobile" name="mobile" type="tel" required />
+                  <input id="mobile" name="mobile" type="tel" />
                 </div>
                 {/* Work / Home Phone stays optional, per requirements */}
                 <div className="client-form-field">
@@ -238,7 +238,7 @@ export default function ClientInformationFormPage() {
 
               <div className="client-form-field client-form-field--full">
                 <label htmlFor="email">Email Address</label>
-                <input id="email" name="email" type="email" required />
+                <input id="email" name="email" type="email" />
               </div>
             </div>
           </section>
@@ -253,7 +253,7 @@ export default function ClientInformationFormPage() {
             <div className="client-form-section-body">
               <div className="client-form-field client-form-field--full">
                 <label htmlFor="accountName">Account Name</label>
-                <input id="accountName" name="accountName" type="text" required />
+                <input id="accountName" name="accountName" type="text" />
               </div>
 
               <div className="client-form-grid client-form-grid--2">
@@ -307,11 +307,11 @@ export default function ClientInformationFormPage() {
               <fieldset className="client-form-radio-group">
                 <legend>Income tax matters</legend>
                 <label className="client-form-radio-option">
-                  <input type="radio" name="incomeTaxAppointment" value="yes" required />
+                  <input type="radio" name="incomeTaxAppointment" value="yes" />
                   <span>Yes</span>
                 </label>
                 <label className="client-form-radio-option">
-                  <input type="radio" name="incomeTaxAppointment" value="no" required />
+                  <input type="radio" name="incomeTaxAppointment" value="no" />
                   <span>No</span>
                 </label>
               </fieldset>
@@ -319,11 +319,11 @@ export default function ClientInformationFormPage() {
               <fieldset className="client-form-radio-group">
                 <legend>BAS / GST matters</legend>
                 <label className="client-form-radio-option">
-                  <input type="radio" name="basGstAppointment" value="yes" required />
+                  <input type="radio" name="basGstAppointment" value="yes" />
                   <span>Yes</span>
                 </label>
                 <label className="client-form-radio-option">
-                  <input type="radio" name="basGstAppointment" value="no" required />
+                  <input type="radio" name="basGstAppointment" value="no" />
                   <span>No</span>
                 </label>
               </fieldset>
@@ -340,11 +340,11 @@ export default function ClientInformationFormPage() {
               <div className="client-form-grid client-form-grid--2">
                 <div className="client-form-field">
                   <label htmlFor="signatureName">Name</label>
-                  <input id="signatureName" name="signatureName" type="text" required />
+                  <input id="signatureName" name="signatureName" type="text" />
                 </div>
                 <div className="client-form-field">
                   <label htmlFor="signatureDate">Date</label>
-                  <input id="signatureDate" name="signatureDate" type="date" required />
+                  <input id="signatureDate" name="signatureDate" type="date" />
                 </div>
               </div>
 
