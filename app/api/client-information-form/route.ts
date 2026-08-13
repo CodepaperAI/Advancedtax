@@ -69,6 +69,10 @@ function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function display(value: string) {
+  return value || "Not provided";
+}
+
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
@@ -94,42 +98,44 @@ function createEmailText(fields: ClientInformationFields) {
     "New client information form submission from the AdvancedTax website",
     "",
     "Personal Details",
-    `First Name: ${fields.firstName}`,
-    `Family Name: ${fields.familyName}`,
-    `Date of Birth: ${fields.dob}`,
-    `TFN: ${fields.tfn}`,
+    `First Name: ${display(fields.firstName)}`,
+    `Family Name: ${display(fields.familyName)}`,
+    `Date of Birth: ${display(fields.dob)}`,
+    `TFN: ${display(fields.tfn)}`,
     "",
     "Address",
-    `Current Address: ${fields.currentAddress}`,
-    `Suburb: ${fields.suburb}`,
-    `State: ${fields.state}`,
-    `Postcode: ${fields.postcode}`,
+    `Current Address: ${display(fields.currentAddress)}`,
+    `Suburb: ${display(fields.suburb)}`,
+    `State: ${display(fields.state)}`,
+    `Postcode: ${display(fields.postcode)}`,
     "",
     "Postal Address",
-    `Postal Address: ${fields.postalAddress || "Not provided"}`,
-    `Postal Suburb: ${fields.postalSuburb || "Not provided"}`,
-    `Postal State: ${fields.postalState || "Not provided"}`,
-    `Postal Postcode: ${fields.postalPostcode || "Not provided"}`,
+    `Postal Address: ${display(fields.postalAddress)}`,
+    `Postal Suburb: ${display(fields.postalSuburb)}`,
+    `Postal State: ${display(fields.postalState)}`,
+    `Postal Postcode: ${display(fields.postalPostcode)}`,
     "",
     "Contact Details",
-    `Mobile Number: ${fields.mobile}`,
-    `Work/Home Phone: ${fields.workHomePhone || "Not provided"}`,
-    `Email Address: ${fields.email}`,
+    `Mobile Number: ${display(fields.mobile)}`,
+    `Work/Home Phone: ${display(fields.workHomePhone)}`,
+    `Email Address: ${display(fields.email)}`,
     "",
     "Bank Details",
-    `Account Name: ${fields.accountName}`,
-    `BSB: ${fields.bsb}`,
-    `Account Number: ${fields.accountNumber}`,
+    `Account Name: ${display(fields.accountName)}`,
+    `BSB: ${display(fields.bsb)}`,
+    `Account Number: ${display(fields.accountNumber)}`,
     "",
     "Appointment Details",
-    `Office: ${fields.office}`,
-    `Income Tax Matters: ${fields.incomeTaxMatters}`,
-    `BAS/GST Matters: ${fields.basGstMatters}`,
+    `Office: ${display(fields.office)}`,
+    `Income Tax Matters: ${display(fields.incomeTaxMatters)}`,
+    `BAS/GST Matters: ${display(fields.basGstMatters)}`,
     "",
     "Signature",
-    `Signature Name: ${fields.signatureName}`,
-    `Signature Date: ${fields.signatureDate}`,
-    "(Signature image attached in HTML version)"
+    `Signature Name: ${display(fields.signatureName)}`,
+    `Signature Date: ${display(fields.signatureDate)}`,
+    fields.signatureImage
+      ? "(Signature image attached in HTML version)"
+      : "(No signature was provided)"
   ].join("\n");
 }
 
@@ -143,7 +149,7 @@ function createSection(title: string, rows: [string, string][]) {
             ([label, value]) => `
               <tr>
                 <th style="text-align:left;padding:10px;border:1px solid #d9d3c7;background:#fbfaf6;width:180px">${escapeHtml(label)}</th>
-                <td style="padding:10px;border:1px solid #d9d3c7">${escapeHtml(value)}</td>
+                <td style="padding:10px;border:1px solid #d9d3c7">${escapeHtml(display(value))}</td>
               </tr>
             `
           )
@@ -169,15 +175,15 @@ function createEmailHtml(fields: ClientInformationFields) {
   ];
 
   const postalAddress: [string, string][] = [
-    ["Postal Address", fields.postalAddress || "Not provided"],
-    ["Postal Suburb", fields.postalSuburb || "Not provided"],
-    ["Postal State", fields.postalState || "Not provided"],
-    ["Postal Postcode", fields.postalPostcode || "Not provided"]
+    ["Postal Address", fields.postalAddress],
+    ["Postal Suburb", fields.postalSuburb],
+    ["Postal State", fields.postalState],
+    ["Postal Postcode", fields.postalPostcode]
   ];
 
   const contactDetails: [string, string][] = [
     ["Mobile Number", fields.mobile],
-    ["Work/Home Phone", fields.workHomePhone || "Not provided"],
+    ["Work/Home Phone", fields.workHomePhone],
     ["Email Address", fields.email]
   ];
 
@@ -202,7 +208,7 @@ function createEmailHtml(fields: ClientInformationFields) {
     ? `<div style="margin-top:12px">
          <img src="${fields.signatureImage}" alt="Client signature" style="max-width:320px;border:1px solid #d9d3c7;padding:8px;background:#fbfaf6" />
        </div>`
-    : "";
+    : `<p style="margin-top:12px;color:#5c6862">No signature was provided.</p>`;
 
   return `
     <div style="font-family:Arial,sans-serif;color:#0f1f2e;line-height:1.5">
@@ -258,33 +264,17 @@ export async function POST(request: Request) {
     signatureImage: getText(payload.signatureImage, MAX_SIGNATURE_LENGTH)
   };
 
-  if (
-    !fields.office ||
-    !fields.tfn ||
-    !fields.firstName ||
-    !fields.familyName ||
-    !fields.dob ||
-    !fields.currentAddress ||
-    !fields.suburb ||
-    !fields.state ||
-    !fields.postcode ||
-    !fields.mobile ||
-    !isEmail(fields.email) ||
-    !fields.accountName ||
-    !fields.bsb ||
-    !fields.accountNumber ||
-    !fields.incomeTaxMatters ||
-    !fields.basGstMatters ||
-    !fields.signatureName ||
-    !fields.signatureDate ||
-    !fields.signatureImage
-  ) {
+  // No fields are required — a blank or partially-filled form is still
+  // accepted. If an email address was entered, it must look like a real
+  // email so replies/notifications don't fail; an empty email is fine too.
+  if (fields.email && !isEmail(fields.email)) {
     return NextResponse.json(
-      { error: "Please complete all required fields and try again." },
+      { error: "That doesn't look like a valid email address." },
       { status: 400 }
     );
   }
-console.log("Config:", getConfig());
+
+  console.log("Config:", getConfig());
   const config = getConfig();
 
   if (!config) {
@@ -296,32 +286,39 @@ console.log("Config:", getConfig());
 
   const resend = new Resend(config.apiKey);
 
-  try {
-    console.log("About to send email");
-console.log({
-  from: config.from,
-  to: "accountants@advancedtax.com.au",
-  replyTo: fields.email,
-});
-const signatureBase64 = fields.signatureImage.replace(
-  /^data:image\/\w+;base64,/,
-  ""
-);
+  // Only attach a signature image if one was actually provided.
+  const signatureBuffer = fields.signatureImage
+    ? Buffer.from(
+        fields.signatureImage.replace(/^data:image\/\w+;base64,/, ""),
+        "base64"
+      )
+    : null;
 
-const signatureBuffer = Buffer.from(signatureBase64, "base64");
-    const result = await resend.emails.send({
-      from: config.from,
-      to: "accountants@advancedtax.com.au",
-      replyTo: fields.email,
-      subject: `New Client Information Form - ${fields.firstName} ${fields.familyName}`,
-      text: createEmailText(fields),
-      html: createEmailHtml(fields),
-      attachments: [
+  const attachments = signatureBuffer
+    ? [
         {
           filename: "client-signature.png",
           content: signatureBuffer,
         },
-      ],
+      ]
+    : undefined;
+
+  try {
+    console.log("About to send email");
+    console.log({
+      from: config.from,
+      to: "accountants@advancedtax.com.au",
+      replyTo: fields.email || undefined,
+    });
+
+    const result = await resend.emails.send({
+      from: config.from,
+      to: "accountants@advancedtax.com.au",
+      replyTo: fields.email || undefined,
+      subject: `New Client Information Form - ${fields.firstName || fields.familyName || "Unnamed client"}`,
+      text: createEmailText(fields),
+      html: createEmailHtml(fields),
+      attachments,
     });
 
     if (result.error) {
@@ -335,8 +332,8 @@ const signatureBuffer = Buffer.from(signatureBase64, "base64");
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("========== CLIENT FORM ERROR ==========");
-console.error(error);
-console.error("======================================");
+    console.error(error);
+    console.error("======================================");
     return NextResponse.json(
       { error: "We could not send your form. Please call or email us." },
       { status: 500 }
