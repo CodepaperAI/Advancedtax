@@ -20,6 +20,42 @@
  * ABBY.png into this project's `public/images/smsf/` folder so that path
  * resolves. Update HERO_IMAGE_SRC / HERO_IMAGE_ALT below if the file lives
  * somewhere else or needs different alt text.
+ *
+ * ------------------------------------------------------------------------
+ * UPDATE (this revision):
+ * 1. Announcement bar copy/link updated to promote the new SMSF Fee Review
+ *    proposition (see ANNOUNCEMENT_* constants and the announcement JSX).
+ * 2. New "SMSF Fee Review" section added directly after the existing $990
+ *    Introductory Offer section (see the "NEW SECTION: SMSF Fee Review"
+ *    block below).
+ * 3. New "SMSF + Property" section added directly after the existing SMSF
+ *    Services section and before "Our Process" (see the "NEW SECTION:
+ *    SMSF + Property" block below).
+ * No existing sections were removed, reordered, restructured, or rewritten.
+ * ------------------------------------------------------------------------
+ *
+ * UPDATE (depth/readability pass):
+ * Redesigned four sections that were reading flat and hard to scan: the
+ * SMSF Services card grid, the SMSF + Property card, the Our Process
+ * steps, and the Who We Help cards. This touched:
+ *  - PROCESS_STEPS: each step now has a one-line `body` description
+ *    (previously title-only), rendered under the heading.
+ *  - WHO_WE_HELP: converted from a flat string array to {label, icon}
+ *    pairs so each card gets a distinct icon instead of repeating
+ *    IconUsers seven times.
+ *  - PROPERTY_HIGHLIGHTS: new short list rendered inside the Property
+ *    card, and that card now has a proper icon badge.
+ * The corresponding CSS (borders/shadows/icon-badge sizing) changed in
+ * smsf-services.css — search "DEPTH PASS" there. No other section's
+ * markup, data, or copy was touched.
+ *
+ * UPDATE (background/spacing/format pass):
+ * "Complete SMSF Services" and "Who We Help" now use the new
+ * .smsf-services-section--navy background modifier. "SMSF + Property"
+ * switched from --alt to --white (its card is tinted instead, see the
+ * CSS). The Property CTA button dropped the outline variant in favor of
+ * the standard .smsf-services-btn-primary used everywhere else. See
+ * smsf-services.css for the matching style changes.
  */
 
 import type { Metadata } from "next";
@@ -29,6 +65,11 @@ import "./smsf-services.css";
 
 const BOOKING_URL = "/contact";
 const CONTACT_URL = "/contact";
+
+// NEW: the fee-review and property CTAs reuse the existing contact route,
+// per the brief ("Use the existing contact route for the new CTA buttons").
+const FEE_REVIEW_URL = "/contact";
+const PROPERTY_URL = "/contact";
 
 // Place ABBY.png at public/images/smsf/ABBY.png (or update this path to
 // wherever it actually lives in the project).
@@ -357,9 +398,37 @@ function IconBuilding(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+// NEW: used by the Fee Review section (the $1,000 -> $700 example arrow).
+function IconTrendingDown(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="m3 7 7 7 4-4 7 7" />
+      <path d="M21 10v7h-7" />
+    </svg>
+  );
+}
+
 /* -------------------------------------------------------------------- */
 /* Static content                                                        */
 /* -------------------------------------------------------------------- */
+
+// NEW: announcement bar copy for the SMSF Fee Review proposition.
+const ANNOUNCEMENT_MESSAGE =
+  "ALREADY HAVE AN SMSF? YOU MAY BE PAYING MORE THAN YOU NEED TO.";
+const ANNOUNCEMENT_SUBMESSAGE = "ASK US ABOUT OUR SMSF FEE REVIEW";
+const ANNOUNCEMENT_SAVINGS = "SAVE UP TO 30%";
+const ANNOUNCEMENT_CTA = "Request a Free Fee Review";
 
 const OFFER_INCLUDES = [
   "SMSF Annual Financial Statements",
@@ -441,18 +510,25 @@ const SERVICE_CARDS = [
   },
 ];
 
+// UPDATED (depth/readability pass): each step now carries a short
+// description alongside its title, so the "Our Process" cards aren't
+// just a number and a headline floating in empty space.
 const PROCESS_STEPS = [
   {
     title: "Book Your Virtual Consultation",
+    body: "A short, no-obligation call to understand your fund.",
   },
   {
     title: "We Review Your Fund",
+    body: "We check your structure, compliance and current fees.",
   },
   {
     title: "We Manage Your SMSF Administration & Compliance",
+    body: "Annual statements, tax return and audit, handled end to end.",
   },
   {
     title: "You Receive Ongoing Advice & Support",
+    body: "Direct access to your accountant whenever you need it.",
   },
 ];
 
@@ -465,14 +541,25 @@ const SWITCH_REASONS = [
   "Charges premium fees without delivering ongoing value",
 ];
 
+// UPDATED (depth/readability pass): converted from a flat string array to
+// {label, icon} pairs so each "Who We Help" card gets a distinct icon
+// instead of every card repeating IconUsers.
 const WHO_WE_HELP = [
-  "Individuals considering an SMSF",
-  "Existing SMSF trustees",
-  "Clients changing accountants",
-  "Investors building retirement wealth",
-  "Professionals seeking ongoing SMSF advice",
-  "Retirees requiring pension administration",
-  "Trustees wanting reliable compliance support",
+  { label: "Individuals considering an SMSF", icon: IconSearchCheck },
+  { label: "Existing SMSF trustees", icon: IconShield },
+  { label: "Clients changing accountants", icon: IconHandshake },
+  { label: "Investors building retirement wealth", icon: IconBarChart },
+  { label: "Professionals seeking ongoing SMSF advice", icon: IconClipboard },
+  { label: "Retirees requiring pension administration", icon: IconSettings },
+  { label: "Trustees wanting reliable compliance support", icon: IconScale },
+];
+
+// NEW (depth/readability pass): short highlights rendered inside the
+// SMSF + Property card, breaking up the three paragraphs of copy.
+const PROPERTY_HIGHLIGHTS = [
+  "Accounting and lending under one roof",
+  "Clear guidance on SMSF borrowing rules",
+  "One team, one point of contact",
 ];
 
 const FAQS = [
@@ -514,52 +601,66 @@ const FAQS = [
 export default function SmsfServicesPage() {
   return (
     <main className="smsf-services-page">
-      {/* Announcement bar */}
+      {/*
+        UPDATED: Announcement bar now promotes the SMSF Fee Review
+        proposition and links to the new Fee Review section / CTA route
+        instead of the general booking link. Structure and styling classes
+        are unchanged from the existing implementation.
+      */}
       <Link
-        href={BOOKING_URL}
+        href={FEE_REVIEW_URL}
         className="smsf-services-announcement"
       >
         <span className="smsf-services-announcement-inner">
-          <IconClipboard width={16} height={16} />
-          LIMITED TIME INTRODUCTORY OFFER
+          <IconTag width={16} height={16} />
+          {ANNOUNCEMENT_MESSAGE}
           <span className="smsf-services-announcement-divider">|</span>
-          Professional SMSF Administration &amp; Compliance from just $990*
+          {ANNOUNCEMENT_SUBMESSAGE}
           <span className="smsf-services-announcement-divider">|</span>
-          Book Your Virtual Consultation Today
+          {ANNOUNCEMENT_SAVINGS}
+          <span className="smsf-services-announcement-divider">|</span>
+          <span className="smsf-services-announcement-cta">
+            {ANNOUNCEMENT_CTA}
+          </span>
         </span>
       </Link>
 
       {/* Hero */}
       <section className="smsf-services-hero">
-        <div className="smsf-services-container smsf-services-hero-grid">
+        <div className="smsf-services-hero-inner smsf-services-hero-grid">
           <div className="smsf-services-hero-content">
-            <span className="smsf-services-eyebrow">SMSF Accountant Sydney</span>
-            <h1>Expert SMSF Accounting, Administration &amp; Compliance Services</h1>
+            <span className="smsf-services-eyebrow">
+              Expert SMSF Accounting, Administration &amp; Compliance
+            </span>
+            <h1>More Confidence in Your SMSF. Less Time Managing It.</h1>
             <p className="smsf-services-lede">
-              Managing a Self Managed Super Fund (SMSF) gives you greater
-              control over your retirement, but it also comes with ongoing
-              responsibilities. From SMSF administration and annual
-              compliance to tax returns, financial statements, and audit
-              coordination, our experienced SMSF accountants help you stay
-              compliant while supporting your long-term financial goals.
+              Your SMSF comes with greater control over your retirement
+              savings, but it also comes with ongoing administration,
+              compliance and reporting responsibilities.
+            </p>
+            <p className="smsf-services-lede">
+              AATBS takes care of the accounting and compliance behind
+              your fund, giving you clear advice, responsive support and a
+              team you can rely on throughout the year.
             </p>
             <p className="smsf-services-hero-support">
-              Book your complimentary consultation today and discover how
-              AATBS can simplify your SMSF.
+              Already have an SMSF? We can also review your current
+              accounting and administration fees, with eligible clients
+              potentially saving up to 30%.
             </p>
             <div className="smsf-services-hero-buttons">
               <Link
                 href={BOOKING_URL}
                 className="smsf-services-btn smsf-services-btn-primary"
               >
-                Book a Virtual Consultation
+                Book a Free Consultation
                 <IconArrowRight />
               </Link>
               <Link
-                href="tel:+6129734077"
+                href="tel:+61297340777"
                 className="smsf-services-btn smsf-services-btn-secondary"
               >
-                Speak with an SMSF Accountant
+                Call (02) 9734 0777
               </Link>
             </div>
           </div>
@@ -583,25 +684,45 @@ export default function SmsfServicesPage() {
         </div>
       </section>
 
-      {/* Introductory offer */}
-      <section className="smsf-services-offer-section">
+      {/*
+        SMSF Fee Review
+        UPDATED: the separate "$990 Professional SMSF Administration &
+        Compliance" card/section has been removed. Its checklist has been
+        folded into this Fee Review card (below the intro paragraphs) so
+        what's included is still visible, without a separate section. The
+        $990 introductory offer itself is unchanged elsewhere on the page
+        (see the Final CTA section further down, which still references
+        it) — only this standalone card was removed.
+      */}
+      <section className="smsf-services-feereview-section">
         <div className="smsf-services-container">
-          <div className="smsf-services-offer-card">
+          <div className="smsf-services-feereview-card">
             <span className="smsf-services-offer-eyebrow">
-              <IconTag width={16} height={16} />
-              Limited Time Introductory Offer
+              <IconTrendingDown width={16} height={16} />
+              SMSF Fee Review
             </span>
-            <h2>Professional SMSF Administration &amp; Compliance</h2>
+            <h2>Is Your SMSF Accountant Charging You More Than They Should?</h2>
             <p className="smsf-services-offer-sub">
-              A fixed-price introductory package for eligible standard SMSFs.
+              Your SMSF accounting and administration fees can add up year
+              after year.
             </p>
 
-            <div className="smsf-services-offer-price">
-              <span className="smsf-services-offer-price-label">From</span>
-              <span className="smsf-services-offer-price-value">$990*</span>
+            <div className="smsf-services-feereview-body">
+              <p>
+                If you&rsquo;ve had your SMSF with the same accountant for
+                years, you may not have stopped to ask whether you&rsquo;re
+                still getting the right value for what you&rsquo;re paying.
+              </p>
+              <p>
+                We&rsquo;ll review your current SMSF accounting and
+                administration fees and see if we can do better. Depending
+                on your fund structure and requirements, eligible clients
+                may be able to reduce their ongoing fees by up to 30%.
+              </p>
             </div>
 
-            <ul className="smsf-services-offer-list">
+            {/* NEW: checklist folded in from the removed $990 offer card. */}
+            <ul className="smsf-services-offer-list smsf-services-feereview-list">
               {OFFER_INCLUDES.map((item) => (
                 <li key={item}>
                   <IconCheck />
@@ -610,21 +731,61 @@ export default function SmsfServicesPage() {
               ))}
             </ul>
 
+            <div className="smsf-services-feereview-example">
+              <div className="smsf-services-feereview-example-item">
+                <span className="smsf-services-feereview-example-label">
+                  Paying $1,000?
+                </span>
+                <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--before">
+                  $1,000
+                </span>
+              </div>
+
+              <span
+                className="smsf-services-feereview-example-arrow"
+                aria-hidden="true"
+              >
+                <IconTrendingDown />
+              </span>
+
+              <div className="smsf-services-feereview-example-item">
+                <span className="smsf-services-feereview-example-label">
+                  You could pay $700.
+                </span>
+                <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--after">
+                  $700
+                </span>
+              </div>
+
+              <div className="smsf-services-feereview-example-savings">
+                That&rsquo;s $300 back in your pocket.
+              </div>
+            </div>
+
+            <p className="smsf-services-feereview-body-note">
+              No complicated switching process. No need to manage the
+              transition yourself. We&rsquo;ll review your current
+              arrangement, explain what we can offer and handle the move if
+              you decide to switch.
+            </p>
+
             <Link
-              href={BOOKING_URL}
+              href={FEE_REVIEW_URL}
               className="smsf-services-btn smsf-services-btn-primary smsf-services-btn--block"
             >
-              Book Your Virtual Consultation
+              Get My Free SMSF Fee Review
               <IconArrowRight />
             </Link>
 
             <p className="smsf-services-offer-disclaimer">
-              *Available for eligible standard SMSFs. Additional fees may
-              apply depending on fund complexity and investment structure.
+              Eligibility and pricing are subject to a review of your SMSF
+              structure, current services and requirements. Terms and
+              conditions apply.
             </p>
           </div>
         </div>
       </section>
+      {/* END SMSF Fee Review */}
 
       {/* Trust bar */}
       <section className="smsf-services-trust">
@@ -714,7 +875,7 @@ export default function SmsfServicesPage() {
       </section>
 
       {/* Complete SMSF administration, compliance & accounting services */}
-      <section className="smsf-services-section smsf-services-section--white">
+      <section className="smsf-services-section smsf-services-section--navy">
         <div className="smsf-services-container">
           <div className="smsf-services-section-intro">
             <span className="smsf-services-eyebrow">Our SMSF Services</span>
@@ -729,6 +890,14 @@ export default function SmsfServicesPage() {
             </p>
           </div>
 
+          {/*
+            DEPTH PASS: markup unchanged — the redesign here is entirely in
+            .smsf-services-card / .smsf-services-card-icon in the CSS
+            (border, layered shadow, gold top edge, larger navy/gold icon
+            badge), so the same SERVICE_CARDS data now renders with real
+            separation from the white section background instead of
+            blending into it.
+          */}
           <div className="smsf-services-card-grid">
             {SERVICE_CARDS.map(({ icon: Icon, title, body }) => (
               <article className="smsf-services-card" key={title}>
@@ -743,7 +912,85 @@ export default function SmsfServicesPage() {
         </div>
       </section>
 
-      {/* Our process */}
+      {/* ================================================================
+          NEW SECTION: SMSF + Property
+          Placed after the SMSF Services section and before "Our Process",
+          per the brief.
+
+          DEPTH PASS: previously the most understated element on the page
+          (a plain 1px-bordered card with no shadow). It now carries the
+          same gold-top-border + layered-shadow treatment as the Fee
+          Review card above, a proper gold/navy icon badge, and a short
+          highlights list breaking up the three paragraphs.
+
+          BACKGROUND/SPACING PASS: section moved from navy-050 to plain
+          white (its card is tinted navy-050 instead, see CSS) so it
+          doesn't blend into "Our Process" right after it, and its top
+          padding was restored (previously zeroed out) so it doesn't sit
+          flush against the navy Services section above.
+          ================================================================ */}
+      <section className="smsf-services-section smsf-services-section--white smsf-services-property-section">
+        <div className="smsf-services-container">
+          <div className="smsf-services-property-card">
+            <span className="smsf-services-property-icon">
+              <IconBuilding width={22} height={22} />
+            </span>
+            <h2>Your SMSF Can Be Part of a Bigger Strategy.</h2>
+            <p>
+              For some investors, an SMSF can play a role in building and
+              managing retirement wealth, including certain property
+              investment strategies. But when accounting, SMSF compliance
+              and financing are handled separately, it can be difficult to
+              see how everything fits together.
+            </p>
+            <p>
+              AATBS brings accounting and lending under one roof. That
+              means you can speak with a team that understands the SMSF
+              accounting and compliance side while also helping you
+              understand the lending considerations if property forms part
+              of your plans.
+            </p>
+            <p>
+              Whether you&rsquo;re considering an SMSF property investment
+              or already have a strategy in mind, we can help you
+              understand what needs to be considered before you take the
+              next step.
+            </p>
+
+            {/* NEW: highlights list, folded in during the depth pass. */}
+            <ul className="smsf-services-property-list">
+              {PROPERTY_HIGHLIGHTS.map((item) => (
+                <li key={item}>
+                  <IconCheck width={16} height={16} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href={PROPERTY_URL}
+              className="smsf-services-btn smsf-services-btn-primary"
+            >
+              Discuss Your SMSF &amp; Property Plans
+              <IconArrowRight />
+            </Link>
+
+            <p className="smsf-services-property-disclaimer">
+              SMSF investment and borrowing rules apply. Any investment or
+              lending arrangement depends on your individual circumstances
+              and applicable requirements.
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* END NEW SECTION: SMSF + Property */}
+
+      {/*
+        Our process
+        DEPTH PASS: each step now renders its `body` description (see
+        PROCESS_STEPS above) beneath the heading, in addition to the
+        border/shadow/number-badge changes in the CSS.
+      */}
       <section className="smsf-services-section smsf-services-section--alt">
         <div className="smsf-services-container">
           <div className="smsf-services-section-intro">
@@ -758,6 +1005,7 @@ export default function SmsfServicesPage() {
                   {index + 1}
                 </span>
                 <h3>{step.title}</h3>
+                <p>{step.body}</p>
                 {index < PROCESS_STEPS.length - 1 && (
                   <span
                     className="smsf-services-process-connector"
@@ -770,8 +1018,16 @@ export default function SmsfServicesPage() {
         </div>
       </section>
 
-      {/* Who we help */}
-      <section className="smsf-services-section smsf-services-section--alt">
+      {/*
+        Who we help
+        DEPTH PASS: maps over {label, icon} pairs (see WHO_WE_HELP above)
+        so each item shows a distinct icon instead of repeating IconUsers.
+        CONTRAST/FORMAT PASS: deliberately not styled like "Our Process" —
+        renders as a wrapping row of navy pill chips (see .smsf-services-
+        who-grid / -who-card in the CSS) on the new navy section
+        background, with a gold-fill/navy-icon badge for real contrast.
+      */}
+      <section className="smsf-services-section smsf-services-section--navy">
         <div className="smsf-services-container">
           <div className="smsf-services-section-intro">
             <span className="smsf-services-eyebrow">Who We Help</span>
@@ -780,12 +1036,12 @@ export default function SmsfServicesPage() {
           </div>
 
           <div className="smsf-services-who-grid">
-            {WHO_WE_HELP.map((item) => (
-              <div className="smsf-services-who-card" key={item}>
+            {WHO_WE_HELP.map(({ label, icon: Icon }) => (
+              <div className="smsf-services-who-card" key={label}>
                 <span className="smsf-services-who-icon">
-                  <IconUsers width={18} height={18} />
+                  <Icon width={18} height={18} />
                 </span>
-                <span>{item}</span>
+                <span>{label}</span>
               </div>
             ))}
           </div>

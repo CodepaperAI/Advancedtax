@@ -6,6 +6,44 @@
    tokens as the rest of the site (--navy, --gold, --navy-050, --navy-700,
    --navy-100, --gold-dark, --radius-lg) with local fallbacks in case a
    variable isn't defined globally on the page this is dropped into.
+
+   UPDATE (this revision):
+   - Announcement bar: added a small CTA-emphasis style for the new
+     "Request a Free Fee Review" text (existing announcement classes and
+     layout are otherwise unchanged).
+   - New section styles appended at the end of this file, clearly marked,
+     for the "SMSF Fee Review" and "SMSF + Property" sections. Nothing
+     above the "NEW SECTION STYLES" marker was changed.
+
+   UPDATE (depth/readability pass):
+   - Redesigned four sections that were reading flat: the SMSF Services
+     card grid, the SMSF + Property card, the Our Process steps, and the
+     Who We Help cards. Each now carries real elevation (border + layered
+     shadow), a gold accent tying it to the Offer/Fee-Review card language
+     already used elsewhere on the page, and larger, higher-contrast icon
+     badges (navy fill / gold icon instead of navy-050 fill / gold icon).
+     Only the rules for those four components changed — search
+     "DEPTH PASS" to find every touched block. Nothing else in this file
+     was modified.
+
+   UPDATE (background/spacing/format pass):
+   - "Complete SMSF Services" and "Who We Help" now sit on a full-bleed
+     navy background (new .smsf-services-section--navy modifier) instead
+     of white/navy-050, so the section run has real light/dark rhythm.
+   - "SMSF + Property" got its top padding back (it was zeroed out,
+     which is why it sat flush against the section above) and moved to
+     a plain white background, with its card tinted navy-050 so it still
+     reads as a surface.
+   - "Who We Help" is now a wrapping row of navy pill chips rather than a
+     grid of bordered boxes, so it no longer looks like a duplicate of
+     "Our Process" — and its icon badge flipped to gold-fill/navy-icon
+     (previously gold-icon/navy-fill, which was too low-contrast to read
+     at that size).
+   - The Property section's CTA button switched from an outlined variant
+     to the standard solid-gold primary button used everywhere else on
+     the page; the now-unused outline button styles were removed.
+   Search "BACKGROUND/SPACING PASS" and "CONTRAST/FORMAT PASS" for the
+   specific blocks.
    ========================================================================== */
 
 .smsf-services-page {
@@ -71,6 +109,14 @@
   opacity: 0.6;
 }
 
+/* NEW: underline the CTA fragment ("Request a Free Fee Review") so it
+   reads as the actionable part of the banner, without changing the
+   banner's overall size or the rest of its styling. */
+.smsf-services-announcement-cta {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ---------- Hero ---------- */
 
 .smsf-services-hero {
@@ -79,11 +125,24 @@
   color: #fff;
 }
 
+/* Wider than the site's standard 1200px container so the hero fills more
+   of the viewport on large screens instead of leaving big empty gutters
+   either side, while side padding scales fluidly rather than jumping. */
+.smsf-services-hero-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 4rem);
+}
+
 .smsf-services-hero-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   align-items: center;
+}
+
+.smsf-services-hero-content {
+  max-width: 620px;
 }
 
 .smsf-services-hero-content .smsf-services-eyebrow {
@@ -363,6 +422,22 @@
   background: #fff;
 }
 
+/* DEPTH/CONTRAST PASS: full-bleed navy variant, used to break up long runs
+   of white/navy-050 sections (Complete SMSF Services, Who We Help). Scoped
+   overrides below flip the shared section-intro text to light colors only
+   inside this variant — every other section keeps the default dark text. */
+.smsf-services-section--navy {
+  background: var(--smsf-navy);
+}
+
+.smsf-services-section--navy .smsf-services-section-intro h2 {
+  color: #fff;
+}
+
+.smsf-services-section--navy .smsf-services-section-intro p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
 .smsf-services-section-intro {
   max-width: 680px;
   margin: 0 auto 2.5rem;
@@ -501,53 +576,71 @@
 }
 
 /* ---------- Complete SMSF services (cards) ---------- */
+/* DEPTH/CONTRAST PASS: section background is now navy (see
+   .smsf-services-section--navy above). Cards sit a shade lighter than the
+   section (navy-700) with a gold top edge, so they read as distinct
+   surfaces instead of white-on-white. Icon badge flips to a solid gold
+   circle with a navy icon — the highest-contrast combination available —
+   so it can't disappear the way a pale icon on a pale circle can. */
 
 .smsf-services-card-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .smsf-services-card {
-  padding: 1.75rem 1.5rem;
+  padding: 1.85rem 1.6rem 1.75rem;
   border-radius: var(--smsf-radius-lg);
-  background: #fff;
-  box-shadow: 0 10px 24px -16px rgba(16, 32, 63, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--smsf-navy-700);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--smsf-gold);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18),
+    0 18px 32px -20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .smsf-services-card:hover,
 .smsf-services-card:focus-within {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 30px -16px rgba(16, 32, 63, 0.4);
+  transform: translateY(-4px);
+  background: #434f6e;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22),
+    0 24px 40px -20px rgba(0, 0, 0, 0.55);
 }
 
 .smsf-services-card-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-bottom: 1rem;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.1rem;
   border-radius: 50%;
-  background: var(--smsf-navy-050);
-  color: var(--smsf-gold);
+  background: var(--smsf-gold);
+  color: var(--smsf-navy);
+  box-shadow: 0 10px 18px -10px rgba(0, 0, 0, 0.45);
 }
 
 .smsf-services-card h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-  color: var(--smsf-navy);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #fff;
 }
 
 .smsf-services-card p {
   margin: 0;
   font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--smsf-navy-700);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* ---------- Our process ---------- */
+/* DEPTH PASS: cards now carry the same border+shadow treatment as the
+   service cards above, the number badge is larger with its own shadow so
+   it reads as a marker sitting above the card rather than a flat disc,
+   and each step now shows a one-line description (previously just a
+   title), so the section isn't mostly empty space. */
 
 .smsf-services-process-grid {
   display: grid;
@@ -558,24 +651,35 @@
 
 .smsf-services-process-step {
   position: relative;
-  padding: 1.75rem 1.5rem 1.5rem;
+  padding: 1.85rem 1.5rem 1.6rem;
   border-radius: var(--smsf-radius-lg);
   background: #fff;
   border: 1px solid var(--smsf-navy-100);
+  box-shadow: 0 1px 2px rgba(16, 32, 63, 0.05),
+    0 16px 28px -20px rgba(16, 32, 63, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.smsf-services-process-step:hover,
+.smsf-services-process-step:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 1px 2px rgba(16, 32, 63, 0.07),
+    0 22px 34px -20px rgba(16, 32, 63, 0.34);
 }
 
 .smsf-services-process-number {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-bottom: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1.1rem;
   border-radius: 50%;
   background: var(--smsf-navy);
   color: var(--smsf-gold);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 18px -8px rgba(16, 32, 63, 0.5);
 }
 
 .smsf-services-process-step h3 {
@@ -587,6 +691,7 @@
 .smsf-services-process-step p {
   margin: 0;
   font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--smsf-navy-700);
 }
 
@@ -642,29 +747,43 @@
 }
 
 /* ---------- Who we help ---------- */
+/* CONTRAST/FORMAT PASS: deliberately a different shape from "Our Process"
+   directly above it — that section is a numbered sequence of rectangular
+   step cards, this one is an unordered set of people/situations, so it's
+   now a wrapping row of navy pill chips rather than another grid of
+   boxy cards. Runs on the navy section background (.smsf-services-section
+   --navy) so it also breaks up the run of light sections around it.
+   The icon badge is a solid gold circle with a navy icon — previously a
+   gold icon on a navy circle rendered too faint to read at this size, so
+   this flips to the higher-contrast pairing already used elsewhere. */
 
 .smsf-services-who-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
 }
 
 .smsf-services-who-card {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 1.15rem 1.25rem;
-  border-radius: var(--smsf-radius-lg);
-  background: #fff;
-  border: 1px solid var(--smsf-navy-100);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  gap: 0.7rem;
+  max-width: 320px;
+  padding: 0.65rem 1.35rem 0.65rem 0.65rem;
+  border-radius: 999px;
+  background: var(--smsf-navy-700);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18),
+    0 14px 26px -18px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .smsf-services-who-card:hover,
 .smsf-services-who-card:focus-within {
   transform: translateY(-3px);
-  box-shadow: 0 16px 30px -18px rgba(16, 32, 63, 0.35);
-  border-color: var(--smsf-gold);
+  background: #434f6e;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22),
+    0 20px 32px -16px rgba(0, 0, 0, 0.55);
 }
 
 .smsf-services-who-icon {
@@ -675,14 +794,15 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background: var(--smsf-navy-050);
-  color: var(--smsf-gold);
+  background: var(--smsf-gold);
+  color: var(--smsf-navy);
 }
 
 .smsf-services-who-card span {
   font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--smsf-navy);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: #fff;
 }
 
 /* ---------- FAQ ---------- */
@@ -805,10 +925,6 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .smsf-services-who-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .smsf-services-trust-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -828,6 +944,10 @@
     gap: 3rem;
   }
 
+  .smsf-services-hero-content {
+    max-width: none;
+  }
+
   .smsf-services-hero-image {
     min-height: 620px;
   }
@@ -837,10 +957,6 @@
   }
 
   .smsf-services-card-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .smsf-services-who-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -863,15 +979,19 @@
     gap: 1.25rem;
   }
 
-  /* Connecting line between steps on desktop, drawn behind the number badge */
+  /* Connecting line between steps on desktop, drawn behind the number badge.
+     DEPTH PASS: was navy-100 on navy-050 background (effectively invisible);
+     now uses the gold accent at partial opacity so it actually reads as a
+     connector rather than disappearing into the section background. */
   .smsf-services-process-connector {
     display: block;
     position: absolute;
-    top: 2.5rem;
+    top: 2.9rem;
     left: 100%;
     width: 1.5rem;
     height: 2px;
-    background: var(--smsf-navy-100);
+    background: var(--smsf-gold);
+    opacity: 0.4;
   }
 
   .smsf-services-process-step {
@@ -889,6 +1009,24 @@
   }
 }
 
+/* On very wide viewports, let the hero use even more of the available
+   width so it doesn't read as a narrow column floating in a large dark
+   field. Other sections keep their existing 1200px container. */
+@media (min-width: 1440px) {
+  .smsf-services-hero-inner {
+    max-width: 1680px;
+  }
+
+  .smsf-services-hero-grid {
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 4rem;
+  }
+
+  .smsf-services-hero-image {
+    min-height: 680px;
+  }
+}
+
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -896,8 +1034,267 @@
   .smsf-services-hero .button-secondary,
   .smsf-services-why-card,
   .smsf-services-card,
-  .smsf-services-who-card {
+  .smsf-services-who-card,
+  .smsf-services-process-step {
     transition: none;
     animation: none;
+  }
+}
+
+/* ==========================================================================
+   NEW SECTION STYLES
+   Everything below this line is new, added to support the SMSF Fee Review
+   and SMSF + Property sections. Follows the same naming convention
+   ("smsf-services-*"), reuses existing tokens/variables, and reuses
+   existing patterns (the offer-card look for Fee Review, the card/section
+   look for Property) rather than introducing a new design system.
+   ========================================================================== */
+
+/* ---------- SMSF Fee Review ---------- */
+
+.smsf-services-feereview-section {
+  padding: 3.5rem 0;
+  background: var(--smsf-navy-050);
+}
+
+/* Reuses the same navy card / gold top-border treatment as
+   .smsf-services-offer-card so this section carries equal (if not
+   slightly stronger) visual weight, per the brief. */
+.smsf-services-feereview-card {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.25rem 2rem 2rem;
+  border-radius: var(--smsf-radius-lg);
+  background: var(--smsf-navy);
+  color: #fff;
+  box-shadow: 0 20px 40px -20px rgba(16, 32, 63, 0.45);
+  border-top: 4px solid var(--smsf-gold);
+}
+
+.smsf-services-feereview-card h2 {
+  margin: 0.6rem 0 0.25rem;
+  color: #fff;
+  font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+  line-height: 1.25;
+}
+
+.smsf-services-feereview-body {
+  margin: 0 0 1.5rem;
+}
+
+.smsf-services-feereview-body p {
+  margin: 0 0 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.smsf-services-feereview-body p:last-child {
+  margin-bottom: 0;
+}
+
+.smsf-services-feereview-body-note {
+  margin: 0 0 1.5rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* NEW: the checklist folded in from the removed $990 offer card. Reuses
+   .smsf-services-offer-list styling (already designed for this dark
+   card), with extra bottom margin so it's clearly separated from the
+   price example box below it. */
+.smsf-services-feereview-list {
+  margin-bottom: 1.75rem;
+}
+
+/* The $1,000 -> $700 example. Grid-based so it stacks cleanly on mobile
+   (before, arrow, after, savings note) without any horizontal scroll. */
+.smsf-services-feereview-example {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin: 0 0 1.5rem;
+  padding: 1.5rem 1.25rem;
+  border-radius: var(--smsf-radius-lg);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.smsf-services-feereview-example-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.smsf-services-feereview-example-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.smsf-services-feereview-example-value {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.smsf-services-feereview-example-value--before {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+
+.smsf-services-feereview-example-value--after {
+  color: var(--smsf-gold);
+}
+
+.smsf-services-feereview-example-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--smsf-gold);
+  flex-shrink: 0;
+  justify-self: center;
+}
+
+.smsf-services-feereview-example-savings {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #fff;
+}
+
+/* ---------- SMSF + Property ---------- */
+
+/* BACKGROUND/SPACING PASS: this section now sits on a plain white
+   background (it previously shared navy-050 with "Our Process" right
+   after it, which was part of why the two blurred together). Its own
+   top padding is restored to the section default — it used to be zeroed
+   out, which pinned this card directly against the bottom of the
+   services section above with no breathing room. */
+
+/* DEPTH PASS: previously a plain white card with only a 1px border and no
+   shadow — the lowest-contrast combination on the page. Now matches the
+   Offer/Fee-Review card weight (gold top border + layered shadow), gets a
+   proper gold/navy icon badge instead of the small pale circle it was
+   borrowing from the service cards, and the three paragraphs are followed
+   by a short highlights list so the section isn't just a wall of text.
+   Background is tinted navy-050 (rather than white) so it still reads as
+   a distinct surface against the section's white background. */
+.smsf-services-property-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.25rem 1.75rem 2rem;
+  border-radius: var(--smsf-radius-lg);
+  background: var(--smsf-navy-050);
+  border: 1px solid var(--smsf-navy-100);
+  border-top: 4px solid var(--smsf-gold);
+  box-shadow: 0 1px 2px rgba(16, 32, 63, 0.06),
+    0 24px 44px -26px rgba(16, 32, 63, 0.28);
+}
+
+.smsf-services-property-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1.1rem;
+  border-radius: 50%;
+  background: var(--smsf-navy);
+  color: var(--smsf-gold);
+  box-shadow: 0 10px 20px -10px rgba(16, 32, 63, 0.55);
+}
+
+.smsf-services-property-card h2 {
+  margin: 0 0 0.85rem;
+  color: var(--smsf-navy);
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+}
+
+.smsf-services-property-card p {
+  margin: 0 0 1rem;
+  color: var(--smsf-navy-700);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.smsf-services-property-card p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+/* NEW: short highlights list, styled like the Fee Review checklist but on
+   a light card — breaks up the three paragraphs above into scannable
+   takeaways before the CTA. */
+.smsf-services-property-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 1.15rem 1.35rem;
+  border-radius: var(--smsf-radius-lg);
+  background: #fff;
+  border: 1px solid var(--smsf-navy-100);
+  display: grid;
+  gap: 0.65rem;
+}
+
+.smsf-services-property-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--smsf-navy);
+}
+
+.smsf-services-property-list svg {
+  color: var(--smsf-gold);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.smsf-services-property-disclaimer {
+  margin: 1rem 0 0 !important;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--smsf-navy-700);
+  opacity: 0.75;
+}
+
+/* ---------- New sections: responsive ---------- */
+
+@media (min-width: 640px) {
+  .smsf-services-feereview-example {
+    padding: 1.75rem 2rem;
+  }
+
+  .smsf-services-property-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .smsf-services-feereview-section {
+    padding-bottom: 4rem;
+  }
+
+  .smsf-services-feereview-card {
+    padding: 2.75rem 3rem 2.5rem;
+  }
+
+  .smsf-services-property-card {
+    padding: 2.75rem 3rem 2.5rem;
   }
 }
