@@ -56,6 +56,17 @@
  * CSS). The Property CTA button dropped the outline variant in favor of
  * the standard .smsf-services-btn-primary used everywhere else. See
  * smsf-services.css for the matching style changes.
+ *
+ * UPDATE (fee review highlight revision):
+ * Inside the SMSF Fee Review card, "Save up to 30%" is now the primary
+ * visual highlight (a large gold stat in its own callout), since that's
+ * the actual eligibility claim. The $1,000 -> $700 figures are kept only
+ * as a smaller, explicitly labelled "Example" underneath rather than a
+ * second full-size stat. The two now sit side-by-side on wider screens
+ * (and the card itself is wider) so the section reads as a landscape
+ * block instead of a tall, narrow one. See
+ * .smsf-services-feereview-savings / -highlight / -example in the CSS.
+ * ------------------------------------------------------------------------
  */
 
 import type { Metadata } from "next";
@@ -731,34 +742,59 @@ export default function SmsfServicesPage() {
               ))}
             </ul>
 
-            <div className="smsf-services-feereview-example">
-              <div className="smsf-services-feereview-example-item">
-                <span className="smsf-services-feereview-example-label">
-                  Paying $1,000?
+            {/* REVISION: "Save up to 30%" is now the primary visual
+                highlight of this card (previously the $1,000 -> $700
+                figures carried equal weight). The dollar figures are kept
+                only as a smaller, clearly-labelled "Example" alongside it,
+                since 30% is the actual eligibility claim and the dollar
+                amounts were always just illustrative. The two sit side by
+                side on wider screens so this part of the card reads as a
+                landscape block rather than a tall stack. */}
+            <div className="smsf-services-feereview-savings">
+              <div className="smsf-services-feereview-highlight">
+                <span className="smsf-services-feereview-highlight-value">
+                  Save up to 30%
                 </span>
-                <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--before">
-                  $1,000
-                </span>
-              </div>
-
-              <span
-                className="smsf-services-feereview-example-arrow"
-                aria-hidden="true"
-              >
-                <IconTrendingDown />
-              </span>
-
-              <div className="smsf-services-feereview-example-item">
-                <span className="smsf-services-feereview-example-label">
-                  You could pay $700.
-                </span>
-                <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--after">
-                  $700
+                <span className="smsf-services-feereview-highlight-label">
+                  on your ongoing SMSF accounting &amp; administration fees
                 </span>
               </div>
 
-              <div className="smsf-services-feereview-example-savings">
-                That&rsquo;s $300 back in your pocket.
+              <div className="smsf-services-feereview-example">
+                <span className="smsf-services-feereview-example-tag">
+                  Example
+                </span>
+
+                <div className="smsf-services-feereview-example-row">
+                  <div className="smsf-services-feereview-example-item">
+                    <span className="smsf-services-feereview-example-label">
+                      Paying $1,000?
+                    </span>
+                    <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--before">
+                      $1,000
+                    </span>
+                  </div>
+
+                  <span
+                    className="smsf-services-feereview-example-arrow"
+                    aria-hidden="true"
+                  >
+                    <IconTrendingDown />
+                  </span>
+
+                  <div className="smsf-services-feereview-example-item">
+                    <span className="smsf-services-feereview-example-label">
+                      You could pay $700.
+                    </span>
+                    <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--after">
+                      $700
+                    </span>
+                  </div>
+                </div>
+
+                <div className="smsf-services-feereview-example-savings">
+                  That&rsquo;s $300 back in your pocket.
+                </div>
               </div>
             </div>
 
