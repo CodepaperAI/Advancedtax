@@ -73,6 +73,24 @@ export function SiteFooter() {
           />
         ))}
       </div>
+      <div className="container footer-compliance">
+  <div className="footer-company-details">
+    <p>
+      <strong>Able Accounting & Taxation Services Pty Ltd</strong>
+    </p>
+    <p>ABN 77 119 247 997</p>
+    <p>
+      T/A <strong>Advanced Accounting Taxation & Business Services</strong>
+    </p>
+  </div>
+
+  <div className="footer-financial-disclosure">
+    <p>
+      Important information: This website provides general information only
+      and does not constitute personal financial advice.
+    </p>
+  </div>
+</div>
       <div className="container footer-bottom">
         <span>Copyright 2026 Advanced Accounting, Taxation & Business Services.</span>
         <span>{site.legal}</span>
