@@ -78,9 +78,18 @@ export function SiteFooter() {
     <p>
       <strong>Able Accounting & Taxation Services Pty Ltd</strong>
     </p>
-    <p>ABN 77 119 247 997</p>
+
+    <p>
+      ABN 77 119 247 997
+    </p>
+
     <p>
       T/A <strong>Advanced Accounting Taxation & Business Services</strong>
+    </p>
+
+    <p>
+      Also trading as <strong>Home Loans By Choice</strong>, authorised under
+      Australian Credit Licence 421861.
     </p>
   </div>
 
