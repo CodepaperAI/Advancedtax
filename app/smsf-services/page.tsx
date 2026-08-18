@@ -1117,8 +1117,7 @@ export default function SmsfServicesPage() {
             services, our experienced team is here to help.
           </p>
           <p className="smsf-services-final-cta-sub">
-            Take advantage of our Limited Time Introductory Offer from just
-            $990* and discover how AATBS can help you manage your SMSF with
+            Take advantage of our Introductory Offer and discover how AATBS can help you manage your SMSF with
             confidence.
           </p>
           <div className="smsf-services-final-cta-buttons">
