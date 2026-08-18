@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
-import { PageHero } from "@/components/PageHero";
 import { FadeIn } from "@/components/MotionPrimitives";
 import { offices, site } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
@@ -21,13 +20,6 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Book consultation"
-        title="Start with a clear accounting and tax conversation."
-        copy="Tell AATBS what you need help with in Sydney, Parramatta, Liverpool or online. We will point you to the right adviser before the consultation."
-        image="/photos/client-consultation.jpg"
-        alt="Client consultation with an adviser"
-      />
       <section className="section-pad contact-section">
         <div className="container contact-grid">
           <FadeIn>
@@ -41,12 +33,18 @@ export default function ContactPage() {
             <div className="contact-office-strip">
               {offices.map((office) => (
                 <div key={office.name}>
-                  <Image src={office.image} alt={`${office.name} office`} fill sizes="220px" />
+                  <Image
+                    src={office.image}
+                    alt={`${office.name} office`}
+                    fill
+                    sizes="220px"
+                  />
                   <span>{office.name}</span>
                 </div>
               ))}
             </div>
           </FadeIn>
+
           <FadeIn>
             <ContactForm />
           </FadeIn>
