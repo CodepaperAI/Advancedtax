@@ -564,7 +564,7 @@ export const pricingBookkeeping = [
     price: "$550 / month",
     summary: "Bookkeeping with payroll built in.",
     features: [
-      "Xero file subscription",
+      "Xero/MYOB/Quickbooks file subscription",
       "Bank reconciliations up to 150 transactions",
       "Payroll for up to 10 employees",
       "Superannuation reminders",
@@ -578,7 +578,7 @@ export const pricingBookkeeping = [
     price: "$825 / month",
     summary: "Full bookkeeping and payroll support at scale.",
     features: [
-      "Xero file subscription",
+      "Xero/MYOB/Quickbooks file subscription",
       "Bank reconciliations up to 300 transactions",
       "Payroll for up to 25 employees",
       "Superannuation reminders",
