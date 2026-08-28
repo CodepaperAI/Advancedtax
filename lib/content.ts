@@ -552,7 +552,7 @@ export const pricingBookkeeping = [
     price: "$300 / month",
     summary: "Basic bookkeeping for smaller businesses.",
     features: [
-      "Xero file subscription",
+      "Xero/MYOB/Quickbooks file subscription",
       "Bank reconciliations up to 50 transactions",
       "Customer and supplier payment matching",
       "Payroll add-on at $15 / payslip / month"
