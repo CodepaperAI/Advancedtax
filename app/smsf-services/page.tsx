@@ -88,9 +88,9 @@ const HERO_IMAGE_SRC = "/team/ABBY.png";
 const HERO_IMAGE_ALT = "AATBS SMSF accountant";
 
 export const metadata: Metadata = {
-  title: "SMSF Accountant Sydney | SMSF Accounting & Compliance | AATBS",
+  title: "SMSF Accountant Liverpool & Parramatta | SMSF Accounting & Compliance | Self-Managed Super Fund",
   description:
-    "Experienced SMSF accountants providing SMSF administration, compliance, tax returns, accounting and audit coordination. Introductory SMSF services from $990*. Book a Virtual Consultation.",
+    "Experienced SMSF accountants in Liverpool & Parramatta providing SMSF administration, compliance, tax returns, accounting and audit coordination. Book a Virtual Consultation.",
 };
 
 /* -------------------------------------------------------------------- */
@@ -439,7 +439,7 @@ const ANNOUNCEMENT_MESSAGE =
   "ALREADY HAVE AN SMSF? YOU MAY BE PAYING MORE THAN YOU NEED TO.";
 const ANNOUNCEMENT_SUBMESSAGE = "ASK US ABOUT OUR SMSF FEE REVIEW";
 const ANNOUNCEMENT_SAVINGS = "SAVE UP TO 30%";
-const ANNOUNCEMENT_CTA = "Request a Free Fee Review";
+const ANNOUNCEMENT_CTA = "Request a Fee Review";
 
 const OFFER_INCLUDES = [
   "SMSF Annual Financial Statements",
@@ -601,7 +601,7 @@ const FAQS = [
   {
     question: "How much does your SMSF service cost?",
     answer:
-      "Our introductory offer starts from just $990* for eligible standard SMSFs. After understanding your fund's requirements, we'll provide a fixed, transparent quote.",
+      "Our fees depend on your SMSF structure, investments and the level of administration and compliance support required. If you already have an SMSF, we can review your current accounting and administration fees and see if we can offer better value, with eligible clients potentially saving up to 30%. Once we understand your requirements, we’ll provide a fixed, transparent quote.",
   },
 ];
 
@@ -664,7 +664,7 @@ export default function SmsfServicesPage() {
                 href={BOOKING_URL}
                 className="smsf-services-btn smsf-services-btn-primary"
               >
-                Book a Free Consultation
+                Book a Visual Consultation
                 <IconArrowRight />
               </Link>
               <Link
@@ -809,7 +809,7 @@ export default function SmsfServicesPage() {
               href={FEE_REVIEW_URL}
               className="smsf-services-btn smsf-services-btn-primary smsf-services-btn--block"
             >
-              Get My Free SMSF Fee Review
+              Get My SMSF Fee Review
               <IconArrowRight />
             </Link>
 
