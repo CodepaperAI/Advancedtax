@@ -768,10 +768,10 @@ export default function SmsfServicesPage() {
                 <div className="smsf-services-feereview-example-row">
                   <div className="smsf-services-feereview-example-item">
                     <span className="smsf-services-feereview-example-label">
-                      Paying $1,000?
+                      Paying $2,500?
                     </span>
                     <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--before">
-                      $1,000
+                      $2,500
                     </span>
                   </div>
 
@@ -784,16 +784,16 @@ export default function SmsfServicesPage() {
 
                   <div className="smsf-services-feereview-example-item">
                     <span className="smsf-services-feereview-example-label">
-                      You could pay $700.
+                      You could pay $1,750.
                     </span>
                     <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--after">
-                      $700
+                      $1,750
                     </span>
                   </div>
                 </div>
 
                 <div className="smsf-services-feereview-example-savings">
-                  That&rsquo;s $300 back in your pocket.
+                  That&rsquo;s $750 back in your pocket.
                 </div>
               </div>
             </div>

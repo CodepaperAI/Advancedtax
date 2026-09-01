@@ -63,14 +63,14 @@ export const offices = [
     address: "Parramatta, NSW",
     detail:
       "A local office for clients who prefer to meet in person in Western Sydney.",
-    image: "/photos/sydney-cbd.jpg"
+    image: "/photos/parramattaoffice.jpg"
   },
   {
     name: "Liverpool",
     address: "Liverpool, NSW",
     detail:
       "A second office for clients across South West Sydney.",
-    image: "/photos/sydney-street.jpg"
+    image: "/photos/liverpooloffice.jpg"
   }
 ];
 

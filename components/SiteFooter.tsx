@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { accreditations, nav, offices, services, site } from "@/lib/content";
-import { locations } from "@/lib/seo/locations";
 
 export function SiteFooter() {
   return (
@@ -43,12 +42,7 @@ export function SiteFooter() {
         </div>
         <div>
           <h2>Service Areas</h2>
-          <Link href="/service-areas">All service areas</Link>
-          {locations.map((loc) => (
-            <Link key={loc.slug} href={`/service-areas/${loc.slug}`}>
-              {loc.name}
-            </Link>
-          ))}
+          <p>Australia-wide</p>
         </div>
         <div>
           <h2>Offices</h2>
@@ -56,10 +50,10 @@ export function SiteFooter() {
             <p key={office.name}>
               <strong>{office.name}</strong>
               <span>{office.address}</span>
+              <a href={site.phoneHref}>{site.phoneDisplay}</a>
+              <a href={site.mobileHref}>{site.mobileDisplay}</a>
             </p>
           ))}
-          <a href={site.phoneHref}>{site.phoneDisplay}</a>
-          <a href={site.mobileHref}>{site.mobileDisplay}</a>
         </div>
       </div>
       <div className="container footer-accreditations">
