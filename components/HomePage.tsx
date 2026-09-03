@@ -231,42 +231,6 @@ export function HomePage({ googleReview }: { googleReview: GoogleReviewSummary }
 
       <TestimonialParallaxSection />
 
-      <section className="section-pad pricing-section">
-        <div className="container pricing-stage">
-          <FadeIn className="pricing-lead">
-            <p className="eyebrow">Packages</p>
-            <h2>Monthly packages with clear inclusions.</h2>
-            <p>
-              Choose from business, bookkeeping and bundle options. We confirm
-              the right package after the first conversation.
-            </p>
-            <Link href="/pricing" className="button button-dark">
-              See packages
-            </Link>
-          </FadeIn>
-          <div className="pricing-pathways" aria-label="Pricing pathways">
-            {pricing.map((item, index) => (
-              <motion.div
-                key={item.name}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className={index === 1 ? "pathway recommended" : "pathway"}
-              >
-                <strong className="pathway-number">0{index + 1}</strong>
-                <span>{item.audience}</span>
-                <h3>{item.name}</h3>
-                <p>{item.price}</p>
-              </motion.div>
-            ))}
-          </div>
-          <div className="pricing-proof-strip" aria-label="Pricing principles">
-            <span>Quoted after consultation</span>
-            <span>Support through the year</span>
-            <span>Clear monthly options</span>
-          </div>
-        </div>
-      </section>
-
       <section className="section-pad resources-section">
         <div className="container">
           <FadeIn className="section-heading split-heading">
@@ -385,14 +349,13 @@ function HeroFullBleedSection() {
           </div>
           <div>
             <p className="hero-lede">
-              Accounting, tax, BAS, SMSF and business advice from Parramatta
-              and Liverpool.
+              Accounting, tax, BAS, SMSF and business advisory support to help you stay compliant, plan ahead and make better financial decisions.
             </p>
           </div>
           <div>
             <div className="hero-actions">
               <Link className="button button-gold" href="/contact">
-                Book a free consultation
+                Book a virtual consultation
                 <ArrowRight size={18} />
               </Link>
               <Link className="button button-outline" href="/services">

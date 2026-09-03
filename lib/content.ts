@@ -690,10 +690,9 @@ export const faqs = [
 ];
 
 export const nav = [
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
-  { label: "About", href: "/about" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
   { label: "Engagement Form", href: "/client-information-form" },
   { label: "Contact", href: "/contact" }
