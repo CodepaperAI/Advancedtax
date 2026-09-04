@@ -60,12 +60,14 @@
  * UPDATE (fee review highlight revision):
  * Inside the SMSF Fee Review card, "Save up to 30%" is now the primary
  * visual highlight (a large gold stat in its own callout), since that's
- * the actual eligibility claim. The $1,000 -> $700 figures are kept only
- * as a smaller, explicitly labelled "Example" underneath rather than a
- * second full-size stat. The two now sit side-by-side on wider screens
- * (and the card itself is wider) so the section reads as a landscape
- * block instead of a tall, narrow one. See
- * .smsf-services-feereview-savings / -highlight / -example in the CSS.
+ * the actual eligibility claim.
+ *
+ * UPDATE (this pass):
+ * Removed the "$2,500 -> $1,750 / That's $750 back in your pocket" worked
+ * example from the Fee Review card. The "Save up to 30%" highlight stays
+ * as the card's only stat. See .smsf-services-feereview-savings /
+ * -highlight in the CSS — the -example / -example-* rules are no longer
+ * used by this markup and can be removed there if desired.
  * ------------------------------------------------------------------------
  */
 
@@ -409,7 +411,7 @@ function IconBuilding(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-// NEW: used by the Fee Review section (the $1,000 -> $700 example arrow).
+// Used by the Fee Review section eyebrow badge.
 function IconTrendingDown(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -521,9 +523,6 @@ const SERVICE_CARDS = [
   },
 ];
 
-// UPDATED (depth/readability pass): each step now carries a short
-// description alongside its title, so the "Our Process" cards aren't
-// just a number and a headline floating in empty space.
 const PROCESS_STEPS = [
   {
     title: "Book Your Virtual Consultation",
@@ -552,9 +551,6 @@ const SWITCH_REASONS = [
   "Charges premium fees without delivering ongoing value",
 ];
 
-// UPDATED (depth/readability pass): converted from a flat string array to
-// {label, icon} pairs so each "Who We Help" card gets a distinct icon
-// instead of every card repeating IconUsers.
 const WHO_WE_HELP = [
   { label: "Individuals considering an SMSF", icon: IconSearchCheck },
   { label: "Existing SMSF trustees", icon: IconShield },
@@ -565,8 +561,6 @@ const WHO_WE_HELP = [
   { label: "Trustees wanting reliable compliance support", icon: IconScale },
 ];
 
-// NEW (depth/readability pass): short highlights rendered inside the
-// SMSF + Property card, breaking up the three paragraphs of copy.
 const PROPERTY_HIGHLIGHTS = [
   "Accounting and lending under one roof",
   "Clear guidance on SMSF borrowing rules",
@@ -697,13 +691,10 @@ export default function SmsfServicesPage() {
 
       {/*
         SMSF Fee Review
-        UPDATED: the separate "$990 Professional SMSF Administration &
-        Compliance" card/section has been removed. Its checklist has been
-        folded into this Fee Review card (below the intro paragraphs) so
-        what's included is still visible, without a separate section. The
-        $990 introductory offer itself is unchanged elsewhere on the page
-        (see the Final CTA section further down, which still references
-        it) — only this standalone card was removed.
+        The $990 introductory offer's checklist is folded into this card
+        (below the intro paragraphs). The $990 introductory offer itself
+        is unchanged elsewhere on the page (see the Final CTA section
+        further down, which still references it).
       */}
       <section className="smsf-services-feereview-section">
         <div className="smsf-services-container">
@@ -732,7 +723,6 @@ export default function SmsfServicesPage() {
               </p>
             </div>
 
-            {/* NEW: checklist folded in from the removed $990 offer card. */}
             <ul className="smsf-services-offer-list smsf-services-feereview-list">
               {OFFER_INCLUDES.map((item) => (
                 <li key={item}>
@@ -742,59 +732,31 @@ export default function SmsfServicesPage() {
               ))}
             </ul>
 
-            {/* REVISION: "Save up to 30%" is now the primary visual
-                highlight of this card (previously the $1,000 -> $700
-                figures carried equal weight). The dollar figures are kept
-                only as a smaller, clearly-labelled "Example" alongside it,
-                since 30% is the actual eligibility claim and the dollar
-                amounts were always just illustrative. The two sit side by
-                side on wider screens so this part of the card reads as a
-                landscape block rather than a tall stack. */}
-            <div className="smsf-services-feereview-savings">
-              <div className="smsf-services-feereview-highlight">
+            {/*
+              UPDATE (this pass): the "Example" callout ($2,500 -> $1,750
+              / "That's $750 back in your pocket") has been removed.
+              "Save up to 30%" is now the sole highlight in this card.
+            */}
+            <div
+              className="smsf-services-feereview-savings"
+              style={{ display: "flex", width: "100%" }}
+            >
+              <div
+                className="smsf-services-feereview-highlight"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
                 <span className="smsf-services-feereview-highlight-value">
                   Save up to 30%
                 </span>
                 <span className="smsf-services-feereview-highlight-label">
                   on your ongoing SMSF accounting &amp; administration fees
                 </span>
-              </div>
-
-              <div className="smsf-services-feereview-example">
-                <span className="smsf-services-feereview-example-tag">
-                  Example
-                </span>
-
-                <div className="smsf-services-feereview-example-row">
-                  <div className="smsf-services-feereview-example-item">
-                    <span className="smsf-services-feereview-example-label">
-                      Paying $2,500?
-                    </span>
-                    <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--before">
-                      $2,500
-                    </span>
-                  </div>
-
-                  <span
-                    className="smsf-services-feereview-example-arrow"
-                    aria-hidden="true"
-                  >
-                    <IconTrendingDown />
-                  </span>
-
-                  <div className="smsf-services-feereview-example-item">
-                    <span className="smsf-services-feereview-example-label">
-                      You could pay $1,750.
-                    </span>
-                    <span className="smsf-services-feereview-example-value smsf-services-feereview-example-value--after">
-                      $1,750
-                    </span>
-                  </div>
-                </div>
-
-                <div className="smsf-services-feereview-example-savings">
-                  That&rsquo;s $750 back in your pocket.
-                </div>
               </div>
             </div>
 
@@ -926,14 +888,6 @@ export default function SmsfServicesPage() {
             </p>
           </div>
 
-          {/*
-            DEPTH PASS: markup unchanged — the redesign here is entirely in
-            .smsf-services-card / .smsf-services-card-icon in the CSS
-            (border, layered shadow, gold top edge, larger navy/gold icon
-            badge), so the same SERVICE_CARDS data now renders with real
-            separation from the white section background instead of
-            blending into it.
-          */}
           <div className="smsf-services-card-grid">
             {SERVICE_CARDS.map(({ icon: Icon, title, body }) => (
               <article className="smsf-services-card" key={title}>
@@ -949,21 +903,8 @@ export default function SmsfServicesPage() {
       </section>
 
       {/* ================================================================
-          NEW SECTION: SMSF + Property
-          Placed after the SMSF Services section and before "Our Process",
-          per the brief.
-
-          DEPTH PASS: previously the most understated element on the page
-          (a plain 1px-bordered card with no shadow). It now carries the
-          same gold-top-border + layered-shadow treatment as the Fee
-          Review card above, a proper gold/navy icon badge, and a short
-          highlights list breaking up the three paragraphs.
-
-          BACKGROUND/SPACING PASS: section moved from navy-050 to plain
-          white (its card is tinted navy-050 instead, see CSS) so it
-          doesn't blend into "Our Process" right after it, and its top
-          padding was restored (previously zeroed out) so it doesn't sit
-          flush against the navy Services section above.
+          SMSF + Property
+          Placed after the SMSF Services section and before "Our Process".
           ================================================================ */}
       <section className="smsf-services-section smsf-services-section--white smsf-services-property-section">
         <div className="smsf-services-container">
@@ -993,7 +934,6 @@ export default function SmsfServicesPage() {
               next step.
             </p>
 
-            {/* NEW: highlights list, folded in during the depth pass. */}
             <ul className="smsf-services-property-list">
               {PROPERTY_HIGHLIGHTS.map((item) => (
                 <li key={item}>
@@ -1019,14 +959,9 @@ export default function SmsfServicesPage() {
           </div>
         </div>
       </section>
-      {/* END NEW SECTION: SMSF + Property */}
+      {/* END SMSF + Property */}
 
-      {/*
-        Our process
-        DEPTH PASS: each step now renders its `body` description (see
-        PROCESS_STEPS above) beneath the heading, in addition to the
-        border/shadow/number-badge changes in the CSS.
-      */}
+      {/* Our process */}
       <section className="smsf-services-section smsf-services-section--alt">
         <div className="smsf-services-container">
           <div className="smsf-services-section-intro">
@@ -1054,15 +989,7 @@ export default function SmsfServicesPage() {
         </div>
       </section>
 
-      {/*
-        Who we help
-        DEPTH PASS: maps over {label, icon} pairs (see WHO_WE_HELP above)
-        so each item shows a distinct icon instead of repeating IconUsers.
-        CONTRAST/FORMAT PASS: deliberately not styled like "Our Process" —
-        renders as a wrapping row of navy pill chips (see .smsf-services-
-        who-grid / -who-card in the CSS) on the new navy section
-        background, with a gold-fill/navy-icon badge for real contrast.
-      */}
+      {/* Who we help */}
       <section className="smsf-services-section smsf-services-section--navy">
         <div className="smsf-services-container">
           <div className="smsf-services-section-intro">
