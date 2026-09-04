@@ -68,6 +68,16 @@
  * as the card's only stat. See .smsf-services-feereview-savings /
  * -highlight in the CSS — the -example / -example-* rules are no longer
  * used by this markup and can be removed there if desired.
+ *
+ * UPDATE (Our Process continuity pass):
+ * Added a 5th card into the "Our Process" grid, sitting beside step 4 in
+ * the same row. It is NOT a numbered step — PROCESS_STEPS itself and the
+ * four numbered cards it renders are unchanged — it renders as an extra
+ * <li> after the PROCESS_STEPS.map() call, with no number badge, styled
+ * in the navy/gold palette (see .smsf-services-process-continuity in the
+ * CSS) so it reads as an "ongoing" note rather than "step 5". Content
+ * comes from LOAN_REVIEW_HEADING / LOAN_REVIEW_BODY ("SMSF Loan Review &
+ * Saving").
  * ------------------------------------------------------------------------
  */
 
@@ -484,7 +494,7 @@ const SERVICE_CARDS = [
   {
     icon: IconBuilding,
     title: "SMSF Setup",
-    body: "We'll help determine whether establishing a Self Managed Super Fund is right for your circumstances before guiding you through every step of the setup process.",
+    body: "Once you have received appropriate financial advice and decided that an SMSF is right for you, we can help set it up correctly and take the hassle out of the accounting, tax and compliance process.",
   },
   {
     icon: IconSettings,
@@ -541,6 +551,13 @@ const PROCESS_STEPS = [
     body: "Direct access to your accountant whenever you need it.",
   },
 ];
+
+// NEW: "SMSF Loan Review & Saving" — the 5th card rendered beside step 4
+// in the "Our Process" grid. Not part of PROCESS_STEPS and not numbered;
+// styled as an additional service highlight rather than another step.
+const LOAN_REVIEW_HEADING = "SMSF Loan Review & Saving";
+const LOAN_REVIEW_BODY =
+  "With an annual loan review at the time of your SMSF administration, our SMSF lending specialist can review your investment property loan and interest rate to identify potential savings and help keep your loan competitive year after year.";
 
 const SWITCH_REASONS = [
   "Only contacts you once a year",
@@ -963,13 +980,20 @@ export default function SmsfServicesPage() {
 
       {/* Our process */}
       <section className="smsf-services-section smsf-services-section--alt">
-        <div className="smsf-services-container">
+        {/*
+          NEW: this container gets the --wide modifier so the 5-card row
+          (four steps + the continuity card) has a little more breathing
+          room than the site's standard 1200px container. Scoped to this
+          section only — every other section still uses the plain
+          .smsf-services-container.
+        */}
+        <div className="smsf-services-container smsf-services-container--wide">
           <div className="smsf-services-section-intro">
             <span className="smsf-services-eyebrow">How It Works</span>
             <h2>Our Process</h2>
           </div>
 
-          <ol className="smsf-services-process-grid">
+          <ol className="smsf-services-process-grid smsf-services-process-grid--with-continuity">
             {PROCESS_STEPS.map((step, index) => (
               <li className="smsf-services-process-step" key={step.title}>
                 <span className="smsf-services-process-number">
@@ -985,9 +1009,23 @@ export default function SmsfServicesPage() {
                 )}
               </li>
             ))}
+
+            {/*
+              NEW: sits in the same row as the four numbered steps above,
+              right beside step 4. It is explicitly NOT a numbered step —
+              no number badge is rendered, and it's styled in the navy/gold
+              palette (instead of white) so it visually reads as a
+              separate "ongoing" note rather than "step 5".
+            */}
+            <li className="smsf-services-process-step smsf-services-process-continuity">
+              <h3>{LOAN_REVIEW_HEADING}</h3>
+              <p>{LOAN_REVIEW_BODY}</p>
+            </li>
           </ol>
         </div>
       </section>
+      {/* END Our process — PROCESS_STEPS / the four numbered cards above
+          are unchanged; only the extra navy card beside step 4 is new. */}
 
       {/* Who we help */}
       <section className="smsf-services-section smsf-services-section--navy">

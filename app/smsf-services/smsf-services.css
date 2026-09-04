@@ -54,6 +54,15 @@
      example placed next to it (side-by-side on wider screens) as a
      smaller, explicitly labelled "Example". Search "FEE REVIEW HIGHLIGHT
      REVISION" for the touched blocks. Nothing else in this file changed.
+
+   UPDATE (Our Process continuity pass):
+   - Added a 5th card into the "Our Process" grid, sitting beside step 4
+     in the same row on desktop. It is NOT a numbered step — the existing
+     .smsf-services-process-step/-number/-connector rules are untouched —
+     it's told apart purely by color (solid navy fill + gold top border
+     instead of white), and carries a single message: "SMSF Loan Review &
+     Saving". New rules are added at the end of this file under "NEW:
+     PROCESS CONTINUITY CARD". Nothing else in this file was changed.
    ========================================================================== */
 
 .smsf-services-page {
@@ -76,6 +85,14 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.25rem;
+}
+
+/* NEW: slightly wider than the standard 1200px container — used only by
+   "Our Process" so the 5-card row (four steps + the continuity card)
+   isn't as tightly squeezed on desktop. A modest bump, not a full-width
+   treatment like the hero. */
+.smsf-services-container--wide {
+  max-width: 1320px;
 }
 
 /* ---------- Announcement banner ---------- */
@@ -1386,5 +1403,90 @@
 
   .smsf-services-property-card {
     padding: 2.75rem 3rem 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   NEW: PROCESS CONTINUITY CARD
+   A 5th card that sits in the same grid/row as the four numbered "Our
+   Process" steps, directly beside step 4. It is explicitly NOT a numbered
+   step — none of the .smsf-services-process-step/-number/-connector rules
+   above were changed, and this card renders with no number badge. It's
+   told apart from the four white step cards purely by color: solid navy
+   fill with a gold top border (the same "closing note" language used by
+   .smsf-services-intro-callout elsewhere on the page).
+   ========================================================================== */
+
+/* Modifier on the existing process grid so the added 5th item can sit
+   beside the four step cards on wide screens without disturbing the
+   fixed 2-/4-column rules those cards already use at smaller breakpoints
+   (see the base .smsf-services-process-grid rules above, unchanged). */
+.smsf-services-process-grid--with-continuity {
+  gap: 1.5rem;
+}
+
+.smsf-services-process-continuity {
+  background: var(--smsf-navy);
+  border-color: rgba(255, 255, 255, 0.14);
+  border-top: 3px solid var(--smsf-gold);
+  box-shadow: 0 1px 2px rgba(16, 32, 63, 0.16),
+    0 18px 30px -20px rgba(16, 32, 63, 0.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.smsf-services-process-continuity:hover,
+.smsf-services-process-continuity:focus-within {
+  /* Override the base step card's light-background hover state so it
+     doesn't flash white-on-navy; keep only the lift. */
+  background: var(--smsf-navy-700);
+  box-shadow: 0 1px 2px rgba(16, 32, 63, 0.2),
+    0 24px 36px -20px rgba(16, 32, 63, 0.6);
+}
+
+.smsf-services-process-continuity h3 {
+  margin: 0 0 0.4rem;
+  color: #fff;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.smsf-services-process-continuity p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* ---- Process continuity card: responsive ---- */
+
+@media (min-width: 640px) {
+  /* Base grid is 2 columns here (see .smsf-services-process-grid above);
+     five items settle as 2/2/1, with the continuity card alone in its
+     own row until the 900px layout below. */
+  .smsf-services-process-grid--with-continuity {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  /* Five items across on wide screens, so the continuity card sits
+     beside step 4 in the same row instead of the fixed 4-column layout
+     the base rule uses. */
+  .smsf-services-process-grid--with-continuity {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.1rem;
+  }
+
+  .smsf-services-process-grid--with-continuity .smsf-services-process-connector {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smsf-services-process-continuity {
+    transition: none;
+    animation: none;
   }
 }
