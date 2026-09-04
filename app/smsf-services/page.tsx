@@ -71,13 +71,27 @@
  *
  * UPDATE (Our Process continuity pass):
  * Added a 5th card into the "Our Process" grid, sitting beside step 4 in
- * the same row. It is NOT a numbered step — PROCESS_STEPS itself and the
- * four numbered cards it renders are unchanged — it renders as an extra
- * <li> after the PROCESS_STEPS.map() call, with no number badge, styled
- * in the navy/gold palette (see .smsf-services-process-continuity in the
- * CSS) so it reads as an "ongoing" note rather than "step 5". Content
- * comes from LOAN_REVIEW_HEADING / LOAN_REVIEW_BODY ("SMSF Loan Review &
- * Saving").
+ * the same row. It renders as an extra <li> after the PROCESS_STEPS.map()
+ * call, styled in the navy/gold palette (see .smsf-services-process
+ * -continuity in the CSS) so it reads as an "ongoing" note rather than a
+ * plain step. Content comes from LOAN_REVIEW_HEADING / LOAN_REVIEW_BODY
+ * ("SMSF Loan Review & Saving").
+ *
+ * UPDATE (continuity card numbering pass):
+ * The continuity card now shows a "5" badge like the other four steps
+ * (PROCESS_STEPS itself and the four numbered cards it renders are still
+ * unchanged). The badge uses the same .smsf-services-process-number class
+ * as the other steps, but a scoped override in the CSS
+ * (.smsf-services-process-continuity .smsf-services-process-number, see
+ * "CONTINUITY NUMBER PASS") flips it to a gold circle / navy digit so it
+ * stays legible against this card's navy background instead of blending
+ * in the way the default navy/gold pairing would.
+ *
+ * UPDATE (why-choose benefits pass):
+ * Added "SMSF loan review and savings" to WHY_CHOOSE_BENEFITS, rendered
+ * as an additional card in the existing "Why Choose AATBS" grid (no new
+ * markup — it's just a new entry in the array that the existing
+ * .map() already renders).
  * ------------------------------------------------------------------------
  */
 
@@ -477,6 +491,10 @@ const RESPONSIBILITY_TAGS = [
   "Changing legislation",
 ];
 
+// UPDATE (why-choose benefits pass): added "SMSF loan review and savings"
+// as an 11th entry. No markup changes were needed — the existing
+// .map() in the "Why Choose AATBS" section renders whatever is in this
+// array, so the new card slots in automatically.
 const WHY_CHOOSE_BENEFITS = [
   "Experienced SMSF accountants",
   "Complete SMSF administration",
@@ -488,6 +506,7 @@ const WHY_CHOOSE_BENEFITS = [
   "Fast response times",
   "Practical advice explained in plain English",
   "Personal service tailored to your goals",
+  "SMSF loan review and savings",
 ];
 
 const SERVICE_CARDS = [
@@ -552,9 +571,13 @@ const PROCESS_STEPS = [
   },
 ];
 
-// NEW: "SMSF Loan Review & Saving" — the 5th card rendered beside step 4
-// in the "Our Process" grid. Not part of PROCESS_STEPS and not numbered;
-// styled as an additional service highlight rather than another step.
+// "SMSF Loan Review & Saving" — the 5th card rendered beside step 4
+// in the "Our Process" grid. Not part of PROCESS_STEPS (so the four
+// numbered cards above it are untouched), but it now carries its own
+// "5" badge (see the continuity <li> below) so the sequence reads
+// 1-2-3-4-5. Styled in the navy/gold palette (see
+// .smsf-services-process-continuity in the CSS) so it still reads as
+// distinct from the four white step cards.
 const LOAN_REVIEW_HEADING = "SMSF Loan Review & Saving";
 const LOAN_REVIEW_BODY =
   "With an annual loan review at the time of your SMSF administration, our SMSF lending specialist can review your investment property loan and interest rate to identify potential savings and help keep your loan competitive year after year.";
@@ -1011,13 +1034,19 @@ export default function SmsfServicesPage() {
             ))}
 
             {/*
-              NEW: sits in the same row as the four numbered steps above,
-              right beside step 4. It is explicitly NOT a numbered step —
-              no number badge is rendered, and it's styled in the navy/gold
-              palette (instead of white) so it visually reads as a
-              separate "ongoing" note rather than "step 5".
+              Sits in the same row as the four numbered steps above, right
+              beside step 4. It now carries its own "5" badge (rendered
+              with the same .smsf-services-process-number class as the
+              other steps) so the sequence reads 1-2-3-4-5, but stays
+              styled in the navy/gold palette (instead of white) so it
+              still visually reads as a separate "ongoing" note rather
+              than an identical fifth step card. See
+              "CONTINUITY NUMBER PASS" in the CSS for the color override
+              that keeps the "5" legible against this card's navy
+              background.
             */}
             <li className="smsf-services-process-step smsf-services-process-continuity">
+              <span className="smsf-services-process-number">5</span>
               <h3>{LOAN_REVIEW_HEADING}</h3>
               <p>{LOAN_REVIEW_BODY}</p>
             </li>
@@ -1025,7 +1054,8 @@ export default function SmsfServicesPage() {
         </div>
       </section>
       {/* END Our process — PROCESS_STEPS / the four numbered cards above
-          are unchanged; only the extra navy card beside step 4 is new. */}
+          are unchanged; only the extra navy card beside step 4 now also
+          carries a "5" badge. */}
 
       {/* Who we help */}
       <section className="smsf-services-section smsf-services-section--navy">

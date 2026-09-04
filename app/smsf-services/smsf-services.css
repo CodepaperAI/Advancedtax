@@ -63,6 +63,16 @@
      instead of white), and carries a single message: "SMSF Loan Review &
      Saving". New rules are added at the end of this file under "NEW:
      PROCESS CONTINUITY CARD". Nothing else in this file was changed.
+
+   UPDATE (continuity card numbering pass):
+   - The continuity card now carries a number badge (5) like the other
+     four steps, since the user wants it read as a step in the sequence.
+     Because the card itself is navy, the default number badge (navy
+     circle / gold digit) would nearly disappear against it, so this card
+     gets a flipped color pairing (gold circle / navy digit) — the same
+     high-contrast pairing already used for icon badges elsewhere on the
+     page. Search "CONTINUITY NUMBER" for the touched rule. Nothing else
+     in this section changed.
    ========================================================================== */
 
 .smsf-services-page {
@@ -1409,11 +1419,10 @@
 /* ==========================================================================
    NEW: PROCESS CONTINUITY CARD
    A 5th card that sits in the same grid/row as the four numbered "Our
-   Process" steps, directly beside step 4. It is explicitly NOT a numbered
-   step — none of the .smsf-services-process-step/-number/-connector rules
-   above were changed, and this card renders with no number badge. It's
-   told apart from the four white step cards purely by color: solid navy
-   fill with a gold top border (the same "closing note" language used by
+   Process" steps, directly beside step 4. It carries a number badge (5),
+   like the four steps beside it — see "CONTINUITY NUMBER PASS" below —
+   but is still told apart from them by color: solid navy fill with a
+   gold top border (the same "closing note" language used by
    .smsf-services-intro-callout elsewhere on the page).
    ========================================================================== */
 
@@ -1443,6 +1452,16 @@
   background: var(--smsf-navy-700);
   box-shadow: 0 1px 2px rgba(16, 32, 63, 0.2),
     0 24px 36px -20px rgba(16, 32, 63, 0.6);
+}
+
+/* CONTINUITY NUMBER PASS: the base .smsf-services-process-number badge is
+   a navy circle with a gold digit — on this card's navy background that
+   pairing would nearly disappear. Flip it to a gold circle with a navy
+   digit (the same high-contrast pairing used for icon badges elsewhere
+   on the page) so the "5" is actually legible here. */
+.smsf-services-process-continuity .smsf-services-process-number {
+  background: var(--smsf-gold);
+  color: var(--smsf-navy);
 }
 
 .smsf-services-process-continuity h3 {
